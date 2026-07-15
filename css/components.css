@@ -1,0 +1,35 @@
+/* 이 스타일의 "시그니처" - 모든 카드/버튼에 재사용 */
+.brutal-box {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard);
+  background: white;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-pink);
+  box-shadow: var(--shadow-hard);
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+/* 뉴브루탈리즘 특유의 눌리는 인터랙션 */
+.btn-pill:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-border);
+}
+
+.nft-card {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  background: white;
+}

@@ -1,0 +1,37 @@
+:root {
+  /* 색상 - 섹션 배경 */
+  --color-bg-cream: #FAF0E1;
+  --color-bg-purple: #6857E8;
+  --color-bg-pink: #E8A8D8;
+
+  /* 색상 - 강조/버튼 */
+  --color-accent-pink: #F2A9D0;
+  --color-accent-yellow: #F5D563;
+  --color-accent-mint: #A8E6C1;
+  --color-accent-blue: #A8D8F0;
+
+  /* 텍스트 */
+  --color-text: #2B1B4D;      /* 진한 남색에 가까운 검정 */
+  --color-text-white: #FFFFFF;
+  --color-border: #1A1A1A;    /* 카드/버튼 테두리용 순검정 */
+
+  /* 테두리 & 그림자 (뉴브루탈리즘 핵심) */
+  --border-width: 3px;
+  --shadow-offset: 4px;
+  --shadow-hard: 4px 4px 0 var(--color-border);
+  --shadow-hard-lg: 6px 6px 0 var(--color-border);
+
+  /* 반경 */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+
+  /* 폰트 */
+  --font-heading: 'Baloo 2', 'Bagel Fat One', sans-serif; /* 굵고 둥근 코믹체 */
+  --font-body: 'Poppins', -apple-system, sans-serif;
+
+  /* 간격 */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+}
