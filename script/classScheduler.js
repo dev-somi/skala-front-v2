@@ -5,7 +5,7 @@ let currentMonth = "7";
 // 2. 비동기 통신(Fetch API)으로 JSON 파일에서 실제 시간표 데이터 가져오기
 async function loadScheduleData() {
     try {
-        const response = await fetch('schedule.json');
+        const response = await fetch('../schedule.json');
         
         // 만약 파일이 없거나 경로가 잘못되었다면 에러 던지기
         if (!response.ok) {
@@ -34,22 +34,22 @@ async function loadScheduleData() {
                 <td>2026-07-14</td>
                 <td>화</td>
                 <td>1주차</td>
-                <td>팀빌딩(심요한), Git 이해/활용 (5h)[cite: 1]</td>
-                <td>엄진영 강사님[cite: 1]</td>
+                <td>팀빌딩(심요한), Git 이해/활용 (5h)</td>
+                <td>엄진영 강사님</td>
             </tr>
             <tr>
                 <td>2026-07-15</td>
                 <td>수</td>
                 <td>1주차</td>
-                <td>HTML, CSS, JavaScript 기초[cite: 1]</td>
-                <td>엄진영 강사님[cite: 1]</td>
+                <td>HTML, CSS, JavaScript 기초</td>
+                <td>엄진영 강사님</td>
             </tr>
             <tr>
                 <td>2026-07-16</td>
                 <td>목</td>
                 <td>1주차</td>
-                <td>HTML, CSS, JavaScript 기초 실습[cite: 1]</td>
-                <td>엄진영 강사님[cite: 1]</td>
+                <td>HTML, CSS, JavaScript 기초 실습</td>
+                <td>엄진영 강사님</td>
             </tr>
         `;
     }
@@ -76,7 +76,7 @@ function renderSchedule(month) {
     let htmlContent = '';
     
     monthData.forEach(item => {
-        // 대체휴일, 추석 연휴, 자체휴강 등 일정이 비어있는 날은 보기 편하게 셀 병합(colspan) 처리[cite: 1]
+        // 대체휴일, 추석 연휴, 자체휴강 등 일정이 비어있는 날은 보기 편하게 셀 병합(colspan) 처리
         if (item.content.includes("연휴") || item.content.includes("대체휴일") || item.content.includes("자체휴강")) {
             htmlContent += `
                 <tr>
@@ -96,7 +96,7 @@ function renderSchedule(month) {
                     <td>${item.day}</td>
                     <td>${item.week}</td>
                     <td>${item.content}</td>
-                    <td>${item.teacher ? item.teacher + ' 강사님' : '-'}[cite: 1]</td>
+                    <td>${item.teacher ? item.teacher + ' 강사님' : '-'}</td>
                 </tr>
             `;
         }

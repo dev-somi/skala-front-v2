@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Som's Universe - 소미의 디지털 홈</title>
     <meta name="description" content="소미의 일상, 여행, 프로젝트가 생동감 있게 펼쳐지는 기발한 세계, Som's Universe에 오신 것을 환영합니다.">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
     <header>
-        <nav aria-label="메인 네비게이션">
+        <nav class="navbar" aria-label="메인 네비게이션">
             <a href="index.html" class="logo" aria-label="Som's 홈으로 이동">Som's</a>
-            
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="myProfile.html">Profile</a></li>
-                <li><a href="myCalendar.html">Calendar</a></li>
-                <li><a href="myTrip.html">Travel</a></li>
-                <li><a href="playground.html">Playground</a></li>
+
+            <ul class="nav-links">
+                <li class="nav-item active"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="myProfile.html">Profile</a></li>
+                <li class="nav-item"><a href="myCalendar.html">Calendar</a></li>
+                <li class="nav-item"><a href="myTrip.html">Travel</a></li>
+                <li class="nav-item"><a href="playground.html">Playground</a></li>
             </ul>
-            
-            <!-- 우측 영역: 회원가입 링크 및 사용자 인터랙션 -->
-            <div class="user-actions">
+
+            <div class="nav-actions">
                 <a href="signUp.html" class="btn-signup" aria-label="회원가입 페이지로 이동">Sign Up</a>
-                <button aria-label="프로필 보기"><img src="user-icon.png" alt="사용자 프로필"></button>
-                <button aria-label="더보기 메뉴 열기">...</button>
+
+                <div class="profile-pic">
+                    <img src="user-icon.png" alt="사용자 프로필">
+                </div>
+
+                <button class="more-btn" aria-label="더보기 메뉴 열기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
     <!-- 2. 메인 콘텐츠 영역 -->
     <main>
-        
+
         <!-- 히어로 섹션 -->
         <section class="hero" aria-labelledby="hero-title">
             <h1 id="hero-title">Som's Universe</h1>
@@ -82,7 +92,7 @@
 
     <!-- 3. 푸터 영역 -->
     <footer>
-        
+
         <!-- 상태 표시바: 사이드바 성격의 부가 정보 제공 -->
         <aside class="status-bar" aria-label="현재 접속 정보">
             <p>오늘 날짜: 2026년 7월 15일 | 현재 위치: 광주광역시 광산구 | 시간: 오후 8:30</p>
@@ -93,11 +103,12 @@
             <p>A curated collection of Som's dreams and small adventures.</p>
             <h2>Som's Digital Home</h2>
             <p>This is a space for sharing memories and creative projects, built in a charming, hand-drawn style.</p>
-            
+
             <p><small>All designs and content belong to Som. &copy; 2026 Som. Let's keep exploring!</small></p>
         </div>
-        
+
     </footer>
 
 </body>
+
 </html>
