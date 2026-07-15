@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Som's Universe - 소미의 디지털 홈</title>
+    <meta name="description" content="소미의 일상, 여행, 프로젝트가 생동감 있게 펼쳐지는 기발한 세계, Som's Universe에 오신 것을 환영합니다.">
+</head>
+<body>
+
+    <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
+    <header>
+        <nav aria-label="메인 네비게이션">
+            <a href="index.html" class="logo" aria-label="Som's 홈으로 이동">Som's</a>
+            
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="myProfile.html">Profile</a></li>
+                <li><a href="myCalendar.html">Calendar</a></li>
+                <li><a href="myTrip.html">Travel</a></li>
+                <li><a href="playground.html">Playground</a></li>
+            </ul>
+            
+            <!-- 우측 영역: 회원가입 링크 및 사용자 인터랙션 -->
+            <div class="user-actions">
+                <a href="signUp.html" class="btn-signup" aria-label="회원가입 페이지로 이동">Sign Up</a>
+                <button aria-label="프로필 보기"><img src="user-icon.png" alt="사용자 프로필"></button>
+                <button aria-label="더보기 메뉴 열기">...</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. 메인 콘텐츠 영역 -->
+    <main>
+        
+        <!-- 히어로 섹션 -->
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Som's Universe</h1>
+            <p>The whimsical world where Som's life, travels, and projects come alive.</p>
+            <a href="#explore" class="btn-primary" role="button">Let's Explore! &rarr;</a>
+        </section>
+
+        <!-- 카테고리 그리드 섹션: 4개의 콘텐츠 카드로 간결하게 압축 -->
+        <section class="categories" id="explore" aria-label="주요 콘텐츠 카테고리">
+            <ul>
+                <li>
+                    <a href="myCalendar.html">
+                        <figure>
+                            <img src="schedule.png" alt="대학 강의 시간표와 주말 휴일 일정이 기록된 라이프 캘린더">
+                            <figcaption>My Schedule</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="myTrip.html">
+                        <figure>
+                            <img src="travel.png" alt="추억이 가득한 여행지 소개와 브이로그 앨범">
+                            <figcaption>Travel Journal</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="myProfile.html">
+                        <figure>
+                            <img src="about.png" alt="박소미의 소개와 나를 설명하는 키워드 카드">
+                            <figcaption>About Me</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="playground.html">
+                        <figure>
+                            <img src="game.png" alt="숫자 맞추기, 성적 계산기, 내 가방 보기, 날씨 보기가 포함된 미니 게임 존">
+                            <figcaption>Playground</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- 3. 푸터 영역 -->
+    <footer>
+        
+        <!-- 상태 표시바: 사이드바 성격의 부가 정보 제공 -->
+        <aside class="status-bar" aria-label="현재 접속 정보">
+            <p>오늘 날짜: 2026년 7월 15일 | 현재 위치: 광주광역시 광산구 | 시간: 오후 8:30</p>
+        </aside>
+
+        <!-- 사이트 정보 및 저작권 -->
+        <div class="site-info">
+            <p>A curated collection of Som's dreams and small adventures.</p>
+            <h2>Som's Digital Home</h2>
+            <p>This is a space for sharing memories and creative projects, built in a charming, hand-drawn style.</p>
+            
+            <p><small>All designs and content belong to Som. &copy; 2026 Som. Let's keep exploring!</small></p>
+        </div>
+        
+    </footer>
+
+</body>
+</html>
