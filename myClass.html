@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: 명확하고 직관적인 페이지 타이틀과 설명 제공 -->
+    <title>My Schedule - Som's Universe</title>
+    <meta name="description" content="소미의 2026년 하반기 실제 AI 및 웹 서비스 개발 강의 일정을 확인하는 스마트 다이어리 시간표입니다.">
+</head>
+<body>
+
+    <!-- 1. 헤더 영역: 글로벌 및 내부 서브 네비게이션 -->
+    <header>
+        <nav aria-label="서브 네비게이션">
+            <a href="index.html" aria-label="메인 허브로 이동">← 메인 허브</a> | 
+            <a href="holiday.html" aria-label="나의 휴일 일과 페이지로 이동">🍹 나의 휴일 일과 보기 →</a>
+        </nav>
+        <hr>
+    </header>
+
+    <!-- 2. 메인 콘텐츠 영역 -->
+    <main>
+        
+        <!-- 타이틀 및 소개 섹션 -->
+        <section id="diary-intro" aria-labelledby="diary-title">
+            <h1 id="diary-title">📖 소미의 학습 다이어리</h1>
+            <p>매일매일 기록하며 성장해 나가는 저의 실제 훈련 과정 강의 일정표입니다.</p>
+        </section>
+
+        <hr>
+
+        <!-- 월 선택 컨트롤러 섹션 (JS 연동을 위한 데이터셋 속성 부여) -->
+        <section id="calendar-controller" aria-label="월별 일정 선택">
+            <h2>📅 월 선택하기</h2>
+            <p>
+                <!-- JS에서 클릭 이벤트를 잡아 스케줄을 업데이트할 수 있도록 class와 data-month 속성을 부여합니다. -->
+                <button type="button" class="month-btn" data-month="7" aria-controls="schedule-table">7월</button> | 
+                <button type="button" class="month-btn" data-month="8" aria-controls="schedule-table">8월</button> | 
+                <button type="button" class="month-btn" data-month="9" aria-controls="schedule-table">9월</button> | 
+                <button type="button" class="month-btn" data-month="10" aria-controls="schedule-table">10월</button> | 
+                <button type="button" class="month-btn" data-month="11" aria-controls="schedule-table">11월</button> | 
+                <button type="button" class="month-btn" data-month="12" aria-controls="schedule-table">12월</button>
+            </p>
+            <p>📍 현재 확인 중인 일정: <strong id="current-month-display">2026년 7월</strong></p>
+        </section>
+
+        <!-- 시간표 데이터 섹션 -->
+        <section id="schedule-section" aria-labelledby="table-caption">
+            <h2 id="table-caption" class="sr-only">월별 세부 강의 일정표</h2>
+            
+            <!-- 필수 사용 1: <table> (CSS를 쓰지 않는 조건이므로 테두리를 위해 임시 border 속성 부여) -->
+            <table id="schedule-table" border="1" cellpadding="8">
+                
+                <!-- 필수 사용 2: <thead> (시간, 요일 구조 반영) -->
+                <thead>
+                    <tr>
+                        <th scope="col">날짜</th>
+                        <th scope="col">요일</th>
+                        <th scope="col">주차</th>
+                        <th scope="col">과목 / 특강 내용</th>
+                        <th scope="col">담당 강사</th>
+                    </tr>
+                </thead>
+
+                <!-- 필수 사용 3: <tbody> (JS 연동을 위해 ID를 부여하고 기본 7월 데이터를 세팅) -->
+                <tbody id="schedule-tbody">
+                    <!-- 기본값으로 보여줄 7월 일정 뼈대 데이터 (과제 검사용 하드코딩) -->
+                    <tr>
+                        <td>2026-07-14</td>
+                        <td>화</td>
+                        <td>1주차</td>
+                        <td>팀빌딩(심요한), Git 이해/활용 (5h)</td>
+                        <td>엄진영 강사님[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>2026-07-15</td>
+                        <td>수</td>
+                        <td>1주차</td>
+                        <td><mark>HTML, CSS, JavaScript 기초</mark>[cite: 1]</td>
+                        <td>엄진영 강사님[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>2026-07-16</td>
+                        <td>목</td>
+                        <td>1주차</td>
+                        <td>HTML, CSS, JavaScript 기초 실습[cite: 1]</td>
+                        <td>엄진영 강사님[cite: 1]</td>
+                    </tr>
+                    <!-- 필수 사용 4: 셀 합치기 (특강 혹은 주말 대체휴일 등으로 colspan 병합 적용) -->
+                    <tr>
+                        <td>2026-07-17</td>
+                        <td>금</td>
+                        <td>1주차</td>
+                        <td colspan="2" align="center">💡 주말 대비 자율 복습 및 개인 프로젝트 기획 진행</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <!-- 3. 푸터 영역 -->
+    <footer>
+        <p><small>&copy; 2026 Som. All rights reserved.</small></p>
+    </footer>
+
+</body>
+</html>
