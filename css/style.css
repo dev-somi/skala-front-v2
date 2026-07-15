@@ -74,6 +74,66 @@ footer {
   color: var(--color-text);
 }
 
+/* ===== 메인 페이지 (index.html) ===== */
+.hero {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.hero h1 {
+  font-size: clamp(48px, 8vw, 96px);
+  color: var(--color-bg-purple);
+  -webkit-text-stroke: 2px var(--color-border);
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 0 auto var(--space-lg);
+  font-size: 18px;
+}
+
+.hero-cta {
+  background: var(--color-accent-pink);
+  color: var(--color-border);
+  text-decoration: none;
+}
+
+.btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.portraits {
+  padding: 0 var(--space-md) var(--space-xl);
+}
+
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+.portrait-card {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--color-accent-blue);
+}
+
+@media (max-width: 700px) {
+  .portrait-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ===== 프로필 페이지 (myProfile.html) ===== */
 #intro figure img {
   border: var(--border-width) solid var(--color-border);
