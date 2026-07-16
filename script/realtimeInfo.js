@@ -64,7 +64,7 @@ async function updateCityWeather(city) {
         // 4. 상태 표시바(티커) 갱신
         window.StatusBarTicker.updateText(`
             📅 오늘 날짜: ${todayText} |
-            📍 현재 위치: <strong>${city.name} (위도: ${lat}, 경도: ${lon})</strong> |
+            📍 현재 위치: ${city.name} (위도: ${lat}, 경도: ${lon}) |
             ${status.emoji} 날씨: ${status.text} (🌡️ 온도: ${weather.temperature_2m}°C | 💧 습도: ${weather.relative_humidity_2m}% | 💨 풍속: ${weather.wind_speed_10m} km/h)
         `);
 
@@ -101,3 +101,9 @@ dialog.addEventListener('click', (event) => {
 });
 
 populateCitySelect();
+
+// 페이지 진입 시 서울을 기본 도시로 하여 바로 실시간 날씨를 가져와 티커에 반영한다.
+// (다이얼로그를 열지 않은 상태에서도 #weather-box/티커는 갱신 가능 - <dialog>는 open 여부와 무관하게 DOM에 존재함)
+const DEFAULT_CITY_INDEX = 0; // CITY_LIST[0] === 서울특별시
+citySelect.value = String(DEFAULT_CITY_INDEX);
+updateCityWeather(CITY_LIST[DEFAULT_CITY_INDEX]);

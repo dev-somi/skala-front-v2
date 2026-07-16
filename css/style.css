@@ -4,6 +4,7 @@
 /* 폰트 불러오기 (Baloo 2 - 헤딩용 / Poppins - 본문용) */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 /* 로컬 CSS 파일 불러오기 */
 @import url('variables.css');
@@ -38,6 +39,7 @@ h1, h2, h3 {
 
 main {
   flex: 1 0 auto;
+  width: 100%;
 }
 
 main, .container {
@@ -64,6 +66,10 @@ header {
 
 
 /* ===== 메인 페이지 (index.html) ===== */
+main.home-main {
+  max-width: 100%;
+}
+
 .hero {
   text-align: center;
   padding: var(--space-xl) var(--space-md);
@@ -107,9 +113,10 @@ header {
 .portrait-grid {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
   gap: var(--space-md);
-  padding: var(--space-sm) 0;
+  padding: var(--space-sm) 0 var(--space-lg);
   margin: 0;
   list-style: none;
 }
@@ -118,12 +125,34 @@ header {
   flex: 0 0 clamp(140px, 22vw, 220px);
 }
 
+/* 지그재그 배치: 짝수 번째 카드를 아래로 내려서 위아래로 어긋나게 배치 */
+.portrait-grid > li:nth-child(even) {
+  margin-top: clamp(20px, 5vw, 40px);
+}
+
+.portrait-grid > li:nth-child(odd) {
+  margin-top: clamp(0px, 2vw, 8px);
+}
+
 .portrait-card {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--color-accent-blue);
   overflow: hidden;
+  box-shadow: 8px 8px 0 var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.portrait-card:hover,
+.portrait-card:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--color-border);
+}
+
+.portrait-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .portrait-card img {
@@ -186,14 +215,18 @@ header {
 .marquee-track {
   display: inline-flex;
   width: max-content;
-  animation: marquee-scroll 18s linear infinite;
+  animation: marquee-scroll 25s linear infinite;
 }
 
 .marquee-track p {
   margin: 0;
   padding: 0 var(--space-md);
   color: var(--color-text);
-  font-family: var(--font-body);
+  /* 한국어 폰트 명시를 맨 앞으로 올림 - Noto Sans KR은 700 weight를 실제로 지원해 티커에서만 별도 지정 */
+  font-family: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -204,7 +237,7 @@ header {
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-33.3333%); }
 }
 
 .status-bar:hover .marquee-track {

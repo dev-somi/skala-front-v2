@@ -24,10 +24,14 @@ function initStatusBarMarquee(statusBar) {
     statusBar.appendChild(track);
     track.appendChild(originalParagraph);
 
-    // 원본을 복제해 두 번째(시각적 전용) 사본 추가 → 무한 루프용
+    // 원본을 복제해 두 번째, 세 번째(시각적 전용) 사본 추가 → 무한 루프용
     const clone = originalParagraph.cloneNode(true);
     clone.setAttribute('aria-hidden', 'true');
     track.appendChild(clone);
+
+    const clone2 = originalParagraph.cloneNode(true);
+    clone2.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone2);
 }
 
 // 4. 페이지가 로드되면 페이지 내 모든 .status-bar에 대해 마퀴 초기화
@@ -36,8 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // 5. 외부(realtimeInfo.js 등)에서 티커 내용을 갱신할 수 있는 공개 API.
-//    마퀴는 원본 + 클론(aria-hidden) 두 개의 <p>로 이루어져 있어,
-//    한쪽만 바꾸면 두 사본의 내용이 어긋나 보인다. 그래서 트랙 안의 <p> 전체를 갱신한다.
+//    마퀴는 원본 + 클론(aria-hidden) 세 개의 <p>로 이루어져 있어,
+//    한쪽만 바꾸면 사본들의 내용이 어긋나 보인다. 그래서 트랙 안의 <p> 전체를 갱신한다.
 function updateText(html) {
     document.querySelectorAll('.status-bar .marquee-track p').forEach((paragraph) => {
         paragraph.innerHTML = html;
