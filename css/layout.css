@@ -64,8 +64,9 @@ footer {
 /* 저작권 문구 스타일 */
 .copyright {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
+  -webkit-text-stroke: 0.5px var(--color-border);
 }
 
 /* SNS 아이콘 영역 */
