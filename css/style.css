@@ -72,6 +72,7 @@ header {
   font-size: clamp(48px, 8vw, 96px);
   color: var(--color-bg-purple);
   -webkit-text-stroke: 2px var(--color-border);
+  margin-top: 0;
   margin-bottom: var(--space-md);
 }
 
