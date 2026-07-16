@@ -2,7 +2,7 @@
    1. 최상단: 외부 리소스 및 다른 CSS 파일 임포트 (무조건 맨 위에 모아두어야 합니다!)
    ========================================================================== */
 /* 폰트 불러오기 (Baloo 2 - 헤딩용 / Poppins - 본문용) */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* 로컬 CSS 파일 불러오기 */
 @import url('variables.css');
@@ -198,6 +198,49 @@ header {
   .carousel-btn {
     width: 36px;
     height: 36px;
+  }
+}
+
+/* ===== 상태 표시바 마퀴 티커 (index.html) ===== */
+.status-bar {
+  overflow: hidden;
+  background: var(--color-accent-yellow);
+  border-top: var(--border-width) solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: var(--space-sm) 0;
+}
+
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+}
+
+.marquee-track p {
+  margin: 0;
+  padding: 0 var(--space-md);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.marquee-separator {
+  margin: 0 var(--space-md);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.status-bar:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 
