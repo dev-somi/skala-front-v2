@@ -1,0 +1,96 @@
+/* ===== 글로벌 네비게이션 바 (모든 페이지 공유) ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    height: 70px;
+    background-color: var(--color-white);
+    padding: 0 24px;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: 50px;
+    box-shadow: var(--shadow-hard);
+    position: relative;
+}
+
+/* 1. 로고 */
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+/* 2. 네비게이션 링크 */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    height: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover a {
+    color: var(--color-bg-purple);
+}
+
+.nav-item.active a {
+    color: var(--color-bg-purple);
+    font-weight: 700;
+}
+
+/* 아래쪽 반원 모양 인디케이터 */
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 12px;
+    background-color: var(--color-bg-purple);
+    border-radius: 12px 12px 0 0;
+    border: var(--border-width) solid var(--color-border);
+    border-bottom: none;
+    z-index: 10;
+}
+
+/* 3. 오른쪽 액션 영역 */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 가입하기 버튼 */
+.btn-signup {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: var(--border-thick);
+    border-radius: 20px;
+    background-color: var(--color-white);
+    transition: background-color 0.2s;
+}
+
+.btn-signup:hover {
+    background-color: #f0f0f0;
+}
