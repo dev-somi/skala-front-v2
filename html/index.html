@@ -34,92 +34,59 @@
         </a>
       </section>
 
-      <!-- 포트레이트 위젯 섹션: 추후 개인 사진(img)과 링크(a href)를 직접 채워 넣을 자리 -->
+      <!-- 메뉴 바로가기 섹션: 5개 주요 카테고리로 이동하는 아이콘 링크 -->
       <section
         class="portraits"
         id="portraits"
-        aria-label="포트레이트 사진 갤러리 (준비 중)"
+        aria-label="주요 메뉴 바로가기"
       >
-        <div
-          class="portrait-carousel"
-          role="group"
-          aria-roledescription="carousel"
-          aria-label="포트레이트 사진 캐로셀"
-        >
-          <button
-            type="button"
-            class="carousel-btn carousel-btn-prev"
-            id="portrait-prev"
-            aria-label="이전 포트레이트 보기"
-          >
-            <span aria-hidden="true">&larr;</span>
-          </button>
-
-          <ul class="portrait-grid" id="portrait-track">
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 1"
-              >
-                <img
-                  src="../media/main_img/profile.png"
-                  alt="somi의 프로필 보기"
-                />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 자리 2 (준비 중)"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 자리 3 (준비 중)"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 자리 4 (준비 중)"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 자리 5 (준비 중)"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="portrait-card brutal-box"
-                aria-label="포트레이트 사진 자리 6 (준비 중)"
-              ></a>
-            </li>
-          </ul>
-
-          <button
-            type="button"
-            class="carousel-btn carousel-btn-next"
-            id="portrait-next"
-            aria-label="다음 포트레이트 보기"
-          >
-            <span aria-hidden="true">&rarr;</span>
-          </button>
-        </div>
-
-        <div
-          class="carousel-dots"
-          id="portrait-dots"
-          aria-label="포트레이트 위치 표시"
-        ></div>
+        <ul class="portrait-grid">
+          <li>
+            <a
+              href="myProfile.html"
+              class="portrait-card brutal-box"
+              aria-label="프로필 소개 페이지로 이동"
+            >
+              <img src="../media/profile_icon.png" alt="프로필 소개" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="myClass.html"
+              class="portrait-card brutal-box"
+              aria-label="라이프 캘린더 페이지로 이동"
+            >
+              <img src="../media/calendar_icon.png" alt="라이프 캘린더" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="myTrip.html"
+              class="portrait-card brutal-box"
+              aria-label="여행 기록 페이지로 이동"
+            >
+              <img src="../media/trip_icon.png" alt="여행 기록" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="jsPlayground.html"
+              class="portrait-card brutal-box"
+              aria-label="JS 플레이그라운드 페이지로 이동"
+            >
+              <img src="../media/playground_icon.png" alt="JS 플레이그라운드" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="signUp.html"
+              class="portrait-card brutal-box"
+              aria-label="멤버십 가입 페이지로 이동"
+            >
+              <img src="../media/signup_icon.png" alt="멤버십 가입" />
+            </a>
+          </li>
+        </ul>
       </section>
     </main>
 
@@ -136,7 +103,6 @@
 
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>
-    <script src="../script/portraitCarousel.js"></script>
     <script src="../script/statusBarTicker.js"></script>
   </body>
 </html>

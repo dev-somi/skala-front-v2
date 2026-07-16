@@ -103,33 +103,18 @@ header {
   padding: 0 var(--space-md) var(--space-xl);
 }
 
-.portrait-carousel {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
 .portrait-grid {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-md);
   padding: var(--space-sm) 0;
   margin: 0;
   list-style: none;
-
-  position: relative;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-
-.portrait-grid::-webkit-scrollbar {
-  display: none;
 }
 
 .portrait-grid > li {
   flex: 0 0 clamp(140px, 22vw, 220px);
-  scroll-snap-align: start;
 }
 
 .portrait-card {
@@ -137,6 +122,14 @@ header {
   width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--color-accent-blue);
+  overflow: hidden;
+}
+
+.portrait-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .carousel-btn {
@@ -167,27 +160,6 @@ header {
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin-top: var(--space-sm);
-}
-
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  padding: 0;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: 50%;
-  background: var(--color-white);
-  cursor: pointer;
-}
-
-.carousel-dot[aria-current="true"] {
-  background: var(--color-accent-pink);
 }
 
 @media (max-width: 700px) {
