@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>학사일정</title>
+    <link rel="stylesheet" href="./schedule.css">
+    <style>
+        #sched_tbl {
+            width: 100%;
+            /* 원하는 가로 너비 */
+            border-collapse: collapse;
+            /* 이중 선을 합쳐서 하나의 선으로 만듦 (필수!) */
+        }
+
+        /* 헤더(요일)와 본문(날짜) 셀에 테두리 추가 */
+        #sched_tbl th,
+        #sched_tbl td {
+            border: 1px solid #ccc;
+            /* 선 두께, 스타일(실선), 색상(연한 회색) */
+            padding: 15px;
+            /* 셀 내부 여백 (원하는 높이만큼 조절) */
+            text-align: center;
+            /* 글자 가운데 정렬 */
+            vertical-align: top;
+            /* 일정이 적힐 때 글자가 위쪽부터 써지도록 설정 */
+        }
+    </style>
+</head>
+
+<body>
+    <h3>학사일정</h3>
+    <div class="bar-container">
+        <div class="bar-contents"></div>
+    </div>
+
+    <ul id="date">
+        <li>
+            <img src="" alt="이전달">
+        </li>
+        <li id="current-month"></li>
+        <li>
+            <img src="" alt="다음달">
+        </li>
+    </ul>
+
+    <table id="sched_tbl">
+        <thead>
+            <tr id="day">
+                <th class="red">일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th class="blue">토</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
