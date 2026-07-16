@@ -139,23 +139,101 @@ footer {
   padding: 0 var(--space-md) var(--space-xl);
 }
 
+.portrait-carousel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 .portrait-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: flex;
   gap: var(--space-md);
-  padding: 0;
+  padding: var(--space-sm) 0;
+  margin: 0;
   list-style: none;
+
+  position: relative;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.portrait-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.portrait-grid > li {
+  flex: 0 0 clamp(140px, 22vw, 220px);
+  scroll-snap-align: start;
 }
 
 .portrait-card {
   display: block;
+  width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--color-accent-blue);
 }
 
+.carousel-btn {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-yellow);
+  box-shadow: var(--shadow-hard);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+/* .btn-pill:active 의 눌림 인터랙션 패턴 재사용 */
+.carousel-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-border);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.carousel-dot[aria-current="true"] {
+  background: var(--color-accent-pink);
+}
+
 @media (max-width: 700px) {
-  .portrait-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .portrait-grid > li {
+    flex-basis: clamp(120px, 42vw, 180px);
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
   }
 }
 

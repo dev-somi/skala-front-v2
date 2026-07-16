@@ -31,14 +31,26 @@
 
         <!-- 포트레이트 위젯 섹션: 추후 개인 사진(img)과 링크(a href)를 직접 채워 넣을 자리 -->
         <section class="portraits" id="portraits" aria-label="포트레이트 사진 갤러리 (준비 중)">
-            <ul class="portrait-grid">
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 1 (준비 중)"></a></li>
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 2 (준비 중)"></a></li>
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 3 (준비 중)"></a></li>
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 4 (준비 중)"></a></li>
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 5 (준비 중)"></a></li>
-                <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 6 (준비 중)"></a></li>
-            </ul>
+            <div class="portrait-carousel" role="group" aria-roledescription="carousel" aria-label="포트레이트 사진 캐로셀">
+                <button type="button" class="carousel-btn carousel-btn-prev" id="portrait-prev" aria-label="이전 포트레이트 보기">
+                    <span aria-hidden="true">&larr;</span>
+                </button>
+
+                <ul class="portrait-grid" id="portrait-track">
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 1 (준비 중)"></a></li>
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 2 (준비 중)"></a></li>
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 3 (준비 중)"></a></li>
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 4 (준비 중)"></a></li>
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 5 (준비 중)"></a></li>
+                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 6 (준비 중)"></a></li>
+                </ul>
+
+                <button type="button" class="carousel-btn carousel-btn-next" id="portrait-next" aria-label="다음 포트레이트 보기">
+                    <span aria-hidden="true">&rarr;</span>
+                </button>
+            </div>
+
+            <div class="carousel-dots" id="portrait-dots" aria-label="포트레이트 위치 표시"></div>
         </section>
 
     </main>
@@ -63,6 +75,7 @@
     </footer>
 
     <script src="../script/nav.js"></script>
+    <script src="../script/portraitCarousel.js"></script>
 </body>
 
 </html>
