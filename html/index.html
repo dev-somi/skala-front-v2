@@ -1,68 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Som's Universe - 소미의 디지털 홈</title>
-    <meta name="description" content="소미의 일상, 여행, 프로젝트가 생동감 있게 펼쳐지는 기발한 세계, Som's Universe에 오신 것을 환영합니다.">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <meta
+      name="description"
+      content="소미의 일상, 여행, 프로젝트가 생동감 있게 펼쳐지는 기발한 세계, Som's Universe에 오신 것을 환영합니다."
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
 
-<body>
-    <div>
-
-        
-    </div>
+  <body>
+    <div></div>
 
     <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
     <header>
-        <div id="nav-placeholder"></div>
+      <div id="nav-placeholder"></div>
     </header>
 
     <!-- 2. 메인 콘텐츠 영역 -->
     <main>
+      <!-- 히어로 섹션 -->
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Som's Universe</h1>
+        <p>
+          The whimsical world where Som's life, travels, and projects come
+          alive.
+        </p>
+        <a href="#portraits" class="btn-pill hero-cta">
+          <span>Let's Explore!</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
 
-        <!-- 히어로 섹션 -->
-        <section class="hero" aria-labelledby="hero-title">
-            <h1 id="hero-title">Som's Universe</h1>
-            <p>The whimsical world where Som's life, travels, and projects come alive.</p>
-            <a href="#portraits" class="btn-pill hero-cta">
-                <span>Let's Explore!</span>
-                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-        </section>
+      <!-- 포트레이트 위젯 섹션: 추후 개인 사진(img)과 링크(a href)를 직접 채워 넣을 자리 -->
+      <section
+        class="portraits"
+        id="portraits"
+        aria-label="포트레이트 사진 갤러리 (준비 중)"
+      >
+        <div
+          class="portrait-carousel"
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="포트레이트 사진 캐로셀"
+        >
+          <button
+            type="button"
+            class="carousel-btn carousel-btn-prev"
+            id="portrait-prev"
+            aria-label="이전 포트레이트 보기"
+          >
+            <span aria-hidden="true">&larr;</span>
+          </button>
 
-        <!-- 포트레이트 위젯 섹션: 추후 개인 사진(img)과 링크(a href)를 직접 채워 넣을 자리 -->
-        <section class="portraits" id="portraits" aria-label="포트레이트 사진 갤러리 (준비 중)">
-            <div class="portrait-carousel" role="group" aria-roledescription="carousel" aria-label="포트레이트 사진 캐로셀">
-                <button type="button" class="carousel-btn carousel-btn-prev" id="portrait-prev" aria-label="이전 포트레이트 보기">
-                    <span aria-hidden="true">&larr;</span>
-                </button>
+          <ul class="portrait-grid" id="portrait-track">
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 1"
+              >
+                <img
+                  src="media/main_img/profile.png"
+                  alt="somi의 프로필 보기"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 자리 2 (준비 중)"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 자리 3 (준비 중)"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 자리 4 (준비 중)"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 자리 5 (준비 중)"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="portrait-card brutal-box"
+                aria-label="포트레이트 사진 자리 6 (준비 중)"
+              ></a>
+            </li>
+          </ul>
 
-                <ul class="portrait-grid" id="portrait-track">
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 1 (준비 중)"></a></li>
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 2 (준비 중)"></a></li>
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 3 (준비 중)"></a></li>
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 4 (준비 중)"></a></li>
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 5 (준비 중)"></a></li>
-                    <li><a href="#" class="portrait-card brutal-box" aria-label="포트레이트 사진 자리 6 (준비 중)"></a></li>
-                </ul>
+          <button
+            type="button"
+            class="carousel-btn carousel-btn-next"
+            id="portrait-next"
+            aria-label="다음 포트레이트 보기"
+          >
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
 
-                <button type="button" class="carousel-btn carousel-btn-next" id="portrait-next" aria-label="다음 포트레이트 보기">
-                    <span aria-hidden="true">&rarr;</span>
-                </button>
-            </div>
-
-            <div class="carousel-dots" id="portrait-dots" aria-label="포트레이트 위치 표시"></div>
-        </section>
-
+        <div
+          class="carousel-dots"
+          id="portrait-dots"
+          aria-label="포트레이트 위치 표시"
+        ></div>
+      </section>
     </main>
-
 
     <!-- 상태 표시바: 사이드바 성격의 부가 정보 제공 -->
     <aside class="status-bar" aria-label="현재 접속 정보">
-        <p>오늘 날짜: 2026년 7월 15일 | 현재 위치: 광주광역시 광산구 | 시간: 오후 8:30</p>
+      <p>
+        오늘 날짜: 2026년 7월 15일 | 현재 위치: 광주광역시 광산구 | 시간: 오후
+        8:30
+      </p>
     </aside>
 
     <!-- 3. 푸터 영역 -->
@@ -72,6 +138,5 @@
     <script src="../script/footer.js"></script>
     <script src="../script/portraitCarousel.js"></script>
     <script src="../script/statusBarTicker.js"></script>
-</body>
-
+  </body>
 </html>

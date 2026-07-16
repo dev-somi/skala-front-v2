@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Playground - Som's Universe</title>
+    <meta name="description" content="업다운 숫자 맞추기, 성적 계산기, 내 가방 보기 등 소미가 만든 미니 자바스크립트 게임을 직접 즐겨보세요.">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -13,13 +14,100 @@
     </header>
 
     <main>
-        <h1>🎮 JS Playground</h1>
-        <p>준비 중입니다 — 곧 만나요!</p>
+
+        <section id="playground-intro" aria-labelledby="playground-title">
+            <h1 id="playground-title">🎮 JS Playground</h1>
+            <p>아이콘을 눌러 미니 게임을 실행해보세요. 각 게임은 별도의 창(다이얼로그)에서 진행됩니다.</p>
+        </section>
+
+        <section id="playground-grid-section" aria-label="미니 게임 목록">
+            <div class="playground-grid">
+
+                <button type="button" class="playground-card brutal-box" id="updown-trigger" aria-haspopup="dialog" aria-controls="updown-dialog">
+                    <img src="../media/numberGame_icon.png" alt="업다운 숫자 맞추기 게임 아이콘">
+                    <h3>🔢 Up-Down 숫자 맞추기</h3>
+                    <p>컴퓨터가 생각한 1~50 사이의 숫자를 맞혀보세요!</p>
+                </button>
+
+                <button type="button" class="playground-card brutal-box" id="grade-trigger" aria-haspopup="dialog" aria-controls="grade-dialog">
+                    <img src="../media/grade_icon.png" alt="성적 계산기 아이콘">
+                    <h3>📊 성적 계산기</h3>
+                    <p>HTML, CSS, JavaScript 점수를 입력하고 평균과 등급을 확인해보세요.</p>
+                </button>
+
+                <button type="button" class="playground-card brutal-box" id="bag-trigger" aria-haspopup="dialog" aria-controls="bag-dialog">
+                    <img src="../media/bag_icon.png" alt="내 가방 보기 아이콘">
+                    <h3>🎒 내 가방 보기</h3>
+                    <p>가방 속에 어떤 물건들이 들어있는지 확인해보세요.</p>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- 업다운 숫자 맞추기 다이얼로그 -->
+        <dialog id="updown-dialog" aria-labelledby="updown-dialog-title">
+            <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
+            <h2 id="updown-dialog-title">🔢 Up-Down 숫자 맞추기</h2>
+            <p>컴퓨터가 1~50 사이의 숫자 하나를 생각했습니다. 몇 번 만에 맞히는지 볼까요?</p>
+
+            <div class="playground-form-row">
+                <label for="updown-input">내 추측 (1~50)</label>
+                <input type="number" id="updown-input" min="1" max="50" inputmode="numeric">
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn-pill" id="updown-guess-btn">추측하기</button>
+                <button type="button" class="btn-pill playground-btn-secondary" id="updown-reset-btn">다시 시작</button>
+            </div>
+
+            <p id="updown-feedback" role="status" aria-live="polite"></p>
+        </dialog>
+
+        <!-- 성적 계산기 다이얼로그 -->
+        <dialog id="grade-dialog" aria-labelledby="grade-dialog-title">
+            <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
+            <h2 id="grade-dialog-title">📊 성적 계산기</h2>
+            <p>3과목 점수를 입력하면 총점, 평균, 합격 여부, 등급을 알려드려요.</p>
+
+            <div class="playground-form-row">
+                <label for="grade-input-html">HTML 점수</label>
+                <input type="number" id="grade-input-html" min="0" max="100" inputmode="numeric">
+            </div>
+
+            <div class="playground-form-row">
+                <label for="grade-input-css">CSS 점수</label>
+                <input type="number" id="grade-input-css" min="0" max="100" inputmode="numeric">
+            </div>
+
+            <div class="playground-form-row">
+                <label for="grade-input-js">JavaScript 점수</label>
+                <input type="number" id="grade-input-js" min="0" max="100" inputmode="numeric">
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="btn-pill" id="grade-calc-btn">계산하기</button>
+            </div>
+
+            <p id="grade-result" role="status" aria-live="polite"></p>
+        </dialog>
+
+        <!-- 내 가방 보기 다이얼로그 -->
+        <dialog id="bag-dialog" aria-labelledby="bag-dialog-title">
+            <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
+            <h2 id="bag-dialog-title">🎒 내 가방 보기</h2>
+            <p>지금 가방 속에 들어있는 물건들이에요.</p>
+
+            <dl id="bag-list"></dl>
+        </dialog>
+
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>
+    <script src="../script/upDown.js"></script>
+    <script src="../script/grade.js"></script>
+    <script src="../script/bag.js"></script>
 </body>
 </html>

@@ -583,3 +583,166 @@ mark {
   padding: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-md);
 }
+
+/* ===== JS 플레이그라운드 (jsPlayground.html) ===== */
+.playground-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.playground-card {
+  cursor: pointer;
+  text-align: center;
+  font-family: var(--font-body);
+  padding: var(--space-md);
+  transition: transform 0.1s;
+}
+
+/* .btn-pill:active 의 눌림 인터랙션 패턴 재사용 */
+.playground-card:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-border);
+}
+
+.playground-card img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin: 0 auto var(--space-sm);
+}
+
+.playground-card h3 {
+  margin: 0 0 4px;
+}
+
+.playground-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .playground-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 게임/계산기용 다이얼로그 공통 스타일 */
+dialog {
+  position: relative;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard-lg);
+  padding: var(--space-lg);
+  width: min(90vw, 420px);
+  font-family: var(--font-body);
+  background: white;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+dialog h2 {
+  margin-top: 0;
+  padding-right: var(--space-lg);
+}
+
+.dialog-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: white;
+  box-shadow: var(--shadow-hard);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.dialog-close:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--color-border);
+}
+
+.playground-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.playground-form-row label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+
+dialog input[type="number"] {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  font-family: var(--font-body);
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.playground-btn-secondary {
+  background: white;
+}
+
+#updown-feedback,
+#grade-result {
+  min-height: 1.4em;
+  font-weight: 700;
+}
+
+#updown-feedback.is-hint {
+  color: #a33;
+}
+
+#updown-feedback.is-success,
+#grade-result.is-pass {
+  background: var(--color-accent-mint);
+  color: var(--color-text);
+  padding: var(--space-sm);
+  border-radius: 8px;
+}
+
+#grade-result.is-fail {
+  background: var(--color-accent-pink);
+  color: var(--color-text);
+  padding: var(--space-sm);
+  border-radius: 8px;
+}
+
+#bag-list {
+  margin: 0;
+}
+
+#bag-list dt {
+  display: inline-block;
+  font-family: var(--font-heading);
+  background: var(--color-accent-yellow);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px var(--space-md);
+  margin-bottom: 4px;
+}
+
+#bag-list dd {
+  margin: 0 0 var(--space-sm) var(--space-md);
+}
