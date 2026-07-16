@@ -1,45 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>휴일 일과 - Som's Universe</title>
+    <meta name="description" content="바쁜 평일을 보낸 후 소미가 온전히 나를 채우며 보내는 휴일 하루 일과입니다.">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <!-- 휴일 일과 (구 myHoliday.html) -->
-    <section id="holiday-section" aria-labelledby="holiday-title">
-        <h2 id="holiday-title">🎉 나의 휴일 일과</h2>
-        <p>바쁜 평일을 보낸 후, 온전히 나만의 행복과 충전을 위해 보내는 여유로운 하루입니다.</p>
+    <header>
+        <div id="nav-placeholder"></div>
+        <nav aria-label="캘린더 보기 전환" class="calendar-subnav">
+            <a href="myClass.html" class="btn-pill">📖 주별</a>
+            <a href="myMonthlyClass.html" class="btn-pill">🗓️ 월별</a>
+            <a href="myHoliday.html" class="btn-pill" aria-current="page">🎉 휴일</a>
+        </nav>
+        <hr>
+    </header>
 
-        <section id="morning">
-            <h3>🛋️ 여유로운 아침</h3>
-            <p>
-                09:00 - 💤 늦잠 자고 일어나서 기지개 켜기<br>
-                10:00 - 🐶 사랑스러운 코코랑 인사하고 아침 챙겨주기<br>
-                11:00 - ☕ 달콤한 <mark>초코칩 머핀</mark> 구우며 커피 한 잔 즐기기
-            </p>
-        </section>
+    <main>
+        <!-- 휴일 일과 (구 myHoliday.html) -->
+        <section id="holiday-section" aria-labelledby="holiday-title">
+            <h1 id="holiday-title">🎉 나의 휴일 일과</h1>
+            <p>바쁜 평일을 보낸 후, 온전히 나만의 행복과 충전을 위해 보내는 여유로운 하루입니다.</p>
 
-        <section id="afternoon">
-            <h3>🌳 활기찬 오후 활동</h3>
-            <p>
-                13:00 - 👟 코코와 함께 바람 쐬며 <mark>동네 공원 산책하기</mark><br>
-                15:30 - 🎮 시원한 방에서 달콤한 간식 먹으며 폴가이즈 한 판!<br>
-                17:00 - 📊 차분하게 남은 ADsP 자격증 공부 조금 끄적이기
-            </p>
-        </section>
+            <section id="morning" class="brutal-box">
+                <h2>🛋️ 여유로운 아침</h2>
+                <p>
+                    09:00 - 💤 늦잠 자고 일어나서 기지개 켜기<br>
+                    10:00 - 🐶 사랑스러운 코코랑 인사하고 아침 챙겨주기<br>
+                    11:00 - ☕ 달콤한 <mark>초코칩 머핀</mark> 구우며 커피 한 잔 즐기기
+                </p>
+            </section>
 
-        <section id="evening">
-            <h3>🎬 포근한 저녁과 밤</h3>
-            <p>
-                19:00 - 🍳 가족과 함께 나누는 맛있는 저녁 식사<br>
-                21:00 - 🍿 재미있는 애니메이션이나 영화 정주행하기<br>
-                23:00 - 🛁 하루를 마무리하며 <mark>따뜻한 물로 반신욕</mark>하고 꿀잠 자기
-            </p>
+            <section id="afternoon" class="brutal-box">
+                <h2>🌳 활기찬 오후 활동</h2>
+                <p>
+                    13:00 - 👟 코코와 함께 바람 쐬며 <mark>동네 공원 산책하기</mark><br>
+                    15:30 - 🎮 시원한 방에서 달콤한 간식 먹으며 폴가이즈 한 판!<br>
+                    17:00 - 📊 차분하게 남은 ADsP 자격증 공부 조금 끄적이기
+                </p>
+            </section>
+
+            <section id="evening" class="brutal-box">
+                <h2>🎬 포근한 저녁과 밤</h2>
+                <p>
+                    19:00 - 🍳 가족과 함께 나누는 맛있는 저녁 식사<br>
+                    21:00 - 🍿 재미있는 애니메이션이나 영화 정주행하기<br>
+                    23:00 - 🛁 하루를 마무리하며 <mark>따뜻한 물로 반신욕</mark>하고 꿀잠 자기
+                </p>
+            </section>
         </section>
-    </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p><small>&copy; 2026 Som. All rights reserved.</small></p>
+    </footer>
+
+    <script src="../script/nav.js"></script>
 </body>
 
 </html>

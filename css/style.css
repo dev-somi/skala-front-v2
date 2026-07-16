@@ -366,7 +366,7 @@ input[type="text"], input[type="password"], input[type="date"], select, textarea
   box-shadow: 0 0 0 var(--color-border);
 }
 
-/* ===== 라이프 캘린더 페이지 (myCalendar.html) ===== */
+/* ===== 캘린더 공통 (myClass.html / myMonthlyClass.html / myHoliday.html) ===== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -385,45 +385,194 @@ mark {
   border-radius: 4px;
 }
 
-#calendar-controller {
+/* ===== 주별 시간표 (myClass.html) ===== */
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
   margin: var(--space-md) 0;
+  font-family: var(--font-heading);
 }
 
-#calendar-controller .month-btn {
+.week-grid {
+  display: grid;
+  grid-template-columns: 56px repeat(6, 1fr);
+  grid-template-rows: auto repeat(20, 24px);
   background: white;
-  margin: 0 4px 8px 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  gap: 1px;
+  padding: 1px;
 }
 
-#schedule-table {
+.week-grid__corner,
+.week-grid__day-header,
+.week-grid__hour {
+  background: var(--color-accent-blue);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-sm) 4px;
+}
+
+.week-grid__hour {
+  background: var(--color-bg-cream);
+  font-size: 0.75rem;
+}
+
+.week-grid__date {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.time-block {
+  margin: 1px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-accent-mint);
+  padding: 4px 6px;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.time-block--holiday {
+  background: var(--color-accent-yellow);
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.time-block--unspecified {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-accent-mint),
+    var(--color-accent-mint) 8px,
+    #fff 8px,
+    #fff 16px
+  );
+}
+
+.time-block__time {
+  font-weight: 700;
+}
+
+.time-block__teacher {
+  opacity: 0.75;
+}
+
+.time-block__hint {
+  font-size: 0.65rem;
+  color: #a33;
+}
+
+.week-grid__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  color: #a33;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ===== 월별 달력 (myMonthlyClass.html) ===== */
+.month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-heading);
+}
+
+#sched_tbl {
   width: 100%;
   border-collapse: collapse;
   background: white;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
-  overflow: hidden;
   box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  table-layout: fixed;
 }
 
-#schedule-table th, #schedule-table td {
-  padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+#sched_tbl th, #sched_tbl td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
+  vertical-align: top;
+  height: 72px;
 }
 
-#schedule-table thead {
+#sched_tbl thead {
   background: var(--color-accent-blue);
   font-family: var(--font-heading);
 }
 
-#schedule-table tbody tr:last-child td {
-  border-bottom: none;
+#sched_tbl th.red, #sched_tbl td.cal-cell--sun {
+  color: #c0392b;
 }
 
+#sched_tbl th.blue, #sched_tbl td.cal-cell--sat {
+  color: #2b6cc4;
+}
+
+#sched_tbl td.pad {
+  background: var(--color-bg-cream);
+}
+
+.cal-day-cell {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-body);
+  padding: 4px 2px;
+}
+
+.cal-day-cell:hover {
+  background: var(--color-accent-pink);
+  border-radius: 8px;
+}
+
+.cal-day-num {
+  font-weight: 700;
+}
+
+.cal-day-chip {
+  font-size: 0.65rem;
+  line-height: 1.2;
+  background: var(--color-accent-mint);
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+.cal-day-chip--holiday {
+  background: var(--color-accent-yellow);
+  font-weight: 700;
+}
+
+/* ===== 휴일 일과 (myHoliday.html) ===== */
 #holiday-section section {
-  background: white;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-hard);
   padding: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-md);
 }

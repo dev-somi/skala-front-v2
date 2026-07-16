@@ -1,123 +1,995 @@
 {
   "7": [
-    { "date": "2026-07-14", "day": "화", "week": "1주차", "content": "팀빌딩(심요한), Git 이해/활용 (5h)", "teacher": "엄진영" },
-    { "date": "2026-07-15", "day": "수", "week": "1주차", "content": "HTML, CSS, JavaScript", "teacher": "엄진영" },
-    { "date": "2026-07-16", "day": "목", "week": "1주차", "content": "HTML, CSS, JavaScript", "teacher": "엄진영" },
-    { "date": "2026-07-20", "day": "월", "week": "2주차", "content": "데이터 분석을 위한 Python 이해", "teacher": "류홍걸" },
-    { "date": "2026-07-21", "day": "화", "week": "2주차", "content": "데이터 분석을 위한 Python 이해", "teacher": "류홍길" },
-    { "date": "2026-07-22", "day": "수", "week": "2주차", "content": "스마트 데이터 이해 및 활용", "teacher": "류홍길" },
-    { "date": "2026-07-23", "day": "목", "week": "2주차", "content": "스마트 데이터 이해 및 활용", "teacher": "류홍걸" },
-    { "date": "2026-07-24", "day": "금", "week": "2주차", "content": "스마트 데이터 이해 및 활용", "teacher": "류홍걸" },
-    { "date": "2026-07-27", "day": "월", "week": "3주차", "content": "데이터 분석 개요 및 기초통계", "teacher": "박병선" },
-    { "date": "2026-07-28", "day": "화", "week": "3주차", "content": "데이터 분석 개요 및 기초통계", "teacher": "박병선" },
-    { "date": "2026-07-29", "day": "수", "week": "3주차", "content": "Prompt 설계 Context", "teacher": "한성훈" },
-    { "date": "2026-07-30", "day": "목", "week": "3주차", "content": "LLM과 Transformer 아키텍처", "teacher": "한성훈" },
-    { "date": "2026-07-31", "day": "금", "week": "3주차", "content": "LLM과 Transformer 아키텍처", "teacher": "한성훈" }
+    {
+      "date": "2026-07-14",
+      "day": "화",
+      "week": "1주차",
+      "content": "팀빌딩(심요한), Git 이해/활용 (5h)",
+      "teacher": "엄진영",
+      "startTime": "09:00",
+      "endTime": "14:00"
+    },
+    {
+      "date": "2026-07-15",
+      "day": "수",
+      "week": "1주차",
+      "content": "HTML, CSS, JavaScript",
+      "teacher": "엄진영",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-16",
+      "day": "목",
+      "week": "1주차",
+      "content": "HTML, CSS, JavaScript",
+      "teacher": "엄진영",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-20",
+      "day": "월",
+      "week": "2주차",
+      "content": "데이터 분석을 위한 Python 이해",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-21",
+      "day": "화",
+      "week": "2주차",
+      "content": "데이터 분석을 위한 Python 이해",
+      "teacher": "류홍길",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-22",
+      "day": "수",
+      "week": "2주차",
+      "content": "스마트 데이터 이해 및 활용",
+      "teacher": "류홍길",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-23",
+      "day": "목",
+      "week": "2주차",
+      "content": "스마트 데이터 이해 및 활용",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-24",
+      "day": "금",
+      "week": "2주차",
+      "content": "스마트 데이터 이해 및 활용",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-27",
+      "day": "월",
+      "week": "3주차",
+      "content": "데이터 분석 개요 및 기초통계",
+      "teacher": "박병선",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-28",
+      "day": "화",
+      "week": "3주차",
+      "content": "데이터 분석 개요 및 기초통계",
+      "teacher": "박병선",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-29",
+      "day": "수",
+      "week": "3주차",
+      "content": "Prompt 설계 Context",
+      "teacher": "한성훈",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-30",
+      "day": "목",
+      "week": "3주차",
+      "content": "LLM과 Transformer 아키텍처",
+      "teacher": "한성훈",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-07-31",
+      "day": "금",
+      "week": "3주차",
+      "content": "LLM과 Transformer 아키텍처",
+      "teacher": "한성훈",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    }
   ],
   "8": [
-    { "date": "2026-08-03", "day": "월", "week": "4주차", "content": "Java, SpringBoot, Rest API 구현", "teacher": "류홍걸" },
-    { "date": "2026-08-04", "day": "화", "week": "4주차", "content": "Java, SpringBoot, Rest API 구현", "teacher": "류홍길" },
-    { "date": "2026-08-05", "day": "수", "week": "4주차", "content": "Java, SpringBoot, Rest API 구현", "teacher": "류홍걸" },
-    { "date": "2026-08-06", "day": "목", "week": "4주차", "content": "Java, SpringBoot, Rest API 구현", "teacher": "류홍걸" },
-    { "date": "2026-08-07", "day": "금", "week": "4주차", "content": "Java, SpringBoot, Rest API 구현", "teacher": "류홍길" },
-    { "date": "2026-08-10", "day": "월", "week": "5주차", "content": "Agile 방법론 및 MSA 개발", "teacher": "류홍걸" },
-    { "date": "2026-08-11", "day": "화", "week": "5주차", "content": "Agile 방법론 및 MSA 개발", "teacher": "류홍걸" },
-    { "date": "2026-08-12", "day": "수", "week": "5주차", "content": "SLLM 구현 및 Fine Tunning", "teacher": "임성열" },
-    { "date": "2026-08-13", "day": "목", "week": "5주차", "content": "SLLM 구현 및 Fine Tunning", "teacher": "임성열" },
-    { "date": "2026-08-14", "day": "금", "week": "5주차", "content": "실전 Feature Engineering", "teacher": "이은호" },
-    { "date": "2026-08-17", "day": "월", "week": "5주차", "content": "대체휴일 (광복절)", "teacher": "-" },
-    { "date": "2026-08-18", "day": "화", "week": "6주차", "content": "Front-framework: Vue.js", "teacher": "김원한" },
-    { "date": "2026-08-19", "day": "수", "week": "6주차", "content": "Frontframework-: Vue.js", "teacher": "한" },
-    { "date": "2026-08-20", "day": "목", "week": "6주차", "content": "Front-framework: Vue.js", "teacher": "김일한" },
-    { "date": "2026-08-21", "day": "금", "week": "6주차", "content": "Front-framework: Vue.js", "teacher": "김일한" },
-    { "date": "2026-08-24", "day": "월", "week": "7주차", "content": "컨테이너 이해 및 애플리케이션 컨테이너화", "teacher": "신인철" },
-    { "date": "2026-08-25", "day": "화", "week": "7주차", "content": "컨테이너 이해 및 애플리케이션 컨테이너화", "teacher": "신인철" },
-    { "date": "2026-08-26", "day": "수", "week": "7주차", "content": "쿠버네티스 이해 및 애플리케이션 배포", "teacher": "신인철" },
-    { "date": "2026-08-27", "day": "목", "week": "7주차", "content": "쿠버네티스 이해 및 애플리케이션 배포", "teacher": "신인철" },
-    { "date": "2026-08-28", "day": "금", "week": "7주차", "content": "특강(취업특강)", "teacher": "-" },
-    { "date": "2026-08-29", "day": "토", "week": "7주차", "content": "특강(취업특강), 12시 종료(8시~12시, 식당)", "teacher": "-" },
-    { "date": "2026-08-31", "day": "월", "week": "8주차", "content": "Spring AI", "teacher": "정윤석" }
+    {
+      "date": "2026-08-03",
+      "day": "월",
+      "week": "4주차",
+      "content": "Java, SpringBoot, Rest API 구현",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-04",
+      "day": "화",
+      "week": "4주차",
+      "content": "Java, SpringBoot, Rest API 구현",
+      "teacher": "류홍길",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-05",
+      "day": "수",
+      "week": "4주차",
+      "content": "Java, SpringBoot, Rest API 구현",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-06",
+      "day": "목",
+      "week": "4주차",
+      "content": "Java, SpringBoot, Rest API 구현",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-07",
+      "day": "금",
+      "week": "4주차",
+      "content": "Java, SpringBoot, Rest API 구현",
+      "teacher": "류홍길",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-10",
+      "day": "월",
+      "week": "5주차",
+      "content": "Agile 방법론 및 MSA 개발",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-11",
+      "day": "화",
+      "week": "5주차",
+      "content": "Agile 방법론 및 MSA 개발",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-12",
+      "day": "수",
+      "week": "5주차",
+      "content": "SLLM 구현 및 Fine Tunning",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-13",
+      "day": "목",
+      "week": "5주차",
+      "content": "SLLM 구현 및 Fine Tunning",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-14",
+      "day": "금",
+      "week": "5주차",
+      "content": "실전 Feature Engineering",
+      "teacher": "이은호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-17",
+      "day": "월",
+      "week": "5주차",
+      "content": "대체휴일 (광복절)",
+      "teacher": "-",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "date": "2026-08-18",
+      "day": "화",
+      "week": "6주차",
+      "content": "Front-framework: Vue.js",
+      "teacher": "김원한",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-19",
+      "day": "수",
+      "week": "6주차",
+      "content": "Frontframework-: Vue.js",
+      "teacher": "한",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-20",
+      "day": "목",
+      "week": "6주차",
+      "content": "Front-framework: Vue.js",
+      "teacher": "김일한",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-21",
+      "day": "금",
+      "week": "6주차",
+      "content": "Front-framework: Vue.js",
+      "teacher": "김일한",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-24",
+      "day": "월",
+      "week": "7주차",
+      "content": "컨테이너 이해 및 애플리케이션 컨테이너화",
+      "teacher": "신인철",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-25",
+      "day": "화",
+      "week": "7주차",
+      "content": "컨테이너 이해 및 애플리케이션 컨테이너화",
+      "teacher": "신인철",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-26",
+      "day": "수",
+      "week": "7주차",
+      "content": "쿠버네티스 이해 및 애플리케이션 배포",
+      "teacher": "신인철",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-27",
+      "day": "목",
+      "week": "7주차",
+      "content": "쿠버네티스 이해 및 애플리케이션 배포",
+      "teacher": "신인철",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-28",
+      "day": "금",
+      "week": "7주차",
+      "content": "특강(취업특강)",
+      "teacher": "-",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-08-29",
+      "day": "토",
+      "week": "7주차",
+      "content": "특강(취업특강), 12시 종료(8시~12시, 식당)",
+      "teacher": "-",
+      "startTime": "08:00",
+      "endTime": "12:00"
+    },
+    {
+      "date": "2026-08-31",
+      "day": "월",
+      "week": "8주차",
+      "content": "Spring AI",
+      "teacher": "정윤석",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    }
   ],
   "9": [
-    { "date": "2026-09-01", "day": "화", "week": "8주차", "content": "Spring AI", "teacher": "정윤석" },
-    { "date": "2026-09-02", "day": "수", "week": "8주차", "content": "웹 서비스 개발 mini-Project", "teacher": "윤재성" },
-    { "date": "2026-09-03", "day": "목", "week": "8주차", "content": "웹 서비스 개발 mini-Project", "teacher": "윤재성" },
-    { "date": "2026-09-04", "day": "금", "week": "8주차", "content": "웹 서비스 개발 mini-Project", "teacher": "윤재성" },
-    { "date": "2026-09-07", "day": "월", "week": "9주차", "content": "머신러닝 및 딥러닝 이해", "teacher": "김준범" },
-    { "date": "2026-09-08", "day": "화", "week": "9주차", "content": "머신러닝 및 딥러닝 이해", "teacher": "김준범" },
-    { "date": "2026-09-09", "day": "수", "week": "9주차", "content": "머신러닝 및 딥러닝 이해", "teacher": "김준범" },
-    { "date": "2026-09-10", "day": "목", "week": "9주차", "content": "모델 개발 및 최적화", "teacher": "김준범" },
-    { "date": "2026-09-11", "day": "금", "week": "9주차", "content": "모델 개발 및 최적화", "teacher": "김준범" },
-    { "date": "2026-09-14", "day": "월", "week": "10주차", "content": "쿠버네티스 실무 심화", "teacher": "박보경" },
-    { "date": "2026-09-15", "day": "화", "week": "10주차", "content": "쿠버네티스 실무 심화", "teacher": "박보경" },
-    { "date": "2026-09-16", "day": "수", "week": "10주차", "content": "쿠버네티스 실무 심화", "teacher": "박보경" },
-    { "date": "2026-09-17", "day": "목", "week": "10주차", "content": "특강(도메인특강, 프로젝트 현장 사례)", "teacher": "-" },
-    { "date": "2026-09-18", "day": "금", "week": "10주차", "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)", "teacher": "김경난" },
-    { "date": "2026-09-21", "day": "월", "week": "11주차", "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)", "teacher": "김영희" },
-    { "date": "2026-09-22", "day": "화", "week": "11주차", "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)", "teacher": "김경난" },
-    { "date": "2026-09-23", "day": "수", "week": "11주차", "content": "자체휴강", "teacher": "-" },
-    { "date": "2026-09-24", "day": "목", "week": "11주차", "content": "추석연휴", "teacher": "-" },
-    { "date": "2026-09-25", "day": "금", "week": "11주차", "content": "추석연휴", "teacher": "-" },
-    { "date": "2026-09-28", "day": "월", "week": "12주차", "content": "RAG Pipeline 설계 및 구축", "teacher": "김경난" },
-    { "date": "2026-09-29", "day": "화", "week": "12주차", "content": "RAG Pipeline 설계 및 구축", "teacher": "김경난" },
-    { "date": "2026-09-30", "day": "수", "week": "12주차", "content": "RAG Pipeline 설계 및 구축", "teacher": "김경난" }
+    {
+      "date": "2026-09-01",
+      "day": "화",
+      "week": "8주차",
+      "content": "Spring AI",
+      "teacher": "정윤석",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-02",
+      "day": "수",
+      "week": "8주차",
+      "content": "웹 서비스 개발 mini-Project",
+      "teacher": "윤재성",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-03",
+      "day": "목",
+      "week": "8주차",
+      "content": "웹 서비스 개발 mini-Project",
+      "teacher": "윤재성",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-04",
+      "day": "금",
+      "week": "8주차",
+      "content": "웹 서비스 개발 mini-Project",
+      "teacher": "윤재성",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-07",
+      "day": "월",
+      "week": "9주차",
+      "content": "머신러닝 및 딥러닝 이해",
+      "teacher": "김준범",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-08",
+      "day": "화",
+      "week": "9주차",
+      "content": "머신러닝 및 딥러닝 이해",
+      "teacher": "김준범",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-09",
+      "day": "수",
+      "week": "9주차",
+      "content": "머신러닝 및 딥러닝 이해",
+      "teacher": "김준범",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-10",
+      "day": "목",
+      "week": "9주차",
+      "content": "모델 개발 및 최적화",
+      "teacher": "김준범",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-11",
+      "day": "금",
+      "week": "9주차",
+      "content": "모델 개발 및 최적화",
+      "teacher": "김준범",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-14",
+      "day": "월",
+      "week": "10주차",
+      "content": "쿠버네티스 실무 심화",
+      "teacher": "박보경",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-15",
+      "day": "화",
+      "week": "10주차",
+      "content": "쿠버네티스 실무 심화",
+      "teacher": "박보경",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-16",
+      "day": "수",
+      "week": "10주차",
+      "content": "쿠버네티스 실무 심화",
+      "teacher": "박보경",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-17",
+      "day": "목",
+      "week": "10주차",
+      "content": "특강(도메인특강, 프로젝트 현장 사례)",
+      "teacher": "-",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-18",
+      "day": "금",
+      "week": "10주차",
+      "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-21",
+      "day": "월",
+      "week": "11주차",
+      "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)",
+      "teacher": "김영희",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-22",
+      "day": "화",
+      "week": "11주차",
+      "content": "생성형 AI 서비스 개발의 이해/활용 (LangChain)",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-23",
+      "day": "수",
+      "week": "11주차",
+      "content": "자체휴강",
+      "teacher": "-",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "date": "2026-09-24",
+      "day": "목",
+      "week": "11주차",
+      "content": "추석연휴",
+      "teacher": "-",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "date": "2026-09-25",
+      "day": "금",
+      "week": "11주차",
+      "content": "추석연휴",
+      "teacher": "-",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "date": "2026-09-28",
+      "day": "월",
+      "week": "12주차",
+      "content": "RAG Pipeline 설계 및 구축",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-29",
+      "day": "화",
+      "week": "12주차",
+      "content": "RAG Pipeline 설계 및 구축",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-09-30",
+      "day": "수",
+      "week": "12주차",
+      "content": "RAG Pipeline 설계 및 구축",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    }
   ],
   "10": [
-    { "date": "2026-10-01", "day": "목", "week": "12주차", "content": "데이터 분석 mini-Project", "teacher": "박보경" },
-    { "date": "2026-10-02", "day": "금", "week": "12주차", "content": "데이터 분석 mini-Project", "teacher": "박보경" },
-    { "date": "2026-10-05", "day": "월", "week": "13주차", "content": "대체휴일(개천절)", "teacher": "-" },
-    { "date": "2026-10-06", "day": "화", "week": "13주차", "content": "모델 서빙 및 AIOps 구성", "teacher": "임성열" },
-    { "date": "2026-10-07", "day": "수", "week": "13주차", "content": "모델 서빙 및 AIOps 구성", "teacher": "임성열" },
-    { "date": "2026-10-08", "day": "목", "week": "13주차", "content": "모델 서빙 및 AIOps 구성", "teacher": "임성열" },
-    { "date": "2026-10-09", "day": "금", "week": "13주차", "content": "한글날", "teacher": "-" },
-    { "date": "2026-10-12", "day": "월", "week": "14주차", "content": "AI Agent 설계 및 구축", "teacher": "김경난" },
-    { "date": "2026-10-13", "day": "화", "week": "14주차", "content": "AI Agent 설계 및 구축", "teacher": "김경난" },
-    { "date": "2026-10-14", "day": "수", "week": "14주차", "content": "Vector DB", "teacher": "김경난" },
-    { "date": "2026-10-15", "day": "목", "week": "14주차", "content": "AI Agent Capstone", "teacher": "김경난" },
-    { "date": "2026-10-16", "day": "금", "week": "14주차", "content": "AI Agent Capstone", "teacher": "김경난" },
-    { "date": "2026-10-19", "day": "월", "week": "15주차", "content": "AI Agent Capstone", "teacher": "김경난" },
-    { "date": "2026-10-20", "day": "화", "week": "15주차", "content": "AI 서비스 개발 Mini-project", "teacher": "김경난" },
-    { "date": "2026-10-21", "day": "수", "week": "15주차", "content": "AI 서비스 개발 Mini-project", "teacher": "김경난" },
-    { "date": "2026-10-22", "day": "목", "week": "15주차", "content": "AI 서비스 개발 Mini-project", "teacher": "김경난" },
-    { "date": "2026-10-23", "day": "금", "week": "15주차", "content": "DevOps 이해 및 활용", "teacher": "김경난" },
-    { "date": "2026-10-26", "day": "월", "week": "16주차", "content": "DevOps 이해 및 활용", "teacher": "김경난" },
-    { "date": "2026-10-27", "day": "화", "week": "16주차", "content": "AI 프로젝트 방법론", "teacher": "-" },
-    { "date": "2026-10-28", "day": "수", "week": "16주차", "content": "팀프로젝트", "teacher": "백정열" },
-    { "date": "2026-10-29", "day": "목", "week": "16주차", "content": "팀프로젝트", "teacher": "박병선" },
-    { "date": "2026-10-30", "day": "금", "week": "16주차", "content": "팀프로젝트", "teacher": "박병선" }
+    {
+      "date": "2026-10-01",
+      "day": "목",
+      "week": "12주차",
+      "content": "데이터 분석 mini-Project",
+      "teacher": "박보경",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-02",
+      "day": "금",
+      "week": "12주차",
+      "content": "데이터 분석 mini-Project",
+      "teacher": "박보경",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-05",
+      "day": "월",
+      "week": "13주차",
+      "content": "대체휴일(개천절)",
+      "teacher": "-",
+      "startTime": null,
+      "endTime": null
+    },
+    {
+      "date": "2026-10-06",
+      "day": "화",
+      "week": "13주차",
+      "content": "모델 서빙 및 AIOps 구성",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-07",
+      "day": "수",
+      "week": "13주차",
+      "content": "모델 서빙 및 AIOps 구성",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-08",
+      "day": "목",
+      "week": "13주차",
+      "content": "모델 서빙 및 AIOps 구성",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-09",
+      "day": "금",
+      "week": "13주차",
+      "content": "한글날",
+      "teacher": "-",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-12",
+      "day": "월",
+      "week": "14주차",
+      "content": "AI Agent 설계 및 구축",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-13",
+      "day": "화",
+      "week": "14주차",
+      "content": "AI Agent 설계 및 구축",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-14",
+      "day": "수",
+      "week": "14주차",
+      "content": "Vector DB",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-15",
+      "day": "목",
+      "week": "14주차",
+      "content": "AI Agent Capstone",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-16",
+      "day": "금",
+      "week": "14주차",
+      "content": "AI Agent Capstone",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-19",
+      "day": "월",
+      "week": "15주차",
+      "content": "AI Agent Capstone",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-20",
+      "day": "화",
+      "week": "15주차",
+      "content": "AI 서비스 개발 Mini-project",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-21",
+      "day": "수",
+      "week": "15주차",
+      "content": "AI 서비스 개발 Mini-project",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-22",
+      "day": "목",
+      "week": "15주차",
+      "content": "AI 서비스 개발 Mini-project",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-23",
+      "day": "금",
+      "week": "15주차",
+      "content": "DevOps 이해 및 활용",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-26",
+      "day": "월",
+      "week": "16주차",
+      "content": "DevOps 이해 및 활용",
+      "teacher": "김경난",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-27",
+      "day": "화",
+      "week": "16주차",
+      "content": "AI 프로젝트 방법론",
+      "teacher": "-",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-28",
+      "day": "수",
+      "week": "16주차",
+      "content": "팀프로젝트",
+      "teacher": "백정열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-29",
+      "day": "목",
+      "week": "16주차",
+      "content": "팀프로젝트",
+      "teacher": "박병선",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-10-30",
+      "day": "금",
+      "week": "16주차",
+      "content": "팀프로젝트",
+      "teacher": "박병선",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    }
   ],
   "11": [
-    { "date": "2026-11-02", "day": "월", "week": "17주차", "content": "팀프로젝트", "teacher": "이용우" },
-    { "date": "2026-11-03", "day": "화", "week": "17주차", "content": "팀프로젝트", "teacher": "이용우" },
-    { "date": "2026-11-04", "day": "수", "week": "17주차", "content": "팀프로젝트", "teacher": "이용우" },
-    { "date": "2026-11-05", "day": "목", "week": "17주차", "content": "팀프로젝트", "teacher": "박창령" },
-    { "date": "2026-11-06", "day": "금", "week": "17주차", "content": "팀프로젝트", "teacher": "박창령" },
-    { "date": "2026-11-09", "day": "월", "week": "18주차", "content": "팀프로젝트", "teacher": "류홍걸" },
-    { "date": "2026-11-10", "day": "화", "week": "18주차", "content": "팀프로젝트", "teacher": "류홍걸" },
-    { "date": "2026-11-11", "day": "수", "week": "18주차", "content": "팀프로젝트", "teacher": "임성열" },
-    { "date": "2026-11-12", "day": "목", "week": "18주차", "content": "팀프로젝트 (중간점검)", "teacher": "임성열" },
-    { "date": "2026-11-13", "day": "금", "week": "18주차", "content": "팀프로젝트", "teacher": "임성열" },
-    { "date": "2026-11-16", "day": "월", "week": "19주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-11-17", "day": "화", "week": "19주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-11-18", "day": "수", "week": "19주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-11-19", "day": "목", "week": "19주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-11-20", "day": "금", "week": "19주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-11-23", "day": "월", "week": "20주차", "content": "팀프로젝트", "teacher": "이현민" },
-    { "date": "2026-11-24", "day": "화", "week": "20주차", "content": "팀프로젝트", "teacher": "이현민" },
-    { "date": "2026-11-25", "day": "수", "week": "20주차", "content": "팀프로젝트", "teacher": "임성열" },
-    { "date": "2026-11-26", "day": "목", "week": "20주차", "content": "팀프로젝트", "teacher": "임성열" },
-    { "date": "2026-11-27", "day": "금", "week": "20주차", "content": "팀프로젝트", "teacher": "임성열" },
-    { "date": "2026-11-30", "day": "월", "week": "21주차", "content": "팀프로젝트", "teacher": "강병호" }
+    {
+      "date": "2026-11-02",
+      "day": "월",
+      "week": "17주차",
+      "content": "팀프로젝트",
+      "teacher": "이용우",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-03",
+      "day": "화",
+      "week": "17주차",
+      "content": "팀프로젝트",
+      "teacher": "이용우",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-04",
+      "day": "수",
+      "week": "17주차",
+      "content": "팀프로젝트",
+      "teacher": "이용우",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-05",
+      "day": "목",
+      "week": "17주차",
+      "content": "팀프로젝트",
+      "teacher": "박창령",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-06",
+      "day": "금",
+      "week": "17주차",
+      "content": "팀프로젝트",
+      "teacher": "박창령",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-09",
+      "day": "월",
+      "week": "18주차",
+      "content": "팀프로젝트",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-10",
+      "day": "화",
+      "week": "18주차",
+      "content": "팀프로젝트",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-11",
+      "day": "수",
+      "week": "18주차",
+      "content": "팀프로젝트",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-12",
+      "day": "목",
+      "week": "18주차",
+      "content": "팀프로젝트 (중간점검)",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-13",
+      "day": "금",
+      "week": "18주차",
+      "content": "팀프로젝트",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-16",
+      "day": "월",
+      "week": "19주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-17",
+      "day": "화",
+      "week": "19주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-18",
+      "day": "수",
+      "week": "19주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-19",
+      "day": "목",
+      "week": "19주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-20",
+      "day": "금",
+      "week": "19주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-23",
+      "day": "월",
+      "week": "20주차",
+      "content": "팀프로젝트",
+      "teacher": "이현민",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-24",
+      "day": "화",
+      "week": "20주차",
+      "content": "팀프로젝트",
+      "teacher": "이현민",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-25",
+      "day": "수",
+      "week": "20주차",
+      "content": "팀프로젝트",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-26",
+      "day": "목",
+      "week": "20주차",
+      "content": "팀프로젝트",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-27",
+      "day": "금",
+      "week": "20주차",
+      "content": "팀프로젝트",
+      "teacher": "임성열",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-11-30",
+      "day": "월",
+      "week": "21주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    }
   ],
   "12": [
-    { "date": "2026-12-01", "day": "화", "week": "21주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-12-02", "day": "수", "week": "21주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-12-03", "day": "목", "week": "21주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-12-04", "day": "금", "week": "21주차", "content": "팀프로젝트", "teacher": "강병호" },
-    { "date": "2026-12-07", "day": "월", "week": "22주차", "content": "팀프로젝트", "teacher": "류홍길" },
-    { "date": "2026-12-08", "day": "화", "week": "22주차", "content": "팀프로젝트", "teacher": "류홍걸" },
-    { "date": "2026-12-09", "day": "수", "week": "22주차", "content": "팀프로젝트", "teacher": "류홍걸" },
-    { "date": "2026-12-10", "day": "목", "week": "22주차", "content": "최종평가(예선)", "teacher": "류홍걸" },
-    { "date": "2026-12-11", "day": "금", "week": "22주차", "content": "최종평가(본선) / 수료식 (16시 종료)", "teacher": "류홍걸" }
+    {
+      "date": "2026-12-01",
+      "day": "화",
+      "week": "21주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-02",
+      "day": "수",
+      "week": "21주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-03",
+      "day": "목",
+      "week": "21주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-04",
+      "day": "금",
+      "week": "21주차",
+      "content": "팀프로젝트",
+      "teacher": "강병호",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-07",
+      "day": "월",
+      "week": "22주차",
+      "content": "팀프로젝트",
+      "teacher": "류홍길",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-08",
+      "day": "화",
+      "week": "22주차",
+      "content": "팀프로젝트",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-09",
+      "day": "수",
+      "week": "22주차",
+      "content": "팀프로젝트",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-10",
+      "day": "목",
+      "week": "22주차",
+      "content": "최종평가(예선)",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "18:00"
+    },
+    {
+      "date": "2026-12-11",
+      "day": "금",
+      "week": "22주차",
+      "content": "최종평가(본선) / 수료식 (16시 종료)",
+      "teacher": "류홍걸",
+      "startTime": "09:00",
+      "endTime": "16:00"
+    }
   ]
 }

@@ -33,3 +33,22 @@
     overflow: hidden;
     background: white;
 }
+
+/* 주별/월별/휴일 페이지가 공유하는 상단 보기 전환 서브내비 */
+.calendar-subnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    padding: 0 var(--space-md) var(--space-md);
+}
+
+.calendar-subnav .btn-pill {
+    text-decoration: none;
+    color: var(--color-text);
+    background: white;
+}
+
+.calendar-subnav .btn-pill[aria-current="page"] {
+    background: var(--color-accent-yellow);
+}

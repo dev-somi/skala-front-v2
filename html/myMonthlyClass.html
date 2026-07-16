@@ -1,109 +1,68 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>학사일정</title>
-    <link rel="stylesheet" href="./schedule.css">
-    <style>
-        #sched_tbl {
-            width: 100%;
-            /* 원하는 가로 너비 */
-            border-collapse: collapse;
-            /* 이중 선을 합쳐서 하나의 선으로 만듦 (필수!) */
-        }
-
-        /* 헤더(요일)와 본문(날짜) 셀에 테두리 추가 */
-        #sched_tbl th,
-        #sched_tbl td {
-            border: 1px solid #ccc;
-            /* 선 두께, 스타일(실선), 색상(연한 회색) */
-            padding: 15px;
-            /* 셀 내부 여백 (원하는 높이만큼 조절) */
-            text-align: center;
-            /* 글자 가운데 정렬 */
-            vertical-align: top;
-            /* 일정이 적힐 때 글자가 위쪽부터 써지도록 설정 */
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월별 학사일정 - Som's Universe</title>
+    <meta name="description" content="소미의 2026년 하반기 훈련 과정을 월 단위 달력 그리드로 보여주는 월별 학사일정입니다.">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <h3>학사일정</h3>
-    <div class="bar-container">
-        <div class="bar-contents"></div>
-    </div>
 
-    <ul id="date">
-        <li>
-            <img src="" alt="이전달">
-        </li>
-        <li id="current-month"></li>
-        <li>
-            <img src="" alt="다음달">
-        </li>
-    </ul>
+    <header>
+        <div id="nav-placeholder"></div>
+        <nav aria-label="캘린더 보기 전환" class="calendar-subnav">
+            <a href="myClass.html" class="btn-pill">📖 주별</a>
+            <a href="myMonthlyClass.html" class="btn-pill" aria-current="page">🗓️ 월별</a>
+            <a href="myHoliday.html" class="btn-pill">🎉 휴일</a>
+        </nav>
+        <hr>
+    </header>
 
-    <table id="sched_tbl">
-        <thead>
-            <tr id="day">
-                <th class="red">일</th>
-                <th>월</th>
-                <th>화</th>
-                <th>수</th>
-                <th>목</th>
-                <th>금</th>
-                <th class="blue">토</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+    <main>
+        <section id="month-section" aria-labelledby="month-title">
+            <h1 id="month-title">🗓️ 학사일정</h1>
+            <p>날짜를 클릭하면 해당 주의 시간표(주별 뷰)로 이동합니다.</p>
+
+            <ul id="date" class="month-nav" aria-label="월 이동">
+                <li>
+                    <button type="button" id="prev-month-btn" class="carousel-btn" aria-label="이전달">◀</button>
+                </li>
+                <li id="current-month">2026년 7월</li>
+                <li>
+                    <button type="button" id="next-month-btn" class="carousel-btn" aria-label="다음달">▶</button>
+                </li>
+            </ul>
+
+            <table id="sched_tbl" aria-label="월별 달력">
+                <thead>
+                    <tr id="day">
+                        <th class="red" scope="col">일</th>
+                        <th scope="col">월</th>
+                        <th scope="col">화</th>
+                        <th scope="col">수</th>
+                        <th scope="col">목</th>
+                        <th scope="col">금</th>
+                        <th class="blue" scope="col">토</th>
+                    </tr>
+                </thead>
+                <tbody id="month-grid-tbody">
+                    <!-- monthlyView.js가 동적으로 채웁니다 -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p><small>&copy; 2026 Som. All rights reserved.</small></p>
+    </footer>
+
+    <script src="../script/calendarUtils.js"></script>
+    <script src="../script/monthlyView.js"></script>
+    <script src="../script/nav.js"></script>
 </body>
 
 </html>

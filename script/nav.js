@@ -9,7 +9,7 @@ const FALLBACK_NAV_HTML = `
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="myProfile.html">Profile</a></li>
-            <li class="nav-item"><a href="myCalendar.html">Calendar</a></li>
+            <li class="nav-item"><a href="myClass.html">Calendar</a></li>
             <li class="nav-item"><a href="myTrip.html">Travel</a></li>
             <li class="nav-item"><a href="jsPlayground.html">Playground</a></li>
         </ul>

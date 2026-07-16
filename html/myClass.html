@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주별 수업 시간표 - Som's Universe</title>
+    <meta name="description" content="소미의 2026년 하반기 훈련 과정을 월~토 주간 시간대별 그리드로 보여주는 주별 시간표입니다.">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <div id="nav-placeholder"></div>
+        <nav aria-label="캘린더 보기 전환" class="calendar-subnav">
+            <a href="myClass.html" class="btn-pill" aria-current="page">📖 주별</a>
+            <a href="myMonthlyClass.html" class="btn-pill">🗓️ 월별</a>
+            <a href="myHoliday.html" class="btn-pill">🎉 휴일</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <section id="week-section" aria-labelledby="week-title">
+            <h1 id="week-title">📖 소미의 학습 다이어리</h1>
+            <p>매일매일 기록하며 성장해 나가는 저의 실제 훈련 과정 강의 일정표입니다.</p>
+
+            <div class="week-nav" aria-label="주 이동">
+                <button type="button" id="prev-week-btn" class="carousel-btn" aria-label="이전 주로 이동">←</button>
+                <strong id="current-week-display">주 정보를 불러오는 중...</strong>
+                <button type="button" id="next-week-btn" class="carousel-btn" aria-label="다음 주로 이동">→</button>
+            </div>
+
+            <div id="week-grid" class="week-grid" role="grid" aria-label="주간 수업 시간표"></div>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <p><small>&copy; 2026 Som. All rights reserved.</small></p>
+    </footer>
+
+    <script src="../script/calendarUtils.js"></script>
+    <script src="../script/weekView.js"></script>
+    <script src="../script/nav.js"></script>
+</body>
+</html>
