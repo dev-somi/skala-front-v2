@@ -56,28 +56,9 @@ a {
   font-weight: 600;
 }
 
-/* ===== 헤더 & 네비게이션 (중복 방지를 위해 components.css와 연결 유지) ===== */
+/* ===== 헤더 & 네비게이션 (실제 스타일은 nav.css의 .navbar/.nav-placeholder가 담당) ===== */
 header {
-  display: flex;
-  justify-content: center;
-}
-
-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  font-family: var(--font-heading);
-}
-
-header nav a {
-  text-decoration: none;
-  color: var(--color-text);
-}
-
-header nav a:hover {
-  color: var(--color-bg-purple);
+  padding: var(--space-md) var(--space-lg) 0;
 }
 
 

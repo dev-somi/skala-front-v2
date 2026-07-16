@@ -1,10 +1,15 @@
 /* ===== 글로벌 네비게이션 바 (모든 페이지 공유) ===== */
+#nav-placeholder {
+    width: 100%;
+}
+
 .navbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
     height: 70px;
     background-color: var(--color-white);
     padding: 0 24px;
@@ -29,6 +34,9 @@
     list-style: none;
     gap: 32px;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-self: center;
 }
 
 .nav-item {
@@ -76,6 +84,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    justify-self: end;
 }
 
 /* 가입하기 버튼 */
