@@ -3,6 +3,7 @@
    ========================================================================== */
 /* 폰트 불러오기 (Baloo 2 - 헤딩용 / Poppins - 본문용) */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 /* 로컬 CSS 파일 불러오기 */
 @import url('variables.css');
@@ -717,4 +718,47 @@ dialog input[type="number"] {
 
 #bag-list dd {
   margin: 0 0 var(--space-sm) var(--space-md);
+}
+
+/* ===== 실시간 날씨 (index.html) ===== */
+
+/* .portrait-card는 원래 <a>를 위한 클래스라 <button>에 얹으면 브라우저 기본 여백/폰트가 남는다 */
+button.portrait-card {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+#weather-dialog select {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  font-family: var(--font-body);
+  width: 100%;
+  background: white;
+}
+
+#weather-box {
+  margin-top: var(--space-md);
+}
+
+#weather-box h3 {
+  margin-top: 0;
+}
+
+/* 상태 표시바가 새 날씨 정보로 갱신됐음을 알리는 짧은 배경 펄스 효과 */
+@keyframes status-bar-flash {
+  0% { background: var(--color-accent-yellow); }
+  50% { background: var(--color-accent-mint); }
+  100% { background: var(--color-accent-yellow); }
+}
+
+.status-bar--updated {
+  animation: status-bar-flash 0.9s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-bar--updated {
+    animation: none;
+  }
 }

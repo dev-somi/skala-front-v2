@@ -12,7 +12,6 @@
   </head>
 
   <body>
-    <div></div>
 
     <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
     <header>
@@ -86,8 +85,36 @@
               <img src="../media/signup_icon.png" alt="멤버십 가입" />
             </a>
           </li>
+          <li>
+            <button
+              type="button"
+              class="portrait-card brutal-box"
+              id="weather-trigger"
+              aria-haspopup="dialog"
+              aria-controls="weather-dialog"
+              aria-label="실시간 날씨 도시 선택"
+            >
+              <img src="../media/city_weather.png" alt="실시간 날씨" />
+            </button>
+          </li>
         </ul>
       </section>
+
+      <!-- 실시간 날씨 도시 선택 다이얼로그 -->
+      <dialog id="weather-dialog" aria-labelledby="weather-dialog-title">
+        <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
+        <h2 id="weather-dialog-title">🌍 도시별 실시간 날씨</h2>
+        <p>도시를 선택하면 실시간 기온/습도/풍속을 알려드려요.</p>
+
+        <div class="playground-form-row">
+          <label for="weather-city-select">도시 선택</label>
+          <select id="weather-city-select"></select>
+        </div>
+
+        <div id="weather-box" role="status" aria-live="polite">
+          <p>도시를 선택하면 실시간 날씨를 보여드릴게요! 🌤️</p>
+        </div>
+      </dialog>
     </main>
 
     <!-- 상태 표시바: 사이드바 성격의 부가 정보 제공 -->
@@ -104,5 +131,6 @@
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>
     <script src="../script/statusBarTicker.js"></script>
+    <script type="module" src="../script/realtimeInfo.js"></script>
   </body>
 </html>
