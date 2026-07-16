@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO: 메인 키워드가 포함된 감성적인 타이틀 -->
-    <title>Travel Journal - Som's Universe</title>
-    <meta name="description" content="소미가 사랑하는 여행지인 도쿄, 요코하마, 그리고 홋카이도의 아름다운 순간들을 기록한 미디어 갤러리입니다.">
-    <!-- 추후 CSS 폴더에서 스타일을 불러올 수 있도록 미리 링크 연결 -->
+    <!-- SEO: 교환학생 감성을 담은 타이틀과 설명 -->
+    <title>Winter Wonderland - Som's Hokkaido Days</title>
+    <meta name="description" content="눈의 나라 홋카이도에서 보낸 1년간의 마법 같은 교환학생 기록이자 따뜻한 겨울 조각들을 담은 미디어 갤러리입니다.">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -21,14 +20,14 @@
         
         <!-- 타이틀 및 감성 배경음악 섹션 -->
         <section id="trip-intro" aria-labelledby="trip-title">
-            <h1 id="trip-title">🌏 My Travel Journal</h1>
-            <p>발길이 닿는 곳마다 기록해 둔 소중한 낭만과 일상의 조각들입니다.</p>
+            <h1 id="trip-title">❄️ My Hokkaido Days</h1>
+            <p>끝없이 하얀 눈이 내리던 곳, 홋카이도에서 보낸 1년 동안의 소중한 순간들입니다.</p>
             
-            <!-- 필수 사용 1: <audio>와 <source> (컨트롤 바를 표시하고 미디어 폴더의 음악 연결) -->
+            <!-- 필수 사용 1: <audio>와 <source> -->
             <div class="audio-player">
-                <p>🎵 여행 감성 배경음악 재생하기:</p>
+                <p>🎵 겨울 감성 배경음악 (Snowing Town):</p>
                 <audio controls>
-                    <source src="media/bgm.mp3" type="audio/mpeg">
+                    <source src="media/winter_bgm.mp3" type="audio/mpeg">
                     브라우저가 오디오 태그를 지원하지 않습니다.
                 </audio>
             </div>
@@ -36,33 +35,32 @@
 
         <hr>
 
-        <!-- 여행지 카드 그리드 섹션: CSS에서 Grid(3열)를 적용할 수 있도록 id와 class 부여 -->
-        <section id="trip-grid-section" aria-label="나의 추천 여행지 리스트">
-            <h2>📍 설레는 여행 기록 카드</h2>
+        <!-- 여행지 카드 그리드 섹션: 홋카이도 교환학생 테마 3선 -->
+        <section id="trip-grid-section" aria-label="홋카이도 추억 카드">
+            <h2>📍 눈꽃이 머물던 자리</h2>
             
-            <!-- 나중에 CSS에서 Grid 3열 배치를 적용할 부모 컨테이너 -->
             <div class="trip-grid-container">
                 
-                <!-- 카드 1: 도쿄 (클래스 필수 요건 적용) -->
+                <!-- 카드 1: 캠퍼스 라이프 -->
                 <article class="trip-card">
-                    <!-- 필수 사용 2: <img> (미디어 폴더의 이미지 연결 및 대체 텍스트 작성) -->
-                    <img src="media/tokyo.jpg" alt="벚꽃이 흩날리는 봄날의 도쿄 타워 전경">
-                    <h3>🌸 낭만이 가득한 도시, 도쿄</h3>
-                    <p>화려한 도심 속 아기자기한 골목길과 트렌디한 감성이 공존하는 곳. 언제 가도 늘 설렘을 주는 도시입니다.</p>
+                    <!-- 필수 사용 2: <img> -->
+                    <img src="media/campus.jpg" alt="새하얀 눈으로 가득 덮인 평화로운 대학교 교정과 가로수길">
+                    <h3>🏫 낭만적인 설경의 캠퍼스</h3>
+                    <p>수업을 들으러 가던 매일 아침, 발목까지 푹푹 빠지는 눈길마저 설레게 만들었던 아름다운 겨울 교정의 풍경입니다.</p>
                 </article>
 
-                <!-- 카드 2: 요코하마 (클래스 필수 요건 적용) -->
+                <!-- 카드 2: 겨울 여행 (오타루 등) -->
                 <article class="trip-card">
-                    <img src="media/yokohama.jpg" alt="요코하마 미나토미라이의 멋진 야경과 관람차">
-                    <h3>🎡 야경이 아름다운 항구, 요코하마</h3>
-                    <p>바닷바람을 맞으며 걷는 붉은 벽돌의 아카렌가 창고와 반짝이는 관람차 야경이 마음을 편안하게 해줍니다.</p>
+                    <img src="media/otaru.jpg" alt="가스등 불빛이 물 위로 은은하게 비치는 겨울 오타루 운하의 야경">
+                    <h3>🕯️ 반짝이는 겨울의 운하</h3>
+                    <p>차가운 공기 속에서 은은하게 빛나는 가스등과 물결을 보며 잊지 못할 겨울의 낭만을 가슴속 깊이 새겼던 날.</p>
                 </article>
 
-                <!-- 카드 3: 홋카이도 (클래스 필수 요건 적용) -->
+                <!-- 카드 3: 디저트와 일상 -->
                 <article class="trip-card">
-                    <img src="media/hokkaido.jpg" alt="홋카이도의 끝없이 펼쳐진 하얀 눈밭과 설경">
-                    <h3>❄️ 하얀 눈의 천국, 홋카이도</h3>
-                    <p>사계절 중 겨울이 가장 아름다운 곳. 끝없이 펼쳐진 눈밭 속에서 따뜻한 온천과 맛있는 디저트를 즐기던 추억이 가득합니다.</p>
+                    <img src="media/dessert.jpg" alt="김이 모락모락 나는 따뜻한 커피 한 잔과 달콤한 초콜릿 디저트">
+                    <h3>🍰 추위를 녹여주던 달콤함</h3>
+                    <p>뺨이 차가워질 때쯤 들어간 아늑한 카페에서, 따뜻한 온기와 함께 즐기던 달콤하고 부드러운 디저트의 행복.</p>
                 </article>
 
             </div>
@@ -70,15 +68,15 @@
 
         <hr>
 
-        <!-- 비디오 섹션: 생동감 넘치는 여행 브이로그 감상 공간 -->
+        <!-- 비디오 섹션: 생동감 넘치는 겨울 브이로그 -->
         <section id="trip-video" aria-labelledby="video-title">
-            <h2 id="video-title">🎥 여행 순간 포착 (Vlog)</h2>
-            <p>사진에 다 담기지 않았던 그날의 분위기를 영상으로 느껴보세요.</p>
+            <h2 id="video-title">🎥 홋카이도 모먼트 (Vlog)</h2>
+            <p>사진에 다 담기지 않았던 그해 겨울, 소담히 내리던 눈송이와 겨울 바람의 소리를 느껴보세요.</p>
             
             <!-- 필수 사용 3: <video>와 <source> -->
             <div class="video-container">
-                <video controls width="640" poster="media/tokyo.jpg">
-                    <source src="media/vlog.mp4" type="video/mp4">
+                <video controls width="640" poster="media/winter_poster.jpg">
+                    <source src="media/winter_vlog.mp4" type="video/mp4">
                     브라우저가 비디오 태그를 지원하지 않습니다.
                 </video>
             </div>
