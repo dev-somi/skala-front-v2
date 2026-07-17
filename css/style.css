@@ -587,6 +587,10 @@ mark {
 }
 
 /* ===== 휴일 일과 (myHoliday.html) ===== */
+#holiday-section {
+  max-width: 640px;   /* 넓어진 본문 컬럼에서 문단 텍스트가 과도하게 길어지지 않도록 */
+}
+
 #holiday-section section {
   padding: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-md);

@@ -99,3 +99,58 @@ footer {
   width: 18px;  /* 2. 아이콘이 원 크기에 맞게 들어가도록 크기 고정 */
   height: 18px;
 }
+
+/* ===== 캘린더 사이드바 대시보드 레이아웃 (주별/월별/휴일 공용) ===== */
+/* main.calendar-layout(0,1,1) 이 전역 `main,.container{max-width:860px}`(0,0,1) 를
+   상세도로 이겨 !important 없이 덮어씀. (style.css의 main.home-main 과 동일 패턴) */
+main.calendar-layout {
+  max-width: 1200px;          /* .navbar 의 max-width 와 폭 정렬 */
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  align-items: start;
+  gap: var(--space-lg);
+}
+
+.calendar-sidebar {
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard-lg);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.sidebar-date { display: block; text-align: center; }
+.sidebar-date__day {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 4rem; font-weight: 800; line-height: 1;
+  color: var(--color-text);
+}
+.sidebar-date__month {
+  display: block; margin-top: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--color-text);
+}
+
+/* 사이드바 안에서만 subnav 를 세로 메뉴로. components.css 의 가로 기본형은 유지. */
+.calendar-sidebar .calendar-subnav {
+  flex-direction: column; flex-wrap: nowrap;
+  justify-content: flex-start; padding: 0;
+}
+.calendar-sidebar .calendar-subnav .btn-pill {
+  justify-content: flex-start; width: 100%;
+}
+
+@media (max-width: 700px) {           /* 프로젝트 표준 브레이크포인트 */
+  main.calendar-layout { grid-template-columns: 1fr; }
+  .calendar-sidebar .calendar-subnav {
+    flex-direction: row; flex-wrap: wrap; justify-content: center;
+  }
+  .calendar-sidebar .calendar-subnav .btn-pill { width: auto; }
+}

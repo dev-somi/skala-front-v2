@@ -12,14 +12,21 @@
 
     <header>
         <div id="nav-placeholder"></div>
-        <nav aria-label="캘린더 보기 전환" class="calendar-subnav">
-            <a href="myClass.html" class="btn-pill">📖 주별</a>
-            <a href="myMonthlyClass.html" class="btn-pill" aria-current="page">🗓️ 월별</a>
-            <a href="myHoliday.html" class="btn-pill">🎉 휴일</a>
-        </nav>
     </header>
 
-    <main>
+    <main class="calendar-layout">
+        <aside class="calendar-sidebar" aria-label="캘린더 사이드바">
+            <time class="sidebar-date" id="sidebar-date">
+                <span class="sidebar-date__day" id="sidebar-today-day">16</span>
+                <span class="sidebar-date__month" id="sidebar-today-month">July 2026</span>
+            </time>
+            <nav aria-label="캘린더 보기 전환" class="calendar-subnav">
+                <a href="myClass.html" class="btn-pill">📖 주별</a>
+                <a href="myMonthlyClass.html" class="btn-pill" aria-current="page">🗓️ 월별</a>
+                <a href="myHoliday.html" class="btn-pill">🎉 휴일</a>
+            </nav>
+        </aside>
+
         <section id="month-section" aria-labelledby="month-title">
             <h1 id="month-title">🗓️ My Monthly Class</h1>
             <p>날짜를 클릭하면 해당 주의 시간표(주별 뷰)로 이동합니다.</p>
@@ -57,6 +64,7 @@
 
     <script src="../script/calendarUtils.js"></script>
     <script src="../script/monthlyView.js"></script>
+    <script src="../script/sidebarDate.js"></script>
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>
 </body>
