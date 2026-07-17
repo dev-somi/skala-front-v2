@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Scheduler - Som's Universe</title>
+    <meta name="description" content="오늘의 수업 타임라인, 예·복습 계획, 데일리 투두, 주별·월별 캘린더를 한 화면에서 관리하는 소미의 개인 스케줄러입니다.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/scheduler.css">
+</head>
+<body>
+
+    <header>
+        <div id="nav-placeholder"></div>
+    </header>
+
+    <main class="scheduler-layout">
+
+        <!-- ===== 왼쪽 사이드바 ===== -->
+        <aside class="scheduler-sidebar" aria-label="스케줄러 사이드바">
+
+            <!-- [상단 토글] My Class / My Plan -->
+            <div class="scheduler-panel brutal-box">
+                <div class="sidebar-tabs" role="tablist" aria-label="오늘 보기 전환">
+                    <button type="button" role="tab" id="tab-class" class="btn-pill sidebar-tab"
+                            aria-selected="true" aria-controls="panel-class">📖 My Class</button>
+                    <button type="button" role="tab" id="tab-plan" class="btn-pill sidebar-tab"
+                            aria-selected="false" aria-controls="panel-plan">📝 My Plan</button>
+                </div>
+
+                <!-- My Class: 오늘의 타임라인 -->
+                <div id="panel-class" role="tabpanel" aria-labelledby="tab-class" class="sidebar-tabpanel">
+                    <p class="sidebar-today-label" id="class-today-label"></p>
+                    <div id="today-timeline" class="today-timeline"></div>
+                </div>
+
+                <!-- My Plan: 예습/복습 스케줄러 -->
+                <div id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" class="sidebar-tabpanel" hidden>
+                    <p class="sidebar-today-label" id="plan-today-label"></p>
+                    <div id="plan-editor" class="plan-editor"></div>
+                </div>
+            </div>
+
+            <!-- [중간 고정] Daily Todo -->
+            <div class="scheduler-panel brutal-box">
+                <h2 class="sidebar-heading">✅ Daily Todo</h2>
+                <form id="todo-form" class="todo-form">
+                    <input type="text" id="todo-input" placeholder="오늘 할 일 추가" aria-label="새 할 일 입력" maxlength="80" autocomplete="off">
+                    <button type="submit" class="btn-pill todo-add-btn">추가</button>
+                </form>
+                <ul id="todo-list" class="todo-list" aria-label="오늘의 할 일 목록"></ul>
+            </div>
+
+            <!-- [하단 고정] Upcoming Class -->
+            <div class="scheduler-panel brutal-box upcoming-card">
+                <h2 class="sidebar-heading">⏭️ Upcoming Class</h2>
+                <div id="upcoming-class" class="upcoming-class" aria-live="polite"></div>
+            </div>
+
+        </aside>
+
+        <!-- ===== 오른쪽 메인: 캘린더 ===== -->
+        <section class="scheduler-calendar" aria-labelledby="calendar-title">
+            <div class="calendar-topbar">
+                <div class="calendar-title-group">
+                    <h1 id="calendar-title">📅 My Calendar</h1>
+                    <p class="calendar-today" id="calendar-today"></p>
+                </div>
+
+                <div class="calendar-controls">
+                    <div class="view-toggle" role="group" aria-label="캘린더 뷰 전환">
+                        <button type="button" id="view-weekly" class="btn-pill view-btn" aria-pressed="true">Weekly</button>
+                        <button type="button" id="view-monthly" class="btn-pill view-btn" aria-pressed="false">Monthly</button>
+                    </div>
+                    <div class="calendar-nav" aria-label="기간 이동">
+                        <button type="button" id="cal-prev" class="carousel-btn" aria-label="이전 기간">←</button>
+                        <strong id="cal-range-label">불러오는 중...</strong>
+                        <button type="button" id="cal-next" class="carousel-btn" aria-label="다음 기간">→</button>
+                    </div>
+                </div>
+            </div>
+
+            <p id="schedule-error" class="schedule-error" role="alert" hidden>
+                ⚠️ 로컬 보안 정책(CORS)으로 수업 데이터를 불러오지 못했습니다. VS Code의 Live Server 등 로컬 서버로 실행해 주세요. (개인 일정·투두는 정상 동작합니다)
+            </p>
+
+            <div id="calendar-body" class="calendar-body"></div>
+        </section>
+
+    </main>
+
+    <!-- 개인 일정 추가/관리 다이얼로그 -->
+    <dialog id="event-dialog" aria-labelledby="event-dialog-title">
+        <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
+        <h2 id="event-dialog-title">📌 개인 일정</h2>
+        <p class="event-dialog-date" id="event-dialog-date"></p>
+
+        <form id="event-form" method="dialog">
+            <div class="playground-form-row">
+                <label for="event-title">일정 제목</label>
+                <input type="text" id="event-title" required maxlength="60" placeholder="예: 스터디, 병원 예약" autocomplete="off">
+            </div>
+            <div class="playground-form-row">
+                <label for="event-time">시간 (선택)</label>
+                <input type="time" id="event-time">
+            </div>
+            <div class="dialog-actions">
+                <button type="submit" class="btn-pill">추가하기</button>
+            </div>
+        </form>
+
+        <div class="event-existing">
+            <h3 class="event-existing-title">이 날의 개인 일정</h3>
+            <ul id="event-list" class="event-list"></ul>
+        </div>
+    </dialog>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../script/calendarUtils.js"></script>
+    <script src="../script/schedulerData.js"></script>
+    <script src="../script/scheduler.js"></script>
+    <script src="../script/nav.js"></script>
+    <script src="../script/footer.js"></script>
+</body>
+</html>

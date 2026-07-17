@@ -63,9 +63,9 @@ async function updateCityWeather(city) {
 
         // 4. 상태 표시바(티커) 갱신
         window.StatusBarTicker.updateText(`
-            📅 오늘 날짜: ${todayText} |
-            📍 현재 위치: ${city.name} (위도: ${lat}, 경도: ${lon}) |
-            ${status.emoji} 날씨: ${status.text} (🌡️ 온도: ${weather.temperature_2m}°C | 💧 습도: ${weather.relative_humidity_2m}% | 💨 풍속: ${weather.wind_speed_10m} km/h)
+            📅 오늘 날짜: ${todayText} 
+            📍 현재 위치: ${city.name} (위도: ${lat}, 경도: ${lon}) 
+            ${status.emoji} 날씨: ${status.text} (🌡️ 온도: ${weather.temperature_2m}°C  💧 습도: ${weather.relative_humidity_2m}%  💨 풍속: ${weather.wind_speed_10m} km/h)
         `);
 
         // 5. 결과를 잠깐 보여준 뒤 다이얼로그를 닫고, 티커에 플래시 효과를 준다

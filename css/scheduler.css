@@ -1,0 +1,446 @@
+/* ==========================================================================
+   scheduler.html 전용 스타일 (뉴브루탈리즘 디자인 토큰 재사용, 하드코딩 색상 금지)
+   - scheduler.html 에서만 링크되므로 다른 페이지엔 로드되지 않는다.
+   - 신규 선택자는 .scheduler-* / 스케줄러 전용 id 로 스코프해 전역 충돌을 피한다.
+   - .brutal-box / .btn-pill / .carousel-btn / .week-grid / .time-block /
+     .cal-day-cell 등 기존 컴포넌트 클래스는 그대로 재사용한다.
+   ========================================================================== */
+
+/* ----- 2열 대시보드 레이아웃 -----
+   main.scheduler-layout(0,1,1) 이 전역 main,.container{max-width:860px}(0,0,1) 를
+   상세도로 이겨 !important 없이 덮어쓴다. (style.css의 main.home-main 과 동일 패턴) */
+main.scheduler-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  align-items: start;
+  gap: var(--space-lg);
+}
+
+.scheduler-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* .brutal-box 가 테두리/그림자/반경을 담당하므로 패널은 여백/배경만 얹는다. */
+.scheduler-panel {
+  background: var(--color-white);
+  padding: var(--space-md);
+}
+
+.sidebar-heading {
+  margin: 0 0 var(--space-sm);
+  font-size: 1rem;
+}
+
+.sidebar-today-label {
+  margin: 0 0 var(--space-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.sidebar-empty {
+  margin: 0;
+  padding: var(--space-md) 0;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ----- 사이드바 탭 (My Class / My Plan) ----- */
+.sidebar-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.sidebar-tab {
+  flex: 1;
+  justify-content: center;
+  padding: var(--space-sm);
+  font-size: 0.9rem;
+  background: var(--color-white);
+}
+
+.sidebar-tab[aria-selected="true"] {
+  background: var(--color-accent-yellow);
+}
+
+/* ----- 오늘의 타임라인 (My Class) ----- */
+.timeline-track {
+  position: relative;
+  height: 280px;
+  margin-left: 44px;
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+.timeline-hour {
+  position: absolute;
+  left: -44px;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.timeline-block {
+  position: absolute;
+  left: var(--space-sm);
+  right: 0;
+  min-height: 24px;
+  padding: 4px 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-accent-mint);
+  box-shadow: var(--shadow-hard);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  overflow: hidden;
+}
+
+.timeline-block__time { font-weight: 700; }
+.timeline-block__teacher { opacity: 0.75; }
+
+.timeline-holiday {
+  padding: var(--space-sm);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-accent-yellow);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ----- 예·복습 (My Plan) ----- */
+.plan-subject {
+  display: inline-block;
+  margin: 0 0 var(--space-sm);
+  padding: 2px 12px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-blue);
+  font-size: 0.9rem;
+}
+
+.plan-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--space-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.plan-field textarea {
+  padding: 6px 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  resize: vertical;
+}
+
+/* ----- Daily Todo ----- */
+.todo-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.todo-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 12px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+}
+
+.todo-add-btn {
+  padding: 6px 14px;
+  background: var(--color-accent-mint);
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-white);
+  font-size: 0.85rem;
+}
+
+.todo-check {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.todo-item--done .todo-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo-delete {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.todo-empty {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* ----- Upcoming Class ----- */
+.upcoming-card {
+  background: var(--color-accent-pink);
+}
+
+.upcoming-dday {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+}
+
+.upcoming-date {
+  margin: var(--space-sm) 0 4px;
+  font-weight: 700;
+}
+
+.upcoming-content { margin: 0 0 4px; }
+
+.upcoming-meta {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* ----- 오른쪽 캘린더 ----- */
+.scheduler-calendar { min-width: 0; } /* 그리드 자식 오버플로 방지 */
+
+.calendar-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.calendar-title-group h1 { margin: 0; }
+
+.calendar-today {
+  margin: 4px 0 0;
+  font-weight: 700;
+}
+
+.calendar-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.view-toggle {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.view-btn {
+  padding: 6px 16px;
+  background: var(--color-white);
+}
+
+.view-btn[aria-pressed="true"] {
+  background: var(--color-accent-yellow);
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+}
+
+#cal-range-label {
+  min-width: 130px;
+  text-align: center;
+}
+
+.schedule-error {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-accent-yellow);
+  font-weight: 700;
+}
+
+/* 주간 그리드의 요일 헤더를 클릭 가능한 버튼으로 (기존 .week-grid__day-header 스타일 위에 얹음) */
+.week-grid__day-header--btn {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+}
+
+.week-grid__day-header--btn:hover,
+.week-grid__day-header--btn:focus-visible {
+  background: var(--color-accent-pink);
+}
+
+.week-grid__day-header.is-today {
+  background: var(--color-accent-yellow);
+}
+
+/* 개인 일정 블록: 수업 블록과 구분되도록 점선 + 핑크 */
+.time-block--event {
+  background: var(--color-accent-pink);
+  border-style: dashed;
+  text-align: left;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* ----- 월별 테이블 (#sched_tbl 스타일을 스케줄러용으로 스코프 복제) ----- */
+.scheduler-month-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+}
+
+.scheduler-month-table th,
+.scheduler-month-table td {
+  height: 88px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: top;
+}
+
+.scheduler-month-table thead {
+  background: var(--color-accent-blue);
+  font-family: var(--font-heading);
+}
+
+.scheduler-month-table .cal-head--sun,
+.scheduler-month-table .cal-cell--sun { color: #c0392b; }
+
+.scheduler-month-table .cal-head--sat,
+.scheduler-month-table .cal-cell--sat { color: #2b6cc4; }
+
+.scheduler-month-table td.pad { background: var(--color-bg-cream); }
+
+.cal-day-cell--today {
+  background: var(--color-accent-yellow);
+  border-radius: 8px;
+}
+
+.cal-day-chip--event { background: var(--color-accent-pink); }
+
+/* ----- 개인 일정 다이얼로그 ----- */
+.event-dialog-date {
+  margin: 0 0 var(--space-md);
+  font-weight: 700;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+dialog input[type="text"],
+dialog input[type="time"] {
+  padding: 6px 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+}
+
+.event-existing {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.event-existing-title {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.9rem;
+}
+
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.event-list__empty {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.event-delete-btn {
+  padding: 2px 10px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* ----- 반응형: 좁은 화면에서 1열 스택 ----- */
+@media (max-width: 860px) {
+  main.scheduler-layout {
+    grid-template-columns: 1fr;
+  }
+  .calendar-controls {
+    align-items: flex-start;
+  }
+}
