@@ -33,10 +33,11 @@ schedule.json - 강의 시간표 데이터 (루트에 위치)
 
 `index.html`을 메인 허브로 하여 5개 카테고리로 연결되는 구조를 목표로 합니다:
 - 프로필 소개 → `myProfile.html`
-- 라이프 캘린더 → 애초 계획은 `myClass.html` + `myHoliday.html`을 `myCalendar.html`로 통합하는 것이었으나, 이후 **주별(`myClass.html`) / 월별(`myMonthlyClass.html`) / 휴일(`myHoliday.html`) 3개 페이지로 다시 분리**하는 방향으로 결정됨. `myCalendar.html`은 삭제되었고, nav의 "Calendar" 링크는 `myClass.html`(주별 뷰)을 가리킴. `myClass.html`은 `?date=YYYY-MM-DD` 쿼리 파라미터로 조회 기준일을 받고 `myMonthlyClass.html`의 날짜 클릭 시 이 파라미터를 붙여 이동시킴. 세 페이지는 좌측 사이드바 + 우측 메인 콘텐츠의 대시보드 레이아웃을 공유함(아래 "캘린더 사이드바 대시보드 레이아웃" 절 참고).
-- 개인 스케줄러 → `scheduler.html`(별도 신설 단일 페이지 앱). 위 캘린더 3페이지와 **별개**로,
-  좌측 대시보드 사이드바(오늘 타임라인/예·복습/투두/다음 수업) + 우측 인터랙티브 캘린더(주별·월별)를
-  한 화면에서 관리한다. 아래 "개인 스케줄러 대시보드" 절 참고. nav의 "Scheduler" 링크가 가리킴.
+- 라이프 캘린더 → 애초 계획은 `myClass.html` + `myHoliday.html`을 `myCalendar.html`로 통합하는 것이었으나, 이후 **주별(`myClass.html`) / 월별(`myMonthlyClass.html`) / 휴일(`myHoliday.html`) 3개 페이지로 분리**했다가, 최종적으로 **개인 스케줄러 `scheduler.html`(단일 페이지 앱)이 nav의 "Calendar" 링크 대상이 됨**. `myClass.html`/`myMonthlyClass.html`/`myHoliday.html` 3페이지는 여전히 파일로 존재하고 서로의 `.calendar-subnav`로는 연결되지만, 전역 nav에서는 더 이상 직접 링크되지 않는다(직접 URL 접근 또는 서로의 subnav를 통해서만 도달). `myClass.html`은 `?date=YYYY-MM-DD` 쿼리 파라미터로 조회 기준일을 받고 `myMonthlyClass.html`의 날짜 클릭 시 이 파라미터를 붙여 이동시킴. 세 페이지는 좌측 사이드바 + 우측 메인 콘텐츠의 대시보드 레이아웃을 공유함(아래 "캘린더 사이드바 대시보드 레이아웃" 절 참고).
+  `scheduler.html`은 좌측 대시보드 사이드바(오늘 타임라인/예·복습/투두/다음 수업) + 우측 인터랙티브
+  캘린더(주별·월별)를 한 화면에서 관리하는 완전히 별개의 구현체다(아래 "개인 스케줄러 대시보드" 절 참고).
+  한때 별도의 "Scheduler" nav 링크가 있었으나, "Calendar" 링크를 `scheduler.html`로 바꾸면서 제거됨
+  (nav 항목 하나로 통합).
 - 여행 기록 → `myTrip.html`
 - JS 플레이그라운드(미니게임 3종: 업다운 숫자 맞추기 / 성적 계산기 / 내 가방 보기) → `html/jsPlayground.html`. 각 게임은 `<dialog>`로 열리며 `script/upDown.js`, `script/grade.js`, `script/bag.js`가 각각 담당. 날씨(도시 선택) 기능은 계획 당시엔 플레이그라운드 4번째 섹션으로 구상됐으나 실제로는 `index.html`의 별도 다이얼로그(`#weather-dialog`, `script/weatherAPI.js` + `script/realtimeInfo.js`)로 구현됨.
 - 멤버십 → `signUp.html` ↔ `signUpResult.html`

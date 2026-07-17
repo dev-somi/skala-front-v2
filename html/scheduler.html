@@ -16,11 +16,11 @@
 
     <main class="scheduler-layout">
 
-        <!-- ===== 왼쪽 사이드바 ===== -->
-        <aside class="scheduler-sidebar" aria-label="스케줄러 사이드바">
+        <!-- ===== 왼쪽 사이드바: 하나의 통짜 패널, 내부는 구분선으로만 구획 ===== -->
+        <aside class="scheduler-sidebar brutal-box" aria-label="스케줄러 사이드바">
 
             <!-- [상단 토글] My Class / My Plan -->
-            <div class="scheduler-panel brutal-box">
+            <div class="sidebar-section">
                 <div class="sidebar-tabs" role="tablist" aria-label="오늘 보기 전환">
                     <button type="button" role="tab" id="tab-class" class="btn-pill sidebar-tab"
                             aria-selected="true" aria-controls="panel-class">📖 My Class</button>
@@ -42,7 +42,7 @@
             </div>
 
             <!-- [중간 고정] Daily Todo -->
-            <div class="scheduler-panel brutal-box">
+            <div class="sidebar-section">
                 <h2 class="sidebar-heading">✅ Daily Todo</h2>
                 <form id="todo-form" class="todo-form">
                     <input type="text" id="todo-input" placeholder="오늘 할 일 추가" aria-label="새 할 일 입력" maxlength="80" autocomplete="off">
@@ -52,15 +52,15 @@
             </div>
 
             <!-- [하단 고정] Upcoming Class -->
-            <div class="scheduler-panel brutal-box upcoming-card">
+            <div class="sidebar-section sidebar-section--upcoming">
                 <h2 class="sidebar-heading">⏭️ Upcoming Class</h2>
                 <div id="upcoming-class" class="upcoming-class" aria-live="polite"></div>
             </div>
 
         </aside>
 
-        <!-- ===== 오른쪽 메인: 캘린더 ===== -->
-        <section class="scheduler-calendar" aria-labelledby="calendar-title">
+        <!-- ===== 오른쪽 메인: 헤더+그리드가 한 몸인 캘린더 카드 ===== -->
+        <section class="scheduler-calendar brutal-box" aria-labelledby="calendar-title">
             <div class="calendar-topbar">
                 <div class="calendar-title-group">
                     <h1 id="calendar-title">📅 My Calendar</h1>

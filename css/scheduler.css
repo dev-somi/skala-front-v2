@@ -15,20 +15,34 @@ main.scheduler-layout {
   padding: var(--space-lg) var(--space-md);
   display: grid;
   grid-template-columns: 340px 1fr;
-  align-items: start;
+  align-items: stretch;
+  align-content: start;   /* <main>이 뷰포트 남는 높이만큼 늘어나도, 행 자체는 콘텐츠 높이로 고정 */
   gap: var(--space-lg);
 }
 
+/* 사이드바 전체가 하나의 .brutal-box 패널. 내부 섹션은 구분선으로만 나뉜다. */
 .scheduler-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-/* .brutal-box 가 테두리/그림자/반경을 담당하므로 패널은 여백/배경만 얹는다. */
-.scheduler-panel {
   background: var(--color-white);
   padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-section {
+  padding: var(--space-md) 0;
+}
+
+.sidebar-section:first-child {
+  padding-top: 0;
+}
+
+.sidebar-section + .sidebar-section {
+  border-top: 2px solid var(--color-border);
+}
+
+/* 하단 고정: 내용이 짧아도 항상 사이드바 바닥에 붙는다. */
+.sidebar-section--upcoming {
+  margin-top: auto;
 }
 
 .sidebar-heading {
@@ -214,9 +228,12 @@ main.scheduler-layout {
   opacity: 0.6;
 }
 
-/* ----- Upcoming Class ----- */
-.upcoming-card {
+/* ----- Upcoming Class -----
+   별도 박스 대신, 사이드바 안의 강조 구역(배경+반경만, 테두리/그림자 없음)으로 표현한다. */
+.upcoming-class {
   background: var(--color-accent-pink);
+  border-radius: var(--radius-card);
+  padding: var(--space-sm) var(--space-md);
 }
 
 .upcoming-dday {
@@ -242,8 +259,12 @@ main.scheduler-layout {
   opacity: 0.85;
 }
 
-/* ----- 오른쪽 캘린더 ----- */
-.scheduler-calendar { min-width: 0; } /* 그리드 자식 오버플로 방지 */
+/* ----- 오른쪽 캘린더: 헤더+그리드가 한 몸인 단일 카드 ----- */
+.scheduler-calendar {
+  min-width: 0; /* 그리드 자식 오버플로 방지 */
+  background: var(--color-white);
+  padding: var(--space-md);
+}
 
 .calendar-topbar {
   display: flex;
@@ -251,7 +272,18 @@ main.scheduler-layout {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--space-md);
+  padding-bottom: var(--space-md);
   margin-bottom: var(--space-md);
+  border-bottom: 2px solid var(--color-border);
+}
+
+/* 카드 안에 카드가 겹치지 않도록, 캘린더 카드 내부의 그리드/테이블은 자체 테두리·그림자를 없앤다.
+   (다른 페이지의 .week-grid / #sched_tbl 는 이 스코프 밖이라 영향 없음) */
+.scheduler-calendar .week-grid,
+.scheduler-calendar .scheduler-month-table {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .calendar-title-group h1 { margin: 0; }
