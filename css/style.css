@@ -160,6 +160,8 @@ main.home-main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* 아이콘 PNG 자체에 남은 여백을 잘라내고 카드에 꽉 차 보이게 확대 */
+  transform: scale(1.06);
 }
 
 .carousel-btn {
@@ -611,12 +613,21 @@ mark {
   box-shadow: 0 0 0 var(--color-border);
 }
 
-.playground-card img {
-  display: block;
+.playground-card .playground-icon {
   width: 96px;
   height: 96px;
-  object-fit: contain;
   margin: 0 auto var(--space-sm);
+  overflow: hidden;
+  border-radius: var(--radius-card);
+}
+
+.playground-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 아이콘 PNG 원본의 넓은 투명 여백을 잘라내고 꽉 차 보이게 확대 */
+  transform: scale(1.4);
 }
 
 .playground-card h3 {
@@ -760,6 +771,11 @@ button.portrait-card {
   padding: 0;
   font: inherit;
   cursor: pointer;
+}
+
+/* city_weather.png는 다른 아이콘보다 투명 여백이 넓어 더 크게 확대 */
+#weather-trigger img {
+  transform: scale(1.14);
 }
 
 #weather-dialog select {
