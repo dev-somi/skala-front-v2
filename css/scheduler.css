@@ -267,15 +267,21 @@ main.scheduler-layout {
   border-radius: 0;
 }
 
-/* 스케줄러 주간 그리드는 08~24시(32개 30분 슬롯)를 표시한다 (myClass.html의 .week-grid는 08~18시 그대로 유지) */
+/* 스케줄러 주간 그리드는 08~24시(32개 30분 슬롯) + 일~토 7일을 표시한다
+   (myClass.html의 .week-grid는 08~18시 / 월~토 6일 그대로 유지) */
 .scheduler-calendar .week-grid {
+  grid-template-columns: 56px repeat(7, 1fr);
   grid-template-rows: auto repeat(32, 24px);
 }
 
 /* 점심시간(12~13시) / 저녁시간(18~19시) 띠: 요일 칸 전체 폭, 흰 배경 */
 .week-grid__mealtime {
   grid-row: span 2;
+  margin: 1px;
   background: var(--color-white);
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -6,14 +6,14 @@
 (function () {
     'use strict';
 
-    // 주간 그리드는 기존 .week-grid CSS(08~18시, 20개 30분 슬롯, 월~토)를 재사용한다.
+    // 주간 그리드는 기존 .week-grid CSS를 스코프 오버라이드해 08~24시 / 일~토 7일로 표시한다.
     const GRID_START_HOUR = 8;
     const GRID_END_HOUR = 24;
     const MEALTIMES = [
         { hour: 12, label: '점심시간' },
         { hour: 18, label: '저녁시간' },
     ];
-    const WEEKDAY_LABELS = ['월', '화', '수', '목', '금', '토'];
+    const WEEKDAY_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
     const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
     // 사이드바 타임라인은 요구사항대로 09~18시.
     const TL_START = 9;
@@ -256,8 +256,9 @@
     function renderWeekly() {
         const body = document.getElementById('calendar-body');
         const monday = CalendarUtils.getMondayOfWeek(state.cursor);
+        const sunday = CalendarUtils.addDays(monday, -1);
         const saturday = CalendarUtils.getSaturdayOfWeek(state.cursor);
-        updateRangeLabel(`${monday.getMonth() + 1}.${monday.getDate()} ~ ${saturday.getMonth() + 1}.${saturday.getDate()}`);
+        updateRangeLabel(`${sunday.getMonth() + 1}.${sunday.getDate()} ~ ${saturday.getMonth() + 1}.${saturday.getDate()}`);
 
         const grid = document.createElement('div');
         grid.className = 'week-grid';
@@ -266,7 +267,7 @@
 
         let html = `<div class="week-grid__corner" style="grid-column:1;grid-row:1;" aria-hidden="true"></div>`;
         WEEKDAY_LABELS.forEach((label, i) => {
-            const date = CalendarUtils.addDays(monday, i);
+            const date = CalendarUtils.addDays(sunday, i);
             const iso = CalendarUtils.formatISODate(date);
             const isToday = iso === state.todayISO;
             html += `<button type="button" class="week-grid__day-header week-grid__day-header--btn${isToday ? ' is-today' : ''}"
@@ -280,11 +281,13 @@
         }
         grid.innerHTML = html;
 
-        MEALTIMES.forEach(({ hour, label }) => appendMealBand(grid, hour, label));
-
-        for (let i = 0; i < 6; i++) {
-            const iso = CalendarUtils.formatISODate(CalendarUtils.addDays(monday, i));
+        for (let i = 0; i < 7; i++) {
+            const iso = CalendarUtils.formatISODate(CalendarUtils.addDays(sunday, i));
             const entry = state.classMap[iso];
+            const hasClass = entry && !SchedulerData.isHolidayEntry(entry);
+            if (hasClass) {
+                MEALTIMES.forEach(({ hour, label }) => appendMealBand(grid, i, hour, label));
+            }
             if (entry) appendClassBlock(grid, i, entry);
             (state.eventsMap[iso] || []).forEach((ev) => appendEventBlock(grid, i, ev));
         }
@@ -292,12 +295,12 @@
         body.replaceChildren(grid);
     }
 
-    // 12~13시(점심시간), 18~19시(저녁시간)를 요일 전체 폭에 흰 배경 띠로 표시
-    function appendMealBand(grid, startHour, label) {
+    // 12~13시(점심시간), 18~19시(저녁시간)를 수업이 있는 날의 해당 요일 칸에만 흰 배경 + 검은 테두리 띠로 표시
+    function appendMealBand(grid, dayIndex, startHour, label) {
         const rowStart = (startHour - GRID_START_HOUR) * 2 + 2;
         const band = document.createElement('div');
         band.className = 'week-grid__mealtime';
-        band.style.gridColumn = '2 / -1';
+        band.style.gridColumn = String(dayIndex + 2);
         band.style.gridRow = `${rowStart} / span 2`;
         band.setAttribute('aria-hidden', 'true');
         band.textContent = label;
