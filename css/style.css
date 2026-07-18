@@ -659,7 +659,11 @@ body.trip-winter-bg {
   z-index: 0;
 }
 
-body.trip-winter-bg > header,
+body.trip-winter-bg > header {
+  position: relative;
+  z-index: 2;
+}
+
 body.trip-winter-bg > main,
 body.trip-winter-bg > #footer-placeholder {
   position: relative;
@@ -672,8 +676,11 @@ main.trip-book {
   max-width: 1200px;
   aspect-ratio: 16 / 9;
   overflow-y: auto;
-  margin: var(--space-xl) auto;
-  padding: var(--space-xl) var(--space-lg);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  align-items: stretch;
+  gap: var(--space-lg);
   background: var(--color-white);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
