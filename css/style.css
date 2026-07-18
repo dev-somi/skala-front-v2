@@ -365,14 +365,6 @@ main.home-main {
   box-shadow: var(--shadow-hard);
 }
 
-#favorites ul, #goals ol {
-  background: white;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-hard);
-  padding: var(--space-md) var(--space-lg);
-}
-
 #keywords dl {
   display: grid;
   gap: var(--space-md);
