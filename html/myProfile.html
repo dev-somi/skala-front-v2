@@ -13,59 +13,87 @@
         <div id="nav-placeholder"></div>
     </header>
 
-    <main>
-        <!-- 프로필 상단 타이틀 및 대표 이미지 영역 -->
-        <section id="intro">
-            <h1>About Me</h1>
-            <p>미지의 세계를 탐험하며 달콤한 일상을 기록하는 박소미입니다.</p>
-            
-            <!-- 프로필 이미지 마크업 추가 -->
-            <figure>
-                <img src="about.png" alt="인사하고 있는 박소미의 캐릭터 일러스트" width="150">
-                <figcaption>소미의 디지털 아바타</figcaption>
-            </figure>
-        </section>
+    <main class="profile-layout">
 
-        <hr>
+        <!-- 1열: 내 정보 카드 -->
+        <div class="profile-col profile-col--info">
+            <section id="intro" class="profile-card brutal-box profile-info-card">
+                <!-- 프로필 이미지 마크업 추가 -->
+                <figure>
+                    <img src="about.png" alt="인사하고 있는 박소미의 캐릭터 일러스트" width="150">
+                    <figcaption>소미의 디지털 아바타</figcaption>
+                </figure>
+                <h1>About Me</h1>
+                <p>미지의 세계를 탐험하며 달콤한 일상을 기록하는 박소미입니다.</p>
 
-        <!-- 필수 사용 1: <ul> 내가 좋아하는 음식 (순서 없는 목록) -->
-        <section id="favorites">
-            <h2>🍰 내가 좋아하는 음식</h2>
-            <ul>
-                <li>갓 구워낸 겉바속촉 피낭시에 🧁</li>
-                <li>진한 아이스 아메리카노 ☕</li>
-                <li>스트레스를 날려주는 매콤한 떡볶이 🌶️</li>
-            </ul>
-        </section>
+                <ul class="profile-tags" aria-label="박소미를 나타내는 태그">
+                    <li class="tag-chip">TODO</li>
+                    <li class="tag-chip">TODO</li>
+                    <li class="tag-chip">TODO</li>
+                </ul>
+            </section>
+        </div>
 
-        <hr>
+        <!-- 2열: Bio / Personality / Frustrations (뼈대만) -->
+        <div class="profile-col profile-col--persona">
+            <section id="bio" class="profile-card brutal-box">
+                <h2>Bio</h2>
+                <p class="placeholder-text">TODO: 소개 문단을 작성하세요.</p>
+            </section>
 
-        <!-- 필수 사용 2: <ol> 올해 할 일 (순서 있는 목록) -->
-        <section id="goals">
-            <h2>🗓️ <time datetime="2026">올해</time> 할 일</h2>
-            <ol>
-                <li>태권도 꾸준히 수련하여 체력과 벨트 승급하기 🥋</li>
-                <li>ADsP(데이터 분석 준전문가) 자격증 멋지게 취득하기 📊</li>
-                <li>자바스크립트 마스터해서 나만의 힙한 미니게임 완성하기 🎮</li>
-            </ol>
-        </section>
+            <section id="personality" class="profile-card brutal-box">
+                <h2>Personality</h2>
+                <ul class="placeholder-list">
+                    <li>TODO</li>
+                </ul>
+            </section>
 
-        <hr>
+            <section id="frustrations" class="profile-card brutal-box">
+                <h2>Frustrations</h2>
+                <ul class="placeholder-list">
+                    <li>TODO</li>
+                </ul>
+            </section>
+        </div>
 
-        <!-- 필수 사용 3: <dl> 나를 설명하는 단어들 (정의 목록) -->
-        <section id="keywords">
-            <h2>✨ 나를 설명하는 단어들</h2>
-            <dl>
-                <dt>🏃‍♀️ 끈기</dt>
-                <dd>도전하기로 마음먹은 일은 중간에 포기하지 않고 끝까지 밀고 나갑니다.</dd>
-                
-                <dt>🧁 섬세함</dt>
-                <dd>밀가루 한 그램의 차이로 결과가 달라지는 베이킹처럼, 코드의 작은 디테일도 놓치지 않습니다.</dd>
-                
-                <dt>💻 성장</dt>
-                <dd>매일 새로운 것을 배우고 어제보다 더 발전된 코드를 짤 때 가장 큰 희열을 느낍니다.</dd>
-            </dl>
-        </section>
+        <!-- 3열: 기존 콘텐츠 이동 -->
+        <div class="profile-col profile-col--details">
+            <!-- 필수 사용 1: <ul> 내가 좋아하는 음식 (순서 없는 목록) -->
+            <section id="favorites">
+                <h2>🍰 내가 좋아하는 음식</h2>
+                <ul>
+                    <li>갓 구워낸 겉바속촉 피낭시에 🧁</li>
+                    <li>진한 아이스 아메리카노 ☕</li>
+                    <li>스트레스를 날려주는 매콤한 떡볶이 🌶️</li>
+                </ul>
+            </section>
+
+            <!-- 필수 사용 2: <ol> 올해 할 일 (순서 있는 목록) -->
+            <section id="goals">
+                <h2>🗓️ <time datetime="2026">올해</time> 할 일</h2>
+                <ol>
+                    <li>태권도 꾸준히 수련하여 체력과 벨트 승급하기 🥋</li>
+                    <li>ADsP(데이터 분석 준전문가) 자격증 멋지게 취득하기 📊</li>
+                    <li>자바스크립트 마스터해서 나만의 힙한 미니게임 완성하기 🎮</li>
+                </ol>
+            </section>
+
+            <!-- 필수 사용 3: <dl> 나를 설명하는 단어들 (정의 목록) -->
+            <section id="keywords">
+                <h2>✨ 나를 설명하는 단어들</h2>
+                <dl>
+                    <dt>🏃‍♀️ 끈기</dt>
+                    <dd>도전하기로 마음먹은 일은 중간에 포기하지 않고 끝까지 밀고 나갑니다.</dd>
+
+                    <dt>🧁 섬세함</dt>
+                    <dd>밀가루 한 그램의 차이로 결과가 달라지는 베이킹처럼, 코드의 작은 디테일도 놓치지 않습니다.</dd>
+
+                    <dt>💻 성장</dt>
+                    <dd>매일 새로운 것을 배우고 어제보다 더 발전된 코드를 짤 때 가장 큰 희열을 느낍니다.</dd>
+                </dl>
+            </section>
+        </div>
+
     </main>
 
     <div id="footer-placeholder"></div>
