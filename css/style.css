@@ -669,7 +669,7 @@ body.trip-winter-bg > #footer-placeholder {
 /* 눈밭 위에 펼쳐진 "책 한 권"처럼 보이는 단일 컨테이너 */
 main.trip-book {
   box-sizing: border-box;
-  max-width: 1800px;
+  max-width: 1200px;
   aspect-ratio: 16 / 9;
   overflow-y: auto;
   margin: var(--space-xl) auto;
@@ -1399,9 +1399,16 @@ mark {
 
 .class-table {
   width: 100%;
-  min-width: 640px;
+  min-width: 760px;
+  table-layout: fixed;
   border-collapse: collapse;
   background: white;
+}
+
+/* 시간 열은 고정 폭, 나머지 일~토 7개 열은 table-layout: fixed 덕분에
+   남은 공간을 정확히 1/7씩 균등하게 나눠 갖는다. */
+.class-table__col-time {
+  width: 68px;
 }
 
 .class-table th,
@@ -1416,12 +1423,14 @@ mark {
 .class-table thead th {
   background: var(--color-accent-blue);
   font-family: var(--font-heading);
+  padding: var(--space-sm) 4px;
 }
 
 .class-table__date {
   display: block;
   font-size: 0.7rem;
   opacity: 0.8;
+  font-weight: 400;
 }
 
 .class-table tbody th {
@@ -1433,6 +1442,11 @@ mark {
 
 .class-table__cell {
   background: var(--color-accent-mint);
+  transition: filter 0.15s ease;
+}
+
+.class-table__cell:hover {
+  filter: brightness(0.97);
 }
 
 .class-table__cell--holiday {
@@ -1450,13 +1464,23 @@ mark {
   );
 }
 
+.class-table__cell--lunch {
+  background: var(--color-bg-cream);
+  color: #8a7a63;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+}
+
 .class-table__time {
   display: block;
   font-weight: 700;
+  font-size: 0.75rem;
+  opacity: 0.85;
 }
 
 .class-table__content {
   display: block;
+  line-height: 1.3;
 }
 
 .class-table__teacher {
