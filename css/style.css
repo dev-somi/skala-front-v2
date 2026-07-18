@@ -676,6 +676,7 @@ main.trip-book {
   flex: 0 0 auto;
   max-width: 1200px;
   margin: var(--space-xl) auto;
+  padding: 0;
   display: grid;
   background: var(--color-white);
   border: var(--border-width) solid var(--color-border);
@@ -686,7 +687,7 @@ main.trip-book {
 @media (max-width: 700px) {
   main.trip-book {
     margin: var(--space-lg) var(--space-sm);
-    padding: var(--space-lg) var(--space-sm);
+    padding: 0;
   }
 }
 
@@ -881,6 +882,11 @@ main.trip-book {
 .mosaic-slot--photo {
   padding: 0;
   overflow: hidden;
+  background: none;
+  border: none;
+  border-radius: 0;
+  border-top-left-radius: var(--radius-card);
+  box-shadow: none;
 }
 
 .mosaic-slot--photo img {
