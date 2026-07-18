@@ -425,7 +425,6 @@ main.profile-layout {
 
 .profile-info-card {
   text-align: center;
-  box-shadow: none;
 }
 
 /* 사진 뒤에 컬러 원형 배경을 깔아 레퍼런스의 사진 프레임 느낌을 재현 */
