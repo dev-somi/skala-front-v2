@@ -16,7 +16,7 @@ const FALLBACK_NAV_HTML = `
                     <li><a href="myClass.html">📖 나의 강의 일정</a></li>
                 </ul>
             </li>
-            <li class="nav-item"><a href="myTrip.html">Travel</a></li>
+            <li class="nav-item"><a href="myTrip.html">Trip</a></li>
             <li class="nav-item"><a href="jsPlayground.html">Playground</a></li>
         </ul>
         <div class="nav-actions">

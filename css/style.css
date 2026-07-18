@@ -676,9 +676,7 @@ main.trip-book {
   flex: 0 0 auto;
   max-width: 1200px;
   margin: var(--space-xl) auto;
-  padding: var(--space-lg) var(--space-md);
   display: grid;
-  gap: var(--space-lg);
   background: var(--color-white);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
@@ -820,7 +818,6 @@ main.trip-book {
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* 좌우 기둥 사이의 여백 (잡지 여백 느낌) */
-  gap: var(--space-xl, 32px);
 }
 
 .trip-mosaic__col--a,
