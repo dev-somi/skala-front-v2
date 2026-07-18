@@ -179,9 +179,9 @@ main.home-main {
 }
 
 .portrait-grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: start;
   justify-content: center;
   gap: var(--space-md);
   padding: var(--space-sm) 0 var(--space-lg);
@@ -191,7 +191,6 @@ main.home-main {
 
 .portrait-grid > li {
   position: relative;
-  flex: 0 0 clamp(140px, 22vw, 220px);
 }
 
 /* hover/focus 시 카드 아래에 뜨는 안내 말풍선. 카드(.portrait-card)는 overflow:hidden이라
@@ -262,7 +261,9 @@ main.home-main {
   }
 }
 
-/* 지그재그 배치: 짝수 번째 카드를 아래로 내려서 위아래로 어긋나게 배치 */
+/* 지그재그 배치: 한 줄에 6개가 모두 들어갈 때만 짝수 번째 카드를 아래로 내려
+   위아래로 어긋나게 배치한다. 3개/2개/1개씩 줄바꿈되는 좁은 화면에서는
+   아래 미디어쿼리에서 다시 0으로 되돌려 정렬을 맞춘다 */
 .portrait-grid > li:nth-child(even) {
   margin-top: clamp(20px, 5vw, 40px);
 }
@@ -360,11 +361,33 @@ main.home-main {
   transform: none;
 }
 
-@media (max-width: 700px) {
-  .portrait-grid > li {
-    flex-basis: clamp(120px, 42vw, 180px);
+/* 한 줄에 6개 → 3개씩 2줄 */
+@media (max-width: 900px) {
+  .portrait-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .portrait-grid > li:nth-child(even),
+  .portrait-grid > li:nth-child(odd) {
+    margin-top: 0;
+  }
+}
+
+/* 3개씩 2줄 → 2개씩 3줄 */
+@media (max-width: 600px) {
+  .portrait-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 2개씩 3줄 → 1개씩 6줄 */
+@media (max-width: 420px) {
+  .portrait-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
   .portrait-grid > li[data-tooltip]::after {
     font-size: 0.8rem;
     padding: var(--space-sm) var(--space-md);
