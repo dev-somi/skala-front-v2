@@ -23,13 +23,10 @@
             <h1 id="trip-title">❄️ My Hokkaido Days</h1>
             <p>끝없이 하얀 눈이 내리던 곳, 홋카이도에서 보낸 1년 동안의 소중한 순간들입니다.</p>
             
-            <!-- 필수 사용 1: <audio>와 <source> -->
             <div class="audio-player">
-                <p>🎵 겨울 감성 배경음악 (Snowing Town):</p>
-                <audio controls>
-                    <source src="media/winter_bgm.mp3" type="audio/mpeg">
-                    브라우저가 오디오 태그를 지원하지 않습니다.
-                </audio>
+                <p>🎵 겨울 감성 배경음악:</p>
+                <button id="bgm-toggle" type="button" class="btn-pill" aria-pressed="false">▶️ 재생</button>
+                <div id="bgm-player" hidden aria-hidden="true"></div>
             </div>
         </section>
 
@@ -87,6 +84,7 @@
     <!-- 3. 푸터 영역 -->
     <div id="footer-placeholder"></div>
 
+    <script src="../script/bgmPlayer.js"></script>
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>
 </body>
