@@ -817,7 +817,7 @@ main.trip-book {
 /* 2열 모자이크 프레임: 정확히 1:1 — 1열=사진/오디오/비디오, 2열=추억 카드 */
 .trip-mosaic {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   /* 좌우 기둥 사이의 여백 (잡지 여백 느낌) */
 }
 
@@ -827,10 +827,15 @@ main.trip-book {
   gap: var(--space-lg);
 }
 
+.trip-mosaic__col--a {
+  gap: var(--space-sm);
+  text-align: center;
+}
+
 .trip-mosaic__col--b {
   border-left: 2px dashed var(--color-border);
   opacity: 1;
-  padding-left: var(--space-lg);
+  padding: var(--space-lg);
 }
 
 @media (max-width: 700px) {
@@ -873,6 +878,7 @@ main.trip-book {
 
 .mosaic-slot--video {
   align-items: center;
+  padding: var(--space-sm);
 }
 
 .mosaic-slot--video video {
