@@ -362,7 +362,6 @@ main.home-main {
 #intro figure img {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-hard);
 }
 
 #keywords dl {
