@@ -689,7 +689,7 @@ main.trip-book {
   /* 2. 가로폭 대신 세로 높이를 지정합니다 */
   width: 0;
   height: auto; /* align-self: stretch가 실제 높이를 채워줍니다 */
-  align-self: stretch; /* .trip-mosaic의 align-items: start를 이 아이템만 무시하고 옆 열 높이만큼 늘어남 */
+  align-self: stretch;
 
   /* 3. 좌우 여백을 줘서 주변 콘텐츠와 간격을 벌립니다 */
   margin: 0 var(--space-xl);
@@ -834,7 +834,13 @@ main.trip-book {
   grid-template-columns: 1fr auto 1fr;
   /* 좌우 기둥 사이의 여백 (잡지 여백 느낌) */
   gap: var(--space-xl, 32px);
-  align-items: start; /* 내용 길이에 따라 늘어지지 않고 자연스럽게 상단 정렬 */
+  align-items: stretch; /* 두 열의 높이를 맞춰, 더 짧은 열도 긴 열만큼 늘어나게 함 */
+}
+
+.trip-mosaic__col--a,
+.trip-mosaic__col--b {
+  display: grid;
+  height: 100%;
 }
 
 .trip-mosaic__col--a {
@@ -1153,6 +1159,94 @@ mark {
   color: #a33;
   font-weight: bold;
   text-align: center;
+}
+
+/* ===== 주간 시간표 테이블 (myClass.html, <table> 기반) ===== */
+.class-table-wrap {
+  overflow-x: auto;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard);
+}
+
+.class-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: white;
+}
+
+.class-table th,
+.class-table td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) 6px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.85rem;
+}
+
+.class-table thead th {
+  background: var(--color-accent-blue);
+  font-family: var(--font-heading);
+}
+
+.class-table__date {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.class-table tbody th {
+  background: var(--color-bg-cream);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.class-table__cell {
+  background: var(--color-accent-mint);
+}
+
+.class-table__cell--holiday {
+  background: var(--color-accent-yellow);
+  font-weight: 700;
+}
+
+.class-table__cell--unspecified {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-accent-mint),
+    var(--color-accent-mint) 8px,
+    #fff 8px,
+    #fff 16px
+  );
+}
+
+.class-table__time {
+  display: block;
+  font-weight: 700;
+}
+
+.class-table__content {
+  display: block;
+}
+
+.class-table__teacher {
+  display: block;
+  opacity: 0.75;
+  font-size: 0.75rem;
+}
+
+.class-table__hint {
+  display: block;
+  font-size: 0.65rem;
+  color: #a33;
+}
+
+.class-table__error {
+  padding: var(--space-lg);
+  color: #a33;
+  font-weight: bold;
 }
 
 /* ===== 월별 달력 (myMonthlyClass.html) ===== */

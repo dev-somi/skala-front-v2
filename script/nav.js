@@ -9,7 +9,13 @@ const FALLBACK_NAV_HTML = `
         <ul class="nav-links">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="myProfile.html">Profile</a></li>
-            <li class="nav-item"><a href="scheduler.html">Calendar</a></li>
+            <li class="nav-item nav-item--has-dropdown">
+                <a href="scheduler.html">Calendar</a>
+                <ul class="nav-dropdown">
+                    <li><a href="scheduler.html">📅 Scheduler</a></li>
+                    <li><a href="myClass.html">📖 나의 강의 일정</a></li>
+                </ul>
+            </li>
             <li class="nav-item"><a href="myTrip.html">Travel</a></li>
             <li class="nav-item"><a href="jsPlayground.html">Playground</a></li>
         </ul>
@@ -50,9 +56,11 @@ function highlightActiveLink(placeholder) {
     }
 
     placeholder.querySelectorAll('.nav-item').forEach((item) => {
-        const link = item.querySelector('a');
+        const matches = Array.from(item.querySelectorAll('a')).some(
+            (link) => link.getAttribute('href') === currentPage
+        );
 
-        if (link && link.getAttribute('href') === currentPage) {
+        if (matches) {
             item.classList.add('active');
         }
     });
