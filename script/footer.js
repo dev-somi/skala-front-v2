@@ -1,8 +1,6 @@
-// 1. 푸터 조각 파일 경로
 const FOOTER_FRAGMENT_PATH = 'partials/footer.html';
 
-// 2. fetch 실패 시(예: file://로 직접 열었을 때의 CORS 문제) 사용할 대체 마크업
-//    partials/footer.html과 동일한 내용을 하드코딩해 안전망으로 유지합니다.
+// file://로 직접 열면 fetch가 CORS에 막히므로 partials/footer.html과 동일한 내용을 하드코딩해 안전망으로 둔다
 const FALLBACK_FOOTER_HTML = `
     <footer>
 
@@ -38,13 +36,10 @@ async function loadFooter() {
         placeholder.innerHTML = await response.text();
     } catch (error) {
         console.error("푸터를 불러오는 중 오류가 발생했습니다:", error);
-
-        // [예외 처리] 로컬 파일(더블클릭)로 열었을 때를 대비한 하드코딩 백업 마크업
         placeholder.innerHTML = FALLBACK_FOOTER_HTML;
     }
 }
 
-// 4. 페이지가 로드되면 최초 실행
 window.addEventListener('DOMContentLoaded', () => {
     loadFooter();
 });

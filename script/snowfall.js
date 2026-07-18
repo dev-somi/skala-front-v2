@@ -1,4 +1,3 @@
-// 홋카이도 여행 페이지(myTrip.html) 전용 눈 내리는 배경 연출
 (function () {
   const canvas = document.getElementById("snowfall-canvas");
   if (!canvas) return;
@@ -22,7 +21,6 @@
       radius: Math.random() * 3 + 1.5,
       fallSpeed: Math.random() * 1 + 0.5,
       drift: Math.random() * 1 - 0.5,
-      // 좌우로 흔들리는 바람 효과를 위한 위상(θ)
       swayAngle: Math.random() * Math.PI * 2,
       swaySpeed: Math.random() * 0.02 + 0.01,
     }));

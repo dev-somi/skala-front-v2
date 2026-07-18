@@ -1,5 +1,3 @@
-// 실시간 날씨 - 데이터 담당 모듈. fetch/매핑 함수만 export하고 DOM은 건드리지 않는다.
-
 export const CITY_LIST = [
     { name: "서울특별시", lat: 37.5665, lon: 126.9780 },
     { name: "부산광역시", lat: 35.1796, lon: 129.0756 },
@@ -20,7 +18,6 @@ export const CITY_LIST = [
     { name: "경상남도(창원시)", lat: 35.2281, lon: 128.6811 }
 ];
 
-// 위/경도로 Open-Meteo 현재 날씨(기온/습도/날씨코드/낮밤/풍속)를 가져온다.
 export async function fetchWeatherData(lat, lon) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,is_day,wind_speed_10m`;
 
@@ -33,7 +30,6 @@ export async function fetchWeatherData(lat, lon) {
     return data.current;
 }
 
-// Open-Meteo의 weather_code를 사람이 읽을 텍스트/이모지로 변환한다.
 export function getWeatherStatus(code) {
     const codeMap = {
         0: { text: "맑음", emoji: "☀️" },

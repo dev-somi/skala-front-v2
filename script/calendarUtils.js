@@ -1,10 +1,7 @@
-// 캘린더(주별/월별) 페이지가 공통으로 쓰는 순수 날짜 계산 헬퍼 모음.
-// 번들러가 없는 프로젝트라 ES 모듈(import) 대신 전역 네임스페이스로 노출한다.
 window.CalendarUtils = (() => {
     const DAY_MS = 24 * 60 * 60 * 1000;
 
-    // "YYYY-MM-DD" -> Date. new Date(str)는 UTC 자정으로 해석되어
-    // 음수 UTC 오프셋 지역에서 하루가 밀리므로 로컬 타임존 기준으로 직접 생성한다.
+    // new Date(str)는 UTC 자정으로 해석되어 음수 UTC 오프셋 지역에서 하루가 밀리므로 로컬 타임존 기준으로 직접 생성한다
     function parseISODate(iso) {
         const [y, m, d] = iso.split('-').map(Number);
         return new Date(y, m - 1, d);
@@ -21,10 +18,9 @@ window.CalendarUtils = (() => {
         return new Date(date.getTime() + days * DAY_MS);
     }
 
-    // 주어진 날짜가 속한 주의 월요일 (schedule.json에 일요일 데이터가 없으므로
-    // 월~토 6일 창을 기준으로 주별 뷰를 구성한다)
+    // schedule.json에 일요일 데이터가 없으므로 월~토 6일 창을 기준으로 주별 뷰를 구성한다
     function getMondayOfWeek(date) {
-        const day = date.getDay(); // 0=일 ~ 6=토
+        const day = date.getDay();
         const diffToMonday = day === 0 ? -6 : 1 - day;
         const monday = addDays(date, diffToMonday);
         monday.setHours(0, 0, 0, 0);
@@ -39,14 +35,11 @@ window.CalendarUtils = (() => {
         return new Date(year, monthIndex0 + 1, 0).getDate();
     }
 
-    // 해당 월 1일의 요일 (0=일 ~ 6=토)
     function getFirstWeekdayOfMonth(year, monthIndex0) {
         return new Date(year, monthIndex0, 1).getDay();
     }
 
-    // 월별 달력 그리드(일~토 7열)를 주 단위 배열로 반환.
-    // 각 칸은 해당 월 날짜면 {date, iso}, 앞/뒤 여백 칸이면 null.
-    // 31일이 토요일에 시작하는 달처럼 6주가 필요한 경우 자동으로 6행을 만든다.
+    // 각 칸은 해당 월 날짜면 {date, iso}, 앞/뒤 여백 칸이면 null. 필요한 만큼 6주까지 자동으로 채운다
     function buildMonthMatrix(year, monthIndex0) {
         const firstWeekday = getFirstWeekdayOfMonth(year, monthIndex0);
         const daysInMonth = getDaysInMonth(year, monthIndex0);
@@ -70,7 +63,7 @@ window.CalendarUtils = (() => {
         return weeks;
     }
 
-    // schedule.json은 "7"~"12" 월 데이터만 있으므로 이 범위로 고정한다.
+    // schedule.json은 "7"~"12" 월 데이터만 있으므로 이 범위로 고정한다
     const MIN_MONTH = 7;
     const MAX_MONTH = 12;
 

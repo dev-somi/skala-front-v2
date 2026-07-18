@@ -1,14 +1,8 @@
-// html/myClass.html 전용: URL의 ?date=YYYY-MM-DD를 기준으로 해당 주(월~토)의
-// 강의 시간표를 <table>로 그린다. schedule.json에는 일요일 데이터가 없어
-// 일요일 열은 항상 빈 칸으로 표시되지만, 표기는 일~토 7개로 맞춘다.
-// 2시간 이상 이어지는 강의는 rowspan으로 셀을 합치되, 12~13시는 점심시간으로
-// 항상 분리해 표시한다(그 시간을 가로지르는 강의는 앞/뒤로 나뉘어 렌더링됨).
-
 const GRID_START_HOUR = 9;
 const GRID_END_HOUR = 18;
 const LUNCH_HOUR = 12;
 const WEEKDAY_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
-// WEEKDAY_LABELS[i]는 그 주 월요일 기준 (i - 1)일 오프셋 (일요일은 -1, 토요일은 5)
+// WEEKDAY_LABELS[i]는 그 주 월요일 기준 (i - 1)일 오프셋
 const SUNDAY_OFFSET = -1;
 
 function getDateFromQuery() {
@@ -58,7 +52,6 @@ function updateWeekHeader(monday, saturday) {
     document.getElementById('week-table').setAttribute('aria-label', `${iso} 주간 수업 시간표`);
 }
 
-// thead: 시간 열 + 일~토 요일/날짜 열을 채운다.
 function buildTableHead(monday) {
     const headerRow = document.getElementById('week-table-header');
     let html = `<th scope="col">시간</th>`;
@@ -71,8 +64,7 @@ function buildTableHead(monday) {
     headerRow.innerHTML = html;
 }
 
-// schedule.json은 월 단위 키로 저장되므로 일요일~토요일이 걸치는 월을 모두 확인한다.
-// 반환값: 인덱스(0=일 ~ 6=토)별 해당 날짜의 강의 항목(없으면 null).
+// 일요일~토요일이 걸치는 월을 모두 확인한다. 반환값: 인덱스(0=일~6=토)별 해당 날짜의 강의 항목(없으면 null)
 function collectEntriesByDay(allSchedules, monday) {
     const dayDates = WEEKDAY_LABELS.map((_, i) => CalendarUtils.addDays(monday, SUNDAY_OFFSET + i));
     const monthKeys = new Set(dayDates.map((d) => String(d.getMonth() + 1)));
@@ -87,9 +79,7 @@ function collectEntriesByDay(allSchedules, monday) {
     return dayDates.map((date) => entriesByDate[CalendarUtils.formatISODate(date)] || null);
 }
 
-// 강의 항목 하나를 렌더링 가능한 시간 구간(segment)으로 변환한다.
-// 휴일은 하루 전체(GRID_START_HOUR~GRID_END_HOUR)를 그대로 한 구간으로 유지하지만,
-// 일반 강의는 12~13시(점심시간)를 가로지르면 앞/뒤 두 구간으로 쪼갠다.
+// 휴일은 하루 전체를 한 구간으로, 일반 강의는 점심시간을 가로지르면 앞/뒤 두 구간으로 쪼갠다
 function buildSegments(entry) {
     if (!entry) return [];
 
@@ -138,15 +128,12 @@ function renderSegmentCell(segment) {
     return td;
 }
 
-// tbody: 시간(09~17시) 행마다 요일 열의 <td>를 채우고, 2시간 이상 이어지는 강의는
-// 시작 시간 행에서만 rowspan으로 셀을 합치고 이후 행은 건너뛴다.
-// 12시 행은 점심시간으로 고정되어 강의 rowspan이 지나가지 않는 한 전용 셀로 표시된다.
+// 2시간 이상 이어지는 강의는 시작 시간 행에서만 rowspan으로 셀을 합치고 이후 행은 건너뛴다
 function renderTableBody(entriesByDay) {
     const tbody = document.getElementById('week-table-body');
     tbody.innerHTML = '';
 
     const segmentsByDay = entriesByDay.map(buildSegments);
-    // 요일별 다음에 렌더링할 구간의 인덱스, 그리고 이전 rowspan에 걸려 건너뛰어야 할 남은 행 수
     const nextSegmentIndex = new Array(entriesByDay.length).fill(0);
     const skipRemaining = new Array(entriesByDay.length).fill(0);
 

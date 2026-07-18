@@ -1,6 +1,3 @@
-// 성적 계산기 과제 - 3과목 점수를 입력받아 평균/합격 여부/등급을 계산한다.
-// 원래 요구사항은 prompt()로 연속 입력을 받지만, 이 페이지에서는 다이얼로그 폼의
-// 입력 필드 3개를 subjects 배열과 같은 순서로 읽어 total에 합산하는 방식으로 대체한다.
 (function () {
     var subjects = ["HTML", "CSS", "JavaScript"];
     var inputIds = ["grade-input-html", "grade-input-css", "grade-input-js"];

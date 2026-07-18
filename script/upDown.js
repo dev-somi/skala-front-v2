@@ -1,6 +1,3 @@
-// 7. JavaScript 기초 과제 - Up-Down 숫자 맞추기
-// 원래 요구사항은 prompt()/alert()로 입출력하지만, 이 페이지에서는
-// 같은 게임 로직(난수 생성, 시도 횟수 카운트)을 다이얼로그 UI로 대체해 보여준다.
 (function () {
     var computerNum;
     var attempts;

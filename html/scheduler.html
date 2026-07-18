@@ -16,24 +16,20 @@
 
     <main class="scheduler-layout">
 
-        <!-- ===== 왼쪽 사이드바: 하나의 통짜 패널, 내부는 구분선으로만 구획 ===== -->
         <aside class="scheduler-sidebar brutal-box" aria-label="스케줄러 사이드바">
 
-            <!-- My Class: 오늘의 타임라인 -->
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">📖 My Class</h2>
                 <p class="sidebar-today-label" id="class-today-label"></p>
                 <div id="today-timeline" class="today-timeline"></div>
             </div>
 
-            <!-- My Plan: 오늘의 개인 일정 -->
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">📝 My Plan</h2>
                 <p class="sidebar-today-label" id="plan-today-label"></p>
                 <div id="plan-editor" class="plan-editor"></div>
             </div>
 
-            <!-- [중간 고정] Daily Todo -->
             <div class="sidebar-section">
                 <h2 class="sidebar-heading">✅ Daily Todo</h2>
                 <form id="todo-form" class="todo-form">
@@ -43,7 +39,6 @@
                 <ul id="todo-list" class="todo-list" aria-label="오늘의 할 일 목록"></ul>
             </div>
 
-            <!-- [하단 고정] Upcoming Class -->
             <div class="sidebar-section sidebar-section--upcoming">
                 <h2 class="sidebar-heading">⏭️ Upcoming Class</h2>
                 <div id="upcoming-class" class="upcoming-class" aria-live="polite"></div>
@@ -51,7 +46,6 @@
 
         </aside>
 
-        <!-- ===== 오른쪽 메인: 헤더+그리드가 한 몸인 캘린더 카드 ===== -->
         <section class="scheduler-calendar brutal-box" aria-labelledby="calendar-title">
             <div class="calendar-topbar">
                 <div class="calendar-title-group">
@@ -81,7 +75,6 @@
 
     </main>
 
-    <!-- 개인 일정 추가/관리 다이얼로그 -->
     <dialog id="event-dialog" aria-labelledby="event-dialog-title">
         <button type="button" class="dialog-close" aria-label="닫기">&times;</button>
         <h2 id="event-dialog-title">📌 개인 일정</h2>

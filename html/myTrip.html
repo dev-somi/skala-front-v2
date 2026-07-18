@@ -3,38 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO: 교환학생 감성을 담은 타이틀과 설명 -->
     <title>Winter Wonderland - Som's Hokkaido Days</title>
     <meta name="description" content="눈의 나라 홋카이도에서 보낸 1년간의 마법 같은 교환학생 기록이자 따뜻한 겨울 조각들을 담은 미디어 갤러리입니다.">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="trip-winter-bg">
 
-    <!-- 동적 눈 내리는 배경 (Canvas) -->
     <canvas id="snowfall-canvas" aria-hidden="true"></canvas>
 
-    <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
     <header>
         <div id="nav-placeholder"></div>
     </header>
 
-    <!-- 2. 메인 콘텐츠 영역: 눈밭 위에 펼쳐진 책 한 권 컨셉의 단일 컨테이너 -->
     <main class="trip-book">
 
-        <!-- 타이틀 섹션 -->
         <section id="trip-intro" aria-labelledby="trip-title">
         </section>
 
-
-        <!-- 2열 모자이크 레이아웃: 1열(3행)=추억 카드 3선, 2열(2행)=오디오+비디오 -->
         <section id="trip-mosaic-section" aria-label="홋카이도 추억 모자이크">
 
             <div class="trip-mosaic">
 
-                <!-- 1열: 세로 3행 - 추억 카드 3선 -->
                 <div class="trip-mosaic__col trip-mosaic__col--a">
 
-                    <!-- 2열 0행: 대표 사진 -->
                     <div class="mosaic-slot mosaic-slot--photo">
                         <img src="../media/hokkaido.jpg" alt="눈 내리는 홋카이도의 겨울 풍경">
                         <p class="mosaic-slot--photo__caption">
@@ -43,7 +34,6 @@
                         </p>
                     </div>
 
-                    <!-- 2열 1행: 배경음악 플레이어 -->
                     <div class="mosaic-slot--audio">
                         <div class="audio-player" aria-label="배경음악 플레이어">
                             <img class="audio-player__cover" src="../media/bgm-cover.jpg" alt="なごり雪 앨범 아트">
@@ -56,10 +46,8 @@
                         </div>
                     </div>
 
-                    <!-- 2열 2행: 비디오 -->
                     <div class="mosaic-slot--video">
                         <h2 id="video-title">🎥 홋카이도 모먼트</h2>
-                        <!-- 필수 사용 3: <video>와 <source> -->
                         <div class="video-container">
                             <video controls poster="../media/winter_poster.jpg">
                                 <source src="../media/winter_vlog.mp4" type="video/mp4">
@@ -70,13 +58,9 @@
 
                 </div>
 
-                <!-- 2열: 세로 2행 - 오디오(1행) + 비디오(2행) -->
                 <div class="trip-mosaic__col trip-mosaic__col--b">
 
-
-                    <!-- 카드 1: 비에이 (제야의 종) -->
                     <article class="trip-card">
-                        <!-- 필수 사용 2: <img> -->
                         <img src="../media/biei.jpg" alt="눈 쌓인 절 마당에서 한 사람이 자정에 제야의 종을 치기 위해 커다란 종 앞에 서 있는 모습">
                         <div class="trip-card__body">
                             <span class="trip-card__tag">🔔 제야의 종</span>
@@ -86,7 +70,6 @@
                         </div>
                     </article>
 
-                    <!-- 카드 2: 하코다테 야경 -->
                     <article class="trip-card">
                         <img src="../media/hakodate.jpg" alt="하코다테산 전망대에서 내려다본, 양쪽 바다 사이로 불빛이 반짝이는 도시의 야경">
                         <div class="trip-card__body">
@@ -97,7 +80,6 @@
                         </div>
                     </article>
 
-                    <!-- 카드 3: 노보리베츠 지고쿠다니 -->
                     <article class="trip-card">
                         <img src="../media/noboribetsu.jpg" alt="눈 내리는 노보리베츠 지고쿠다니 입구를 지키는 커다란 붉은 오니 동상">
                         <div class="trip-card__body">
@@ -115,7 +97,6 @@
 
     </main>
 
-    <!-- 3. 푸터 영역 -->
     <div id="footer-placeholder"></div>
 
     <script src="../script/snowfall.js"></script>

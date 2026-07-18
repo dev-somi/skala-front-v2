@@ -1,12 +1,6 @@
-// scheduler.html 전용 메인 컨트롤러.
-// - 왼쪽 사이드바: My Class(오늘 타임라인) / My Plan(예·복습) 탭, Daily Todo, Upcoming Class
-// - 오른쪽 캘린더: 주별/월별 뷰(수업 일정 + 개인 일정), 리로드 없는 인앱 상태 전환
-// 순수 날짜 계산은 CalendarUtils(calendarUtils.js), 데이터는 SchedulerData(schedulerData.js) 재사용.
-
 (function () {
     'use strict';
 
-    // 주간 그리드는 기존 .week-grid CSS를 스코프 오버라이드해 08~24시 / 일~토 7일로 표시한다.
     const GRID_START_HOUR = 8;
     const GRID_END_HOUR = 24;
     const MEALTIMES = [
@@ -15,23 +9,20 @@
     ];
     const WEEKDAY_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
     const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
-    // 사이드바 타임라인은 요구사항대로 09~18시.
     const TL_START = 9;
     const TL_END = 18;
 
     const state = {
         today: null,
         todayISO: '',
-        cursor: null,        // 캘린더 기준일 (주간=주 안의 아무 날, 월간=달 안의 아무 날)
+        cursor: null,
         viewMode: 'weekly',
         schedule: {},
-        classMap: {},        // iso -> 수업 항목
-        flatClasses: [],     // 날짜 오름차순 평탄화
-        eventsMap: {},       // iso -> 개인 일정 배열
-        dialogDate: '',      // 현재 다이얼로그가 편집 중인 날짜
+        classMap: {},
+        flatClasses: [],
+        eventsMap: {},
+        dialogDate: '',
     };
-
-    // ---------- 유틸 ----------
 
     function stripTime(date) {
         const d = new Date(date);
@@ -59,7 +50,6 @@
         return h + m / 60;
     }
 
-    // "HH:MM" -> 주간 그리드 30분 슬롯 인덱스(08:00 기준)
     function timeToSlot(hhmm) {
         const [h, m] = hhmm.split(':').map(Number);
         return (h - GRID_START_HOUR) * 2 + (m >= 30 ? 1 : 0);
@@ -80,8 +70,6 @@
         });
         state.eventsMap = map;
     }
-
-    // ---------- 사이드바: My Class 오늘 타임라인 ----------
 
     function todayLabelText() {
         const d = state.today;
@@ -127,8 +115,6 @@
             </div>`;
     }
 
-    // ---------- 사이드바: My Plan (오늘의 개인 일정) ----------
-
     function renderPlanEditor() {
         document.getElementById('plan-today-label').textContent = todayLabelText();
         const container = document.getElementById('plan-editor');
@@ -147,8 +133,6 @@
                 <button type="button" class="plan-event-delete" data-event-id="${ev.id}" aria-label="일정 삭제">삭제</button>
             </li>`).join('')}</ul>`;
     }
-
-    // ---------- 사이드바: Daily Todo ----------
 
     function renderTodos() {
         const ul = document.getElementById('todo-list');
@@ -189,14 +173,11 @@
         renderTodos();
     }
 
-    // ---------- 사이드바: Upcoming Class ----------
-
     function renderUpcoming() {
         const container = document.getElementById('upcoming-class');
         const now = new Date();
         const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
-        // 오늘 이후(또는 오늘 중 아직 시작 전)인 가장 가까운 수업 1건.
         const upcoming = state.flatClasses
             .filter((e) => !SchedulerData.isHolidayEntry(e))
             .find((e) => {
@@ -224,8 +205,6 @@
                 ${teacher ? `<p class="upcoming-meta">👩‍🏫 ${escapeHtml(teacher)}</p>` : ''}
             </div>`;
     }
-
-    // ---------- 캘린더: 주별 ----------
 
     function updateRangeLabel(text) {
         document.getElementById('cal-range-label').textContent = text;
@@ -261,7 +240,6 @@
 
         for (let i = 0; i < 7; i++) {
             const iso = CalendarUtils.formatISODate(CalendarUtils.addDays(sunday, i));
-            // 요일×시간 칸마다 클릭 가능한 빈 셀을 먼저 깔아둔다(수업/개인 일정 블록이 그 위에 덮어씀).
             for (let h = GRID_START_HOUR; h < GRID_END_HOUR; h++) {
                 appendHourCell(grid, i, h, iso);
             }
@@ -278,7 +256,6 @@
         body.replaceChildren(grid);
     }
 
-    // 요일×시간(1시간 단위) 빈 칸: 클릭하면 해당 날짜·시간으로 개인 일정 다이얼로그를 연다.
     function appendHourCell(grid, dayIndex, hour, iso) {
         const rowStart = (hour - GRID_START_HOUR) * 2 + 2;
         const cell = document.createElement('button');
@@ -292,7 +269,6 @@
         grid.appendChild(cell);
     }
 
-    // 12~13시(점심시간), 18~19시(저녁시간)를 수업이 있는 날의 해당 요일 칸에만 흰 배경 + 검은 테두리 띠로 표시
     function appendMealBand(grid, dayIndex, startHour, label) {
         const rowStart = (startHour - GRID_START_HOUR) * 2 + 2;
         const band = document.createElement('div');
@@ -304,7 +280,6 @@
         grid.appendChild(band);
     }
 
-    // 30분 슬롯 인덱스 -> "HH:MM" (timeToSlot의 역연산, GRID_START_HOUR 기준)
     function slotToTime(slot) {
         const totalMinutes = slot * 30;
         const h = GRID_START_HOUR + Math.floor(totalMinutes / 60);
@@ -325,7 +300,7 @@
         const lunchStart = timeToSlot('12:00');
         const lunchEnd = timeToSlot('13:00');
 
-        // 점심시간(12~13시)을 가로지르는 수업은 기존 박스 스타일 그대로 09~12시 / 13~18시 두 박스로 분리
+        // 점심시간을 가로지르는 수업은 09~12시 / 13~18시 두 박스로 분리한다
         if (startSlot < lunchStart && endSlot > lunchEnd) {
             appendClassSegment(grid, dayIndex, entry, startSlot, lunchStart, false);
             appendClassSegment(grid, dayIndex, entry, lunchEnd, endSlot, false);
@@ -353,7 +328,6 @@
     }
 
     function appendEventBlock(grid, dayIndex, ev) {
-        // 시간 있는 일정은 해당 슬롯, 없는 일정은 그리드 최상단에 고정.
         const maxSlot = (GRID_END_HOUR - GRID_START_HOUR) * 2 - 1;
         const slot = ev.time ? clamp(timeToSlot(ev.time), 0, maxSlot) : 0;
         const block = document.createElement('button');
@@ -369,8 +343,6 @@
             <span class="time-block__content">📌 ${escapeHtml(ev.title)}</span>`;
         grid.appendChild(block);
     }
-
-    // ---------- 캘린더: 월별 ----------
 
     function renderMonthly() {
         const body = document.getElementById('calendar-body');
@@ -425,8 +397,6 @@
         else renderMonthly();
     }
 
-    // ---------- 개인 일정 다이얼로그 ----------
-
     function openEventDialog(iso, prefillTime) {
         state.dialogDate = iso;
         const d = CalendarUtils.parseISODate(iso);
@@ -458,8 +428,6 @@
             </li>`).join('');
     }
 
-    // ---------- 뷰 전환 ----------
-
     function setView(mode) {
         state.viewMode = mode;
         SchedulerData.setView(mode);
@@ -477,15 +445,12 @@
         renderCalendar();
     }
 
-    // ---------- 이벤트 바인딩 ----------
-
     function bindEvents() {
         document.getElementById('view-weekly').addEventListener('click', () => setView('weekly'));
         document.getElementById('view-monthly').addEventListener('click', () => setView('monthly'));
         document.getElementById('cal-prev').addEventListener('click', () => moveCursor(-1));
         document.getElementById('cal-next').addEventListener('click', () => moveCursor(1));
 
-        // 오늘의 개인 일정 삭제 (My Plan 사이드바)
         document.getElementById('plan-editor').addEventListener('click', (e) => {
             const btn = e.target.closest('.plan-event-delete');
             if (!btn) return;
@@ -495,7 +460,6 @@
             renderCalendar();
         });
 
-        // Todo 추가/체크/삭제
         document.getElementById('todo-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const input = document.getElementById('todo-input');
@@ -514,7 +478,6 @@
             if (btn) deleteTodo(btn.dataset.id);
         });
 
-        // 캘린더 클릭 → 개인 일정 다이얼로그 / 월별 뷰의 날짜 클릭은 그 주의 주간 뷰로 이동
         document.getElementById('calendar-body').addEventListener('click', (e) => {
             const eventBlock = e.target.closest('.time-block--event');
             if (eventBlock) { openEventDialog(eventBlock.dataset.date); return; }
@@ -526,10 +489,9 @@
             if (hourCell) { openEventDialog(hourCell.dataset.date, hourCell.dataset.time); }
         });
 
-        // 다이얼로그: 추가 / 삭제 / 닫기
         const dialog = document.getElementById('event-dialog');
         document.getElementById('event-form').addEventListener('submit', (e) => {
-            e.preventDefault(); // method="dialog" 자동 닫힘 방지 (추가 후 목록 유지)
+            e.preventDefault();
             const title = document.getElementById('event-title').value.trim();
             if (!title) return;
             const time = document.getElementById('event-time').value;
@@ -554,8 +516,6 @@
         dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
     }
 
-    // ---------- 초기화 ----------
-
     async function init() {
         state.today = stripTime(new Date());
         state.todayISO = CalendarUtils.formatISODate(state.today);
@@ -577,7 +537,6 @@
         rebuildEventsMap();
         bindEvents();
 
-        // 초기 렌더 (setView 가 renderCalendar 호출)
         setView(state.viewMode);
         renderTodayTimeline();
         renderPlanEditor();

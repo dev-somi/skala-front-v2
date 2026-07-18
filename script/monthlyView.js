@@ -1,9 +1,6 @@
-// html/myMonthlyClass.html 전용: 월별 달력 그리드를 schedule.json 데이터로 채운다.
-// (구 script/classScheduler.js를 이름 변경 + #sched_tbl 그리드 렌더링으로 재작성)
-
 let allSchedules = {};
-const CAL_YEAR = 2026; // schedule.json이 2026년 7~12월 데이터만 담고 있어 연도를 고정한다.
-let currentMonth = CalendarUtils.MIN_MONTH; // 7월부터 시작
+const CAL_YEAR = 2026;
+let currentMonth = CalendarUtils.MIN_MONTH;
 
 async function loadScheduleData() {
     const tbody = document.getElementById('month-grid-tbody');
@@ -19,8 +16,6 @@ async function loadScheduleData() {
         renderMonth(currentMonth);
     } catch (error) {
         console.error("데이터 로드 중 오류가 발생했습니다:", error);
-
-        // [예외 처리] 로컬 파일(더블클릭)로 열었을 때(CORS) 안내 메시지만 표시
         tbody.innerHTML = `
             <tr>
                 <td colspan="7" style="color: red; font-weight: bold; padding: 20px; text-align: center;">

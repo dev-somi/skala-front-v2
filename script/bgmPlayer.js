@@ -1,4 +1,3 @@
-// myTrip.html의 배경음악 버튼: 화면에는 재생 버튼만 보이고, 실제 재생은 숨겨진 유튜브 iframe(YT.Player)이 담당한다.
 (function () {
     const VIDEO_ID = 'eliU3I2nDJA';
     let player = null;
