@@ -673,13 +673,11 @@ body.trip-winter-bg > #footer-placeholder {
 /* 눈밭 위에 펼쳐진 "책 한 권"처럼 보이는 단일 컨테이너 */
 main.trip-book {
   box-sizing: border-box;
+  flex: 0 0 auto;
   max-width: 1200px;
-  aspect-ratio: 16 / 9;
-  overflow-y: auto;
-  margin: 0 auto;
+  margin: var(--space-xl) auto;
   padding: var(--space-lg) var(--space-md);
   display: grid;
-  align-items: stretch;
   gap: var(--space-lg);
   background: var(--color-white);
   border: var(--border-width) solid var(--color-border);
@@ -687,25 +685,8 @@ main.trip-book {
   box-shadow: var(--shadow-hard-lg);
 }
 
-.trip-book__divider {
-  border: none;
-  /* 1. 위쪽 선을 없애고, 왼쪽(또는 오른쪽)에 세로 점선을 줍니다 */
-  border-left: 2px dashed var(--color-border);
-  opacity: 0.35;
-
-  /* 2. 가로폭 대신 세로 높이를 지정합니다 */
-  width: 0;
-  height: auto; /* align-self: stretch가 실제 높이를 채워줍니다 */
-  align-self: stretch;
-
-  /* 3. 좌우 여백을 줘서 주변 콘텐츠와 간격을 벌립니다 */
-  margin: 0 var(--space-xl);
-}
-
 @media (max-width: 700px) {
   main.trip-book {
-    aspect-ratio: auto;
-    overflow-y: visible;
     margin: var(--space-lg) var(--space-sm);
     padding: var(--space-lg) var(--space-sm);
   }
@@ -834,28 +815,24 @@ main.trip-book {
   border-radius: var(--radius-card);
 }
 
-/* 2열 모자이크 프레임: 1열(3행)=추억 카드 / 구분선 / 2열(2행)=오디오+비디오 */
+/* 2열 모자이크 프레임: 정확히 1:1 — 1열=사진/오디오/비디오, 2열=추억 카드 */
 .trip-mosaic {
   display: grid;
-  /* 카드열 : 세로 구분선 : 오디오·비디오열 — hr도 grid 아이템이라 3개 트랙이 필요합니다 */
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   /* 좌우 기둥 사이의 여백 (잡지 여백 느낌) */
   gap: var(--space-xl, 32px);
-  align-items: stretch; /* 두 열의 높이를 맞춰, 더 짧은 열도 긴 열만큼 늘어나게 함 */
 }
 
 .trip-mosaic__col--a,
 .trip-mosaic__col--b {
   display: grid;
-  height: 100%;
-}
-
-.trip-mosaic__col--a {
-  grid-template-rows: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 .trip-mosaic__col--b {
-  grid-template-rows: repeat(3, 1fr);
+  border-left: 2px dashed var(--color-border);
+  opacity: 1;
+  padding-left: var(--space-lg);
 }
 
 @media (max-width: 700px) {
@@ -863,8 +840,9 @@ main.trip-book {
     grid-template-columns: 1fr;
   }
 
-  .trip-book__divider {
-    display: none;
+  .trip-mosaic__col--b {
+    border-left: none;
+    padding-left: 0;
   }
 }
 
@@ -895,8 +873,12 @@ main.trip-book {
   box-shadow: none;
 }
 
+.mosaic-slot--video {
+  align-items: center;
+}
+
 .mosaic-slot--video video {
-  width: 100%;
+  max-width: 100%;
 }
 
 .mosaic-slot--photo {
@@ -907,7 +889,6 @@ main.trip-book {
 .mosaic-slot--photo img {
   display: block;
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -915,27 +896,36 @@ main.trip-book {
   position: relative;
   display: flex;
   align-items: stretch;
+  width: 90%;
   background: white;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-hard-lg);
   overflow: hidden;
   margin: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* 지그재그: 2열 카드 3개만 좌-우-좌로 교대 (1열 사진/오디오/비디오는 대상 아님) */
-.trip-mosaic__col--b .trip-card:nth-child(2) {
-  flex-direction: row-reverse;
+/* .portrait-card와 동일한 "들림" 패턴 재사용 */
+.trip-card:hover,
+.trip-card:focus-within {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--color-border);
 }
 
-.trip-mosaic__col--b .trip-card:nth-child(2) img {
-  border-right: none;
-  border-left: var(--border-width) solid var(--color-border);
+@media (prefers-reduced-motion: reduce) {
+  .trip-card {
+    transition: none;
+  }
 }
 
-.trip-mosaic__col--b .trip-card:nth-child(2) .trip-card__number {
-  left: auto;
-  right: var(--space-sm);
+/* 지그재그: margin 오프셋으로 홀수 카드는 왼쪽, 짝수 카드는 오른쪽으로 정렬 */
+.trip-mosaic__col--b .trip-card:nth-child(odd) {
+  margin-right: auto;
+}
+
+.trip-mosaic__col--b .trip-card:nth-child(even) {
+  margin-left: auto;
 }
 
 .trip-card__number {
@@ -1012,23 +1002,17 @@ main.trip-book {
 }
 
 @media (max-width: 700px) {
-  .trip-card,
-  .trip-mosaic__col--b .trip-card:nth-child(2) {
+  .trip-card {
     flex-direction: column;
+    width: 100%;
+    margin: 0;
   }
 
-  .trip-card img,
-  .trip-mosaic__col--b .trip-card:nth-child(2) img {
+  .trip-card img {
     width: 100%;
     aspect-ratio: 4 / 3;
     border-right: none;
-    border-left: none;
     border-bottom: var(--border-width) solid var(--color-border);
-  }
-
-  .trip-mosaic__col--b .trip-card:nth-child(2) .trip-card__number {
-    left: var(--space-sm);
-    right: auto;
   }
 }
 
@@ -1637,7 +1621,14 @@ mark {
   text-align: center;
   font-family: var(--font-body);
   padding: var(--space-md);
-  transition: transform 0.1s;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* .portrait-card와 동일한 "들림" 패턴 재사용 */
+.playground-card:hover,
+.playground-card:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--color-border);
 }
 
 /* .btn-pill:active 의 눌림 인터랙션 패턴 재사용 */
