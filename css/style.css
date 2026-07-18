@@ -517,8 +517,8 @@ main.profile-layout {
 
 .tag-chip {
   font-family: var(--font-heading);
-  background: var(--color-bg-purple);
-  color: var(--color-text-white);
+  background: var(--color-accent-mint);
+  color: var(--color-text);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: var(--space-sm) var(--space-md);
@@ -528,8 +528,6 @@ main.profile-layout {
 .placeholder-text,
 .placeholder-list {
   color: var(--color-text);
-  opacity: 0.6;
-  font-style: italic;
 }
 
 /* Personality 카드의 좌우 스펙트럼 슬라이더 */
