@@ -274,6 +274,20 @@ main.scheduler-layout {
   grid-template-rows: auto repeat(32, 24px);
 }
 
+/* 요일×시간 빈 칸: 클릭해서 개인 일정 추가 (수업/일정 블록이 위에 덮이면 자연히 가려짐) */
+.week-grid__cell {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.week-grid__cell:hover,
+.week-grid__cell:focus-visible {
+  background: var(--color-bg-cream);
+}
+
 /* 점심시간(12~13시) / 저녁시간(18~19시) 띠: 요일 칸 전체 폭, 흰 배경 */
 .week-grid__mealtime {
   grid-row: span 2;

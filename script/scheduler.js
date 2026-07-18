@@ -135,7 +135,7 @@
         const entry = state.classMap[state.todayISO];
 
         if (!entry || SchedulerData.isHolidayEntry(entry)) {
-            container.innerHTML = `<p class="sidebar-empty">오늘은 계획할 수업이 없어요 🌿</p>`;
+            container.innerHTML = `<p class="sidebar-empty">오늘은 계획된 일정이 없어요 🌿</p>`;
             return;
         }
 
@@ -283,6 +283,11 @@
 
         for (let i = 0; i < 7; i++) {
             const iso = CalendarUtils.formatISODate(CalendarUtils.addDays(sunday, i));
+            // 요일×시간 칸마다 클릭 가능한 빈 셀을 먼저 깔아둔다(수업/개인 일정 블록이 그 위에 덮어씀).
+            for (let h = GRID_START_HOUR; h < GRID_END_HOUR; h++) {
+                appendHourCell(grid, i, h, iso);
+            }
+
             const entry = state.classMap[iso];
             const hasClass = entry && !SchedulerData.isHolidayEntry(entry);
             if (hasClass) {
@@ -293,6 +298,20 @@
         }
 
         body.replaceChildren(grid);
+    }
+
+    // 요일×시간(1시간 단위) 빈 칸: 클릭하면 해당 날짜·시간으로 개인 일정 다이얼로그를 연다.
+    function appendHourCell(grid, dayIndex, hour, iso) {
+        const rowStart = (hour - GRID_START_HOUR) * 2 + 2;
+        const cell = document.createElement('button');
+        cell.type = 'button';
+        cell.className = 'week-grid__cell';
+        cell.dataset.date = iso;
+        cell.dataset.time = `${String(hour).padStart(2, '0')}:00`;
+        cell.style.gridColumn = String(dayIndex + 2);
+        cell.style.gridRow = `${rowStart} / span 2`;
+        cell.setAttribute('aria-label', `${iso} ${hour}시, 개인 일정 추가`);
+        grid.appendChild(cell);
     }
 
     // 12~13시(점심시간), 18~19시(저녁시간)를 수업이 있는 날의 해당 요일 칸에만 흰 배경 + 검은 테두리 띠로 표시
@@ -430,16 +449,18 @@
 
     // ---------- 개인 일정 다이얼로그 ----------
 
-    function openEventDialog(iso) {
+    function openEventDialog(iso, prefillTime) {
         state.dialogDate = iso;
         const d = CalendarUtils.parseISODate(iso);
         document.getElementById('event-dialog-date').textContent =
             `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 (${DAY_NAMES[d.getDay()]})`;
         document.getElementById('event-title').value = '';
-        document.getElementById('event-time').value = '';
+        document.getElementById('event-time').value = prefillTime || '';
         renderEventList(iso);
         document.getElementById('event-dialog').showModal();
+        document.getElementById('event-title').focus();
     }
+
 
     function renderEventList(iso) {
         const ul = document.getElementById('event-list');
@@ -515,7 +536,9 @@
             const dayHeader = e.target.closest('.week-grid__day-header--btn');
             if (dayHeader) { openEventDialog(dayHeader.dataset.date); return; }
             const dayCell = e.target.closest('.cal-day-cell');
-            if (dayCell) { openEventDialog(dayCell.dataset.date); }
+            if (dayCell) { openEventDialog(dayCell.dataset.date); return; }
+            const hourCell = e.target.closest('.week-grid__cell');
+            if (hourCell) { openEventDialog(hourCell.dataset.date, hourCell.dataset.time); }
         });
 
         // 다이얼로그: 추가 / 삭제 / 닫기
