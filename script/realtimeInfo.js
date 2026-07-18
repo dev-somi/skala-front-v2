@@ -7,9 +7,6 @@ const closeBtn = dialog.querySelector('.dialog-close');
 const citySelect = document.getElementById('weather-city-select');
 const weatherBoxEl = document.getElementById('weather-box');
 
-const DIALOG_CLOSE_DELAY_MS = 600;
-let closeTimeoutId = null;
-
 // select 옵션을 도시 목록으로 채운다 (첫 옵션은 선택 안내용 placeholder)
 function populateCitySelect() {
     const placeholder = document.createElement('option');
@@ -33,12 +30,6 @@ function formatKoreanDate(date) {
 
 async function updateCityWeather(city) {
     const todayText = formatKoreanDate(new Date());
-
-    // 이전 선택에서 예약된 "결과 확인 후 자동 닫기"가 남아있다면 취소한다
-    if (closeTimeoutId !== null) {
-        window.clearTimeout(closeTimeoutId);
-        closeTimeoutId = null;
-    }
 
     // 1. 로딩 상태 표시
     weatherBoxEl.innerHTML = '<p>로딩 중… ⏳</p>';
@@ -68,12 +59,8 @@ async function updateCityWeather(city) {
             ${status.emoji} 날씨: ${status.text} (🌡️ 온도: ${weather.temperature_2m}°C  💧 습도: ${weather.relative_humidity_2m}%  💨 풍속: ${weather.wind_speed_10m} km/h)
         `);
 
-        // 5. 결과를 잠깐 보여준 뒤 다이얼로그를 닫고, 티커에 플래시 효과를 준다
-        closeTimeoutId = window.setTimeout(() => {
-            dialog.close();
-            window.StatusBarTicker.flash();
-            closeTimeoutId = null;
-        }, DIALOG_CLOSE_DELAY_MS);
+        // 5. 티커에 플래시 효과를 줘서 갱신을 알린다 (다이얼로그는 사용자가 닫기 버튼으로 직접 닫음)
+        window.StatusBarTicker.flash();
     } catch (error) {
         console.error('날씨 정보를 불러오는 중 오류가 발생했습니다:', error);
         weatherBoxEl.innerHTML = '<p>⚠️ 날씨 정보를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.</p>';
@@ -92,11 +79,13 @@ trigger.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
     dialog.close();
+    window.StatusBarTicker.flash();
 });
 
 dialog.addEventListener('click', (event) => {
     if (event.target === dialog) {
         dialog.close();
+        window.StatusBarTicker.flash();
     }
 });
 
