@@ -26,9 +26,13 @@
             <h1 id="trip-title">❄️ My Hokkaido Days</h1>
             <p>끝없이 하얀 눈이 내리던 곳, 홋카이도에서 보낸 1년 동안의 소중한 순간들입니다.</p>
             
-            <div class="audio-player">
-                <p>🎵 겨울 감성 배경음악:</p>
-                <button id="bgm-toggle" type="button" class="btn-pill" aria-pressed="false">▶️ 재생</button>
+            <div class="audio-player" aria-label="배경음악 플레이어">
+                <img class="audio-player__cover" src="../media/bgm-cover.jpg" alt="なごり雪 앨범 아트">
+                <div class="audio-player__info">
+                    <p class="audio-player__title">なごり雪</p>
+                    <p class="audio-player__artist">イルカ</p>
+                </div>
+                <button id="bgm-toggle" type="button" class="audio-player__play" aria-pressed="false" aria-label="재생"></button>
                 <div id="bgm-player" hidden aria-hidden="true"></div>
             </div>
         </section>

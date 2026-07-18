@@ -33,12 +33,14 @@
 
             if (player.getPlayerState() === YT.PlayerState.PLAYING) {
                 player.pauseVideo();
-                btn.textContent = '▶️ 재생';
+                btn.classList.remove('is-playing');
                 btn.setAttribute('aria-pressed', 'false');
+                btn.setAttribute('aria-label', '재생');
             } else {
                 player.playVideo();
-                btn.textContent = '⏸️ 일시정지';
+                btn.classList.add('is-playing');
                 btn.setAttribute('aria-pressed', 'true');
+                btn.setAttribute('aria-label', '일시정지');
             }
         });
     });

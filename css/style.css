@@ -666,13 +666,122 @@ body.trip-winter-bg > #footer-placeholder {
   z-index: 1;
 }
 
-.audio-player, .video-container {
+.video-container {
   background: white;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-hard);
   padding: var(--space-md);
   margin: var(--space-md) 0;
+}
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 380px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(20, 20, 30, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audio-player:hover,
+.audio-player:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.audio-player__cover {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.audio-player__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.audio-player__title {
+  margin: 0;
+  color: var(--color-text-white);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-player__artist {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-player__play {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-white);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.audio-player__play:hover {
+  transform: scale(1.08);
+}
+
+.audio-player__play::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent var(--color-text);
+  margin-left: 3px;
+}
+
+.audio-player__play::after {
+  content: none;
+}
+
+.audio-player__play.is-playing::before {
+  width: 5px;
+  height: 16px;
+  border-style: none;
+  background: var(--color-text);
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+.audio-player__play.is-playing::after {
+  content: '';
+  width: 5px;
+  height: 16px;
+  background: var(--color-text);
+}
+
+@media (max-width: 700px) {
+  .audio-player {
+    max-width: none;
+    margin: var(--space-md) var(--space-sm);
+  }
 }
 
 .video-container video {
