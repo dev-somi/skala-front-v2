@@ -1,5 +1,5 @@
 // 실시간 날씨 - 화면 담당 모듈. weatherAPI.js에서 데이터를 받아와 다이얼로그/티커를 갱신한다.
-import { fetchWeatherData, getWeatherStatus, CITY_LIST } from './weatherAPI.js';
+import {fetchWeatherData, getWeatherStatus, CITY_LIST} from './weatherAPI.js';
 
 const trigger = document.getElementById('weather-trigger');
 const dialog = document.getElementById('weather-dialog');
@@ -53,11 +53,7 @@ async function updateCityWeather(city) {
         `;
 
         // 4. 상태 표시바(티커) 갱신
-        window.StatusBarTicker.updateText(`
-            📅 오늘 날짜: ${todayText} 
-            📍 현재 위치: ${city.name} (위도: ${lat}, 경도: ${lon}) 
-            ${status.emoji} 날씨: ${status.text} (🌡️ 온도: ${weather.temperature_2m}°C  💧 습도: ${weather.relative_humidity_2m}%  💨 풍속: ${weather.wind_speed_10m} km/h)
-        `);
+        window.StatusBarTicker.updateText(`📅 오늘 날짜: ${todayText}  |  📍 현재 위치: ${city.name} (위도 ${lat}, 경도 ${lon})  |  ${status.emoji} 날씨: ${status.text} (🌡️ ${weather.temperature_2m}°C / 💧 ${weather.relative_humidity_2m}% / 💨 ${weather.wind_speed_10m} km/h)`);
 
         // 5. 티커에 플래시 효과를 줘서 갱신을 알린다 (다이얼로그는 사용자가 닫기 버튼으로 직접 닫음)
         window.StatusBarTicker.flash();
@@ -131,7 +127,7 @@ function initWithGeolocation() {
 
     navigator.geolocation.getCurrentPosition(
         (position) => {
-            const { latitude, longitude } = position.coords;
+            const {latitude, longitude} = position.coords;
             const nearestIndex = findNearestCityIndex(latitude, longitude);
             citySelect.value = String(nearestIndex);
             updateCityWeather(CITY_LIST[nearestIndex]);
@@ -140,7 +136,7 @@ function initWithGeolocation() {
             console.error('위치 정보 가져오기 실패:', error.message);
             initWithSeoulFallback();
         },
-        { enableHighAccuracy: true, timeout: 10000 }
+        {enableHighAccuracy: true, timeout: 10000}
     );
 }
 
