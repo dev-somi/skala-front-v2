@@ -102,8 +102,57 @@ dialog.addEventListener('click', (event) => {
 
 populateCitySelect();
 
-// 페이지 진입 시 서울을 기본 도시로 하여 바로 실시간 날씨를 가져와 티커에 반영한다.
+// 서울을 기본값으로 두고 날씨를 가져온다 (Geolocation 미지원/거부/실패 시 fallback으로도 사용)
+function initWithSeoulFallback() {
+    const DEFAULT_CITY_INDEX = 0; // CITY_LIST[0] === 서울특별시
+    citySelect.value = String(DEFAULT_CITY_INDEX);
+    updateCityWeather(CITY_LIST[DEFAULT_CITY_INDEX]);
+}
+
+// 두 좌표 사이의 대략적인 거리(단위 없는 상대값)를 구한다. CITY_LIST 중 최단 거리 도시를 찾는 용도라
+// 정밀한 지구 곡률 계산(Haversine) 없이 단순 유클리드 거리로도 충분하다.
+function getSquaredDistance(lat1, lon1, lat2, lon2) {
+    return (lat1 - lat2) ** 2 + (lon1 - lon2) ** 2;
+}
+
+// 사용자 좌표와 가장 가까운 CITY_LIST 항목의 인덱스를 찾는다.
+function findNearestCityIndex(lat, lon) {
+    let nearestIndex = 0;
+    let nearestDistance = Infinity;
+
+    CITY_LIST.forEach((city, index) => {
+        const distance = getSquaredDistance(lat, lon, city.lat, city.lon);
+        if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = index;
+        }
+    });
+
+    return nearestIndex;
+}
+
+// 페이지 진입 시 사용자의 실제 위치와 가장 가까운 CITY_LIST 도시로 매핑해 날씨를 가져오고,
+// 위치 정보를 사용할 수 없으면 서울로 대체한다.
 // (다이얼로그를 열지 않은 상태에서도 #weather-box/티커는 갱신 가능 - <dialog>는 open 여부와 무관하게 DOM에 존재함)
-const DEFAULT_CITY_INDEX = 0; // CITY_LIST[0] === 서울특별시
-citySelect.value = String(DEFAULT_CITY_INDEX);
-updateCityWeather(CITY_LIST[DEFAULT_CITY_INDEX]);
+function initWithGeolocation() {
+    if (!navigator.geolocation) {
+        initWithSeoulFallback();
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            const nearestIndex = findNearestCityIndex(latitude, longitude);
+            citySelect.value = String(nearestIndex);
+            updateCityWeather(CITY_LIST[nearestIndex]);
+        },
+        (error) => {
+            console.error('위치 정보 가져오기 실패:', error.message);
+            initWithSeoulFallback();
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+    );
+}
+
+initWithGeolocation();
