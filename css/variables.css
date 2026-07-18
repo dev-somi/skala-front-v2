@@ -35,8 +35,8 @@
 
   /* 폰트 */
   --font-heading: "Baloo 2", "Bagel Fat One", "Gowun Dodum", sans-serif;
-  /* 굵고 둥근 코믹체 */
-  --font-body: "Poppins", "Gowun Dodum", -apple-system, sans-serif; /* 본문용 */
+  --font-body: "Poppins", "Gowun Dodum", -apple-system, sans-serif;
+
   /* 간격 */
   --space-sm: 8px;
   --space-md: 16px;
