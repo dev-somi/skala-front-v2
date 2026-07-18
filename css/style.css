@@ -666,6 +666,31 @@ body.trip-winter-bg > #footer-placeholder {
   z-index: 1;
 }
 
+/* 눈밭 위에 펼쳐진 "책 한 권"처럼 보이는 단일 컨테이너 */
+main.trip-book {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--color-bg-cream);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.trip-book__divider {
+  border: none;
+  border-top: 2px dashed var(--color-border);
+  opacity: 0.35;
+  margin: var(--space-xl) 0;
+}
+
+@media (max-width: 700px) {
+  main.trip-book {
+    margin: var(--space-lg) var(--space-sm);
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
 .video-container {
   background: white;
   border: var(--border-width) solid var(--color-border);
@@ -790,52 +815,97 @@ body.trip-winter-bg > #footer-placeholder {
 }
 
 .trip-timeline {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
 }
 
 .trip-card {
+  position: relative;
   display: flex;
-  align-items: stretch;
-  gap: var(--space-md);
+  flex-direction: column;
   background: white;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-hard-lg);
-  padding: var(--space-md);
+  overflow: hidden;
   margin: 0;
 }
 
-.trip-card:nth-child(even) {
-  flex-direction: row-reverse;
+.trip-card__number {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-blue);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.trip-card__number--inline {
+  position: static;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: var(--space-sm);
 }
 
 .trip-card img {
-  flex: 0 0 40%;
-  width: 40%;
-  min-height: 220px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: calc(var(--radius-card) - 6px);
+  border-bottom: var(--border-width) solid var(--color-border);
 }
 
 .trip-card__body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
   gap: var(--space-sm);
-  flex: 1;
+  padding: var(--space-md);
+}
+
+.trip-card__tag {
+  display: inline-block;
+  padding: 2px 12px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-yellow);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.trip-card__body h3 {
+  margin: 0;
+}
+
+.trip-card__body p {
+  margin: 0;
+}
+
+.trip-card__meta {
+  align-self: stretch;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: calc(var(--radius-card) - 8px);
+  background: var(--color-bg-cream);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 @media (max-width: 700px) {
-  .trip-card,
-  .trip-card:nth-child(even) {
-    flex-direction: column;
-  }
-
-  .trip-card img {
-    width: 100%;
-    min-height: 180px;
+  .trip-timeline {
+    grid-template-columns: 1fr;
   }
 }
 
