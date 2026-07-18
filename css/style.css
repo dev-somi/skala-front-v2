@@ -430,29 +430,6 @@ main.profile-layout {
   flex: 1;
 }
 
-/* 3열은 카드가 3개라 세로로 너무 길어지기 쉬워, 내부적으로 2열 그리드로 배치.
-   가장 긴 keywords 카드만 아래에서 전체 너비를 차지 */
-.profile-col--details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-content: start;
-}
-
-#keywords {
-  grid-column: 1 / -1;
-}
-
-.profile-col--details > section {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-col--details > section > ul,
-.profile-col--details > section > ol,
-.profile-col--details > section > dl {
-  flex: 1;
-}
-
 .profile-info-card {
   text-align: center;
 }
