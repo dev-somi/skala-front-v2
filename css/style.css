@@ -425,6 +425,7 @@ main.profile-layout {
 
 .profile-info-card {
   text-align: center;
+  box-shadow: none;
 }
 
 /* 사진 뒤에 컬러 원형 배경을 깔아 레퍼런스의 사진 프레임 느낌을 재현 */
@@ -440,6 +441,7 @@ main.profile-layout {
   background: var(--color-accent-yellow);
   padding: var(--space-sm);
   box-sizing: content-box;
+  border-radius: 50%;
 }
 
 .profile-name {
