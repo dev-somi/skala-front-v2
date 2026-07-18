@@ -411,15 +411,7 @@
             </li>`).join('');
     }
 
-    // ---------- 탭 / 뷰 전환 ----------
-
-    function switchTab(which) {
-        const isClass = which === 'class';
-        document.getElementById('tab-class').setAttribute('aria-selected', String(isClass));
-        document.getElementById('tab-plan').setAttribute('aria-selected', String(!isClass));
-        document.getElementById('panel-class').hidden = !isClass;
-        document.getElementById('panel-plan').hidden = isClass;
-    }
+    // ---------- 뷰 전환 ----------
 
     function setView(mode) {
         state.viewMode = mode;
@@ -441,9 +433,6 @@
     // ---------- 이벤트 바인딩 ----------
 
     function bindEvents() {
-        document.getElementById('tab-class').addEventListener('click', () => switchTab('class'));
-        document.getElementById('tab-plan').addEventListener('click', () => switchTab('plan'));
-
         document.getElementById('view-weekly').addEventListener('click', () => setView('weekly'));
         document.getElementById('view-monthly').addEventListener('click', () => setView('monthly'));
         document.getElementById('cal-prev').addEventListener('click', () => moveCursor(-1));

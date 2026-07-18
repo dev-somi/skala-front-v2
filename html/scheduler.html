@@ -19,26 +19,18 @@
         <!-- ===== 왼쪽 사이드바: 하나의 통짜 패널, 내부는 구분선으로만 구획 ===== -->
         <aside class="scheduler-sidebar brutal-box" aria-label="스케줄러 사이드바">
 
-            <!-- [상단 토글] My Class / My Plan -->
+            <!-- My Class: 오늘의 타임라인 -->
             <div class="sidebar-section">
-                <div class="sidebar-tabs" role="tablist" aria-label="오늘 보기 전환">
-                    <button type="button" role="tab" id="tab-class" class="btn-pill sidebar-tab"
-                            aria-selected="true" aria-controls="panel-class">📖 My Class</button>
-                    <button type="button" role="tab" id="tab-plan" class="btn-pill sidebar-tab"
-                            aria-selected="false" aria-controls="panel-plan">📝 My Plan</button>
-                </div>
+                <h2 class="sidebar-heading">📖 My Class</h2>
+                <p class="sidebar-today-label" id="class-today-label"></p>
+                <div id="today-timeline" class="today-timeline"></div>
+            </div>
 
-                <!-- My Class: 오늘의 타임라인 -->
-                <div id="panel-class" role="tabpanel" aria-labelledby="tab-class" class="sidebar-tabpanel">
-                    <p class="sidebar-today-label" id="class-today-label"></p>
-                    <div id="today-timeline" class="today-timeline"></div>
-                </div>
-
-                <!-- My Plan: 예습/복습 스케줄러 -->
-                <div id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" class="sidebar-tabpanel" hidden>
-                    <p class="sidebar-today-label" id="plan-today-label"></p>
-                    <div id="plan-editor" class="plan-editor"></div>
-                </div>
+            <!-- My Plan: 예습/복습 스케줄러 -->
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">📝 My Plan</h2>
+                <p class="sidebar-today-label" id="plan-today-label"></p>
+                <div id="plan-editor" class="plan-editor"></div>
             </div>
 
             <!-- [중간 고정] Daily Todo -->

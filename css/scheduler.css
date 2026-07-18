@@ -64,25 +64,6 @@ main.scheduler-layout {
   opacity: 0.7;
 }
 
-/* ----- 사이드바 탭 (My Class / My Plan) ----- */
-.sidebar-tabs {
-  display: flex;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-md);
-}
-
-.sidebar-tab {
-  flex: 1;
-  justify-content: center;
-  padding: var(--space-sm);
-  font-size: 0.9rem;
-  background: var(--color-white);
-}
-
-.sidebar-tab[aria-selected="true"] {
-  background: var(--color-accent-yellow);
-}
-
 /* ----- 오늘의 타임라인 (My Class) ----- */
 .timeline-track {
   position: relative;
