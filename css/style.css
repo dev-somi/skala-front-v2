@@ -93,6 +93,22 @@ main.home-main {
   background: var(--color-accent-pink);
   color: var(--color-border);
   text-decoration: none;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* .portrait-card와 동일한 뉴브루탈리즘 "들림" 패턴을 버튼 크기에 맞게 축소해 재사용 */
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-border);
+}
+
+/* hover 상태에서 클릭했을 때 .btn-pill:active(layout.css/components.css)가
+   .hero-cta:hover보다 소스 순서상 앞서 있어 밀리므로, 눌림이 항상 이기도록 명시적으로 재선언 */
+.hero-cta:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-border);
 }
 
 .btn-arrow {
@@ -104,6 +120,20 @@ main.home-main {
   border-radius: var(--radius-pill);
   background: var(--color-white);
   border: var(--border-width) solid var(--color-border);
+  transition: transform 0.15s ease;
+}
+
+/* hover 시 화살표가 오른쪽으로 슬쩍 이동해 "누르면 아래로 나아간다"는 방향성을 암시 */
+.hero-cta:hover .btn-arrow,
+.hero-cta:focus-visible .btn-arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta,
+  .btn-arrow {
+    transition: none;
+  }
 }
 
 .portraits {
