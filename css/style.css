@@ -122,7 +122,76 @@ main.home-main {
 }
 
 .portrait-grid > li {
+  position: relative;
   flex: 0 0 clamp(140px, 22vw, 220px);
+}
+
+/* hover/focus 시 카드 아래에 뜨는 안내 말풍선. 카드(.portrait-card)는 overflow:hidden이라
+   말풍선을 부모 <li>에 붙여 잘리지 않게 한다 */
+.portrait-grid > li[data-tooltip]::after,
+.portrait-grid > li[data-tooltip]::before {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.portrait-grid > li[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 20;
+  transform: translate(-50%, 18px);
+  background: var(--color-bg-cream);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-hard);
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* 삼각형 tail: border-top은 만들지 않고 좌/우/하만 사용해 순수 9px 높이 삼각형을 만든 뒤,
+   말풍선(::after, z-index 20)보다 낮은 z-index로 두고 끝부분만 3px 겹쳐 그 아래로 밀어 넣는다.
+   이렇게 하면 삼각형의 밑변(사각형 부분)은 말풍선 배경에 가려지고 뾰족한 끝만 보여서
+   모서리가 둥근 사각형과 겹쳐 보이는 문제 없이 자연스럽게 이어진다 */
+.portrait-grid > li[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 19;
+  transform: translate(-50%, 12px);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid var(--color-border);
+}
+
+.portrait-grid > li[data-tooltip]:hover::after,
+.portrait-grid > li[data-tooltip]:hover::before,
+.portrait-grid > li[data-tooltip]:focus-within::after,
+.portrait-grid > li[data-tooltip]:focus-within::before {
+  opacity: 1;
+}
+
+.portrait-grid > li[data-tooltip]:hover::after,
+.portrait-grid > li[data-tooltip]:focus-within::after {
+  transform: translate(-50%, 24px);
+}
+
+.portrait-grid > li[data-tooltip]:hover::before,
+.portrait-grid > li[data-tooltip]:focus-within::before {
+  transform: translate(-50%, 18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-grid > li[data-tooltip]::after,
+  .portrait-grid > li[data-tooltip]::before {
+    transition: none;
+  }
 }
 
 /* 지그재그 배치: 짝수 번째 카드를 아래로 내려서 위아래로 어긋나게 배치 */
@@ -226,6 +295,14 @@ main.home-main {
 @media (max-width: 700px) {
   .portrait-grid > li {
     flex-basis: clamp(120px, 42vw, 180px);
+  }
+
+  .portrait-grid > li[data-tooltip]::after {
+    font-size: 0.8rem;
+    padding: var(--space-sm) var(--space-md);
+    white-space: normal;
+    max-width: 40vw;
+    text-align: center;
   }
 
   .carousel-btn {
