@@ -405,7 +405,7 @@
 
             return `<td class="${wkClass}">
                 <button type="button" class="cal-day-cell${isToday ? ' cal-day-cell--today' : ''}" data-date="${iso}"
-                        aria-label="${iso} 개인 일정 추가${entry ? `, 수업: ${escapeHtml(entry.content)}` : ''}">
+                        aria-label="${iso} 주간 보기로 이동${entry ? `, 수업: ${escapeHtml(entry.content)}` : ''}">
                     <span class="cal-day-num">${dayNum}</span>
                     ${chips}
                 </button>
@@ -514,14 +514,14 @@
             if (btn) deleteTodo(btn.dataset.id);
         });
 
-        // 캘린더 클릭 → 개인 일정 다이얼로그
+        // 캘린더 클릭 → 개인 일정 다이얼로그 / 월별 뷰의 날짜 클릭은 그 주의 주간 뷰로 이동
         document.getElementById('calendar-body').addEventListener('click', (e) => {
             const eventBlock = e.target.closest('.time-block--event');
             if (eventBlock) { openEventDialog(eventBlock.dataset.date); return; }
             const dayHeader = e.target.closest('.week-grid__day-header--btn');
             if (dayHeader) { openEventDialog(dayHeader.dataset.date); return; }
             const dayCell = e.target.closest('.cal-day-cell');
-            if (dayCell) { openEventDialog(dayCell.dataset.date); return; }
+            if (dayCell) { state.cursor = CalendarUtils.parseISODate(dayCell.dataset.date); setView('weekly'); return; }
             const hourCell = e.target.closest('.week-grid__cell');
             if (hourCell) { openEventDialog(hourCell.dataset.date, hourCell.dataset.time); }
         });
