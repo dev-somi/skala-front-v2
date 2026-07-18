@@ -8,7 +8,11 @@
 
     // 주간 그리드는 기존 .week-grid CSS(08~18시, 20개 30분 슬롯, 월~토)를 재사용한다.
     const GRID_START_HOUR = 8;
-    const GRID_END_HOUR = 18;
+    const GRID_END_HOUR = 24;
+    const MEALTIMES = [
+        { hour: 12, label: '점심시간' },
+        { hour: 18, label: '저녁시간' },
+    ];
     const WEEKDAY_LABELS = ['월', '화', '수', '목', '금', '토'];
     const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
     // 사이드바 타임라인은 요구사항대로 09~18시.
@@ -276,6 +280,8 @@
         }
         grid.innerHTML = html;
 
+        MEALTIMES.forEach(({ hour, label }) => appendMealBand(grid, hour, label));
+
         for (let i = 0; i < 6; i++) {
             const iso = CalendarUtils.formatISODate(CalendarUtils.addDays(monday, i));
             const entry = state.classMap[iso];
@@ -286,15 +292,53 @@
         body.replaceChildren(grid);
     }
 
+    // 12~13시(점심시간), 18~19시(저녁시간)를 요일 전체 폭에 흰 배경 띠로 표시
+    function appendMealBand(grid, startHour, label) {
+        const rowStart = (startHour - GRID_START_HOUR) * 2 + 2;
+        const band = document.createElement('div');
+        band.className = 'week-grid__mealtime';
+        band.style.gridColumn = '2 / -1';
+        band.style.gridRow = `${rowStart} / span 2`;
+        band.setAttribute('aria-hidden', 'true');
+        band.textContent = label;
+        grid.appendChild(band);
+    }
+
+    // 30분 슬롯 인덱스 -> "HH:MM" (timeToSlot의 역연산, GRID_START_HOUR 기준)
+    function slotToTime(slot) {
+        const totalMinutes = slot * 30;
+        const h = GRID_START_HOUR + Math.floor(totalMinutes / 60);
+        const m = totalMinutes % 60;
+        return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    }
+
     function appendClassBlock(grid, dayIndex, entry) {
         const holiday = SchedulerData.isHolidayEntry(entry);
+        if (holiday) {
+            appendClassSegment(grid, dayIndex, entry, 0, (GRID_END_HOUR - GRID_START_HOUR) * 2, true);
+            return;
+        }
+
         const hasTime = entry.startTime && entry.endTime;
-        const startSlot = holiday ? 0 : timeToSlot(hasTime ? entry.startTime : '09:00');
-        const endSlot = holiday ? (GRID_END_HOUR - GRID_START_HOUR) * 2 : timeToSlot(hasTime ? entry.endTime : '18:00');
+        const startSlot = timeToSlot(hasTime ? entry.startTime : '09:00');
+        const endSlot = timeToSlot(hasTime ? entry.endTime : '18:00');
+        const lunchStart = timeToSlot('12:00');
+        const lunchEnd = timeToSlot('13:00');
+
+        // 점심시간(12~13시)을 가로지르는 수업은 기존 박스 스타일 그대로 09~12시 / 13~18시 두 박스로 분리
+        if (startSlot < lunchStart && endSlot > lunchEnd) {
+            appendClassSegment(grid, dayIndex, entry, startSlot, lunchStart, false);
+            appendClassSegment(grid, dayIndex, entry, lunchEnd, endSlot, false);
+        } else {
+            appendClassSegment(grid, dayIndex, entry, startSlot, endSlot, false);
+        }
+    }
+
+    function appendClassSegment(grid, dayIndex, entry, startSlot, endSlot, holiday) {
         const rowStart = startSlot + 2;
         const span = Math.max(1, endSlot - startSlot);
         const teacher = teacherOf(entry);
-        const timeLabel = holiday ? '' : `${hasTime ? entry.startTime : '09:00'}~${hasTime ? entry.endTime : '18:00'}`;
+        const timeLabel = holiday ? '' : `${slotToTime(startSlot)}~${slotToTime(endSlot)}`;
 
         const block = document.createElement('div');
         block.className = 'time-block' + (holiday ? ' time-block--holiday' : '');
@@ -310,7 +354,8 @@
 
     function appendEventBlock(grid, dayIndex, ev) {
         // 시간 있는 일정은 해당 슬롯, 없는 일정은 그리드 최상단에 고정.
-        const slot = ev.time ? clamp(timeToSlot(ev.time), 0, 19) : 0;
+        const maxSlot = (GRID_END_HOUR - GRID_START_HOUR) * 2 - 1;
+        const slot = ev.time ? clamp(timeToSlot(ev.time), 0, maxSlot) : 0;
         const block = document.createElement('button');
         block.type = 'button';
         block.className = 'time-block time-block--event';
