@@ -89,7 +89,7 @@ main.home-main {
   margin-bottom: var(--space-md);
   animation:
     hero-typing 1.6s steps(15, end) forwards,
-    hero-caret-blink 0.75s step-end infinite;
+    hero-caret-blink 0.75s step-end 5 forwards;
 }
 
 @keyframes hero-typing {
@@ -101,8 +101,14 @@ main.home-main {
   }
 }
 
+/* 타이핑이 끝난 뒤 커서가 3번만 깜빡이고 사라지도록 마지막 구간에서 투명 상태로 고정 */
 @keyframes hero-caret-blink {
-  50% {
+  0%,
+  49% {
+    border-color: var(--color-border);
+  }
+  50%,
+  100% {
     border-color: transparent;
   }
 }
