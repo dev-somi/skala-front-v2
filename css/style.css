@@ -141,33 +141,32 @@ main.home-main {
   top: 100%;
   left: 50%;
   z-index: 20;
-  transform: translate(-50%, 18px);
+  transform: translate(-50%, 36px);
   background: var(--color-bg-cream);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-hard);
-  padding: var(--space-sm) var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--color-text);
   white-space: nowrap;
 }
 
-/* 삼각형 tail: border-top은 만들지 않고 좌/우/하만 사용해 순수 9px 높이 삼각형을 만든 뒤,
-   말풍선(::after, z-index 20)보다 낮은 z-index로 두고 끝부분만 3px 겹쳐 그 아래로 밀어 넣는다.
-   이렇게 하면 삼각형의 밑변(사각형 부분)은 말풍선 배경에 가려지고 뾰족한 끝만 보여서
-   모서리가 둥근 사각형과 겹쳐 보이는 문제 없이 자연스럽게 이어진다 */
+/* tail: 순수 삼각형(좌/우 변은 투명, 아래쪽 변만 테두리색)을 말풍선 바로 위에
+   "맞닿게"(hide-under 트릭 없이) 배치한다. 45도 회전한 사각형으로 만들었더니
+   회전 특성상 옆으로 마름모 꼭짓점이 살짝 비쳐 보이는 문제가 있어 이 방식으로 되돌림 */
 .portrait-grid > li[data-tooltip]::before {
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
   z-index: 19;
-  transform: translate(-50%, 12px);
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid var(--color-border);
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid var(--color-border);
+  transform: translate(-50%, 22px);
 }
 
 .portrait-grid > li[data-tooltip]:hover::after,
@@ -179,12 +178,12 @@ main.home-main {
 
 .portrait-grid > li[data-tooltip]:hover::after,
 .portrait-grid > li[data-tooltip]:focus-within::after {
-  transform: translate(-50%, 24px);
+  transform: translate(-50%, 42px);
 }
 
 .portrait-grid > li[data-tooltip]:hover::before,
 .portrait-grid > li[data-tooltip]:focus-within::before {
-  transform: translate(-50%, 18px);
+  transform: translate(-50%, 28px);
 }
 
 @media (prefers-reduced-motion: reduce) {
