@@ -78,10 +78,6 @@ window.SchedulerData = (() => {
         getTodos: (iso) => readJSON(`${NS}.todos.${iso}`, []),
         setTodos: (iso, list) => writeJSON(`${NS}.todos.${iso}`, list),
 
-        // 날짜별 예습/복습 계획 { <과목명>: {preview, review} }
-        getPlan: (iso) => readJSON(`${NS}.plan.${iso}`, {}),
-        setPlan: (iso, plan) => writeJSON(`${NS}.plan.${iso}`, plan),
-
         // 개인 캘린더 일정 [{id, date, time, title}]
         getEvents,
         setEvents,

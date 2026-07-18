@@ -127,47 +127,25 @@
             </div>`;
     }
 
-    // ---------- 사이드바: My Plan 예·복습 ----------
+    // ---------- 사이드바: My Plan (오늘의 개인 일정) ----------
 
     function renderPlanEditor() {
         document.getElementById('plan-today-label').textContent = todayLabelText();
         const container = document.getElementById('plan-editor');
-        const entry = state.classMap[state.todayISO];
+        const events = (state.eventsMap[state.todayISO] || [])
+            .slice()
+            .sort((a, b) => (a.time || '').localeCompare(b.time || ''));
 
-        if (!entry || SchedulerData.isHolidayEntry(entry)) {
-            container.innerHTML = `<p class="sidebar-empty">오늘은 계획된 일정이 없어요 🌿</p>`;
+        if (!events.length) {
+            container.innerHTML = `<p class="sidebar-empty">오늘 등록된 일정이 없어요 🌿</p>`;
             return;
         }
 
-        const subject = entry.content;
-        const plan = SchedulerData.getPlan(state.todayISO);
-        const saved = plan[subject] || { preview: '', review: '' };
-
-        container.innerHTML = `
-            <div class="plan-row">
-                <h3 class="plan-subject">${escapeHtml(subject)}</h3>
-                <label class="plan-field">
-                    <span>📖 예습</span>
-                    <textarea data-kind="preview" rows="2" placeholder="예습 계획을 적어보세요">${escapeHtml(saved.preview)}</textarea>
-                </label>
-                <label class="plan-field">
-                    <span>🔁 복습</span>
-                    <textarea data-kind="review" rows="2" placeholder="복습 계획을 적어보세요">${escapeHtml(saved.review)}</textarea>
-                </label>
-            </div>`;
-    }
-
-    function handlePlanInput(event) {
-        const textarea = event.target.closest('textarea[data-kind]');
-        if (!textarea) return;
-        const entry = state.classMap[state.todayISO];
-        if (!entry) return;
-
-        const subject = entry.content;
-        const plan = SchedulerData.getPlan(state.todayISO);
-        plan[subject] = plan[subject] || { preview: '', review: '' };
-        plan[subject][textarea.dataset.kind] = textarea.value;
-        SchedulerData.setPlan(state.todayISO, plan);
+        container.innerHTML = `<ul class="plan-event-list">${events.map((ev) => `
+            <li class="plan-event-item">
+                <span>${ev.time ? `<strong>${escapeHtml(ev.time)}</strong> ` : ''}${escapeHtml(ev.title)}</span>
+                <button type="button" class="plan-event-delete" data-event-id="${ev.id}" aria-label="일정 삭제">삭제</button>
+            </li>`).join('')}</ul>`;
     }
 
     // ---------- 사이드바: Daily Todo ----------
@@ -507,8 +485,15 @@
         document.getElementById('cal-prev').addEventListener('click', () => moveCursor(-1));
         document.getElementById('cal-next').addEventListener('click', () => moveCursor(1));
 
-        // 예·복습 메모 저장 (입력 즉시)
-        document.getElementById('plan-editor').addEventListener('input', handlePlanInput);
+        // 오늘의 개인 일정 삭제 (My Plan 사이드바)
+        document.getElementById('plan-editor').addEventListener('click', (e) => {
+            const btn = e.target.closest('.plan-event-delete');
+            if (!btn) return;
+            SchedulerData.removeEvent(btn.dataset.eventId);
+            rebuildEventsMap();
+            renderPlanEditor();
+            renderCalendar();
+        });
 
         // Todo 추가/체크/삭제
         document.getElementById('todo-form').addEventListener('submit', (e) => {
@@ -554,6 +539,7 @@
             rebuildEventsMap();
             renderEventList(state.dialogDate);
             renderCalendar();
+            if (state.dialogDate === state.todayISO) renderPlanEditor();
         });
         document.getElementById('event-list').addEventListener('click', (e) => {
             const btn = e.target.closest('.event-delete-btn');
@@ -562,6 +548,7 @@
             rebuildEventsMap();
             renderEventList(state.dialogDate);
             renderCalendar();
+            if (state.dialogDate === state.todayISO) renderPlanEditor();
         });
         dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
         dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
