@@ -870,7 +870,7 @@ main.trip-book {
 }
 
 .mosaic-slot--video .video-container {
-  margin: 0;
+  margin: 0 var(--space-sm) var(--space-sm);
   padding: 0;
   border: none;
   box-shadow: none;
