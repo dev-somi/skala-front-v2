@@ -892,6 +892,18 @@ main.trip-book {
   width: 100%;
 }
 
+.mosaic-slot--photo {
+  padding: 0;
+  overflow: hidden;
+}
+
+.mosaic-slot--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .trip-card {
   position: relative;
   display: flex;
@@ -991,21 +1003,102 @@ main.trip-book {
 }
 
 /* ===== 회원가입 폼 (signUp.html / signUpResult.html) ===== */
+.signup-container {
+  max-width: 720px;
+}
+
+.signup-intro h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.signup-intro p {
+  margin-top: 0;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
 fieldset {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-hard);
   background: white;
-  padding: var(--space-md) var(--space-lg);
-  margin: 0 0 var(--space-lg) 0;
+  padding: var(--space-lg);
+  margin: 0;
+  min-width: 0;
 }
 
 legend {
   font-family: var(--font-heading);
+  font-weight: 700;
   background: var(--color-accent-mint);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: 4px var(--space-md);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: start;
+  gap: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+}
+
+.form-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.form-row:first-child {
+  padding-top: 0;
+}
+
+.form-row label,
+.form-row-label {
+  font-weight: 600;
+  padding-top: var(--space-sm);
+}
+
+.form-row--stacked {
+  grid-template-columns: 1fr;
+}
+
+.form-row--stacked label {
+  padding-top: 0;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.form-control small {
+  color: var(--color-text);
+  opacity: 0.65;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.input-group-at {
+  font-weight: 700;
+}
+
+.input-group input[type="text"] {
+  flex: 1 1 160px;
 }
 
 input[type="text"], input[type="password"], input[type="date"], select, textarea {
@@ -1013,12 +1106,65 @@ input[type="text"], input[type="password"], input[type="date"], select, textarea
   border-radius: 8px;
   padding: var(--space-sm);
   font-family: var(--font-body);
+  background: white;
   width: 100%;
   max-width: 320px;
+  transition: box-shadow 0.1s, transform 0.1s;
+}
+
+textarea {
+  max-width: 100%;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: var(--shadow-hard);
+  transform: translate(-2px, -2px);
+}
+
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.choice-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.1s, transform 0.1s;
+}
+
+.choice-pill:has(input:checked) {
+  background: var(--color-accent-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard);
+}
+
+.choice-pill input {
+  accent-color: var(--color-text);
+}
+
+.signup-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
 }
 
 .btn-submit, .btn-reset {
   font-family: var(--font-heading);
+  font-weight: 700;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: var(--space-sm) var(--space-lg);
@@ -1038,6 +1184,88 @@ input[type="text"], input[type="password"], input[type="date"], select, textarea
 .btn-submit:active, .btn-reset:active {
   transform: translate(4px, 4px);
   box-shadow: 0 0 0 var(--color-border);
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row label,
+  .form-row-label {
+    padding-top: 0;
+  }
+}
+
+/* ===== 회원가입 완료 (signUpResult.html) ===== */
+.result-hero {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  background: var(--color-accent-yellow);
+}
+
+.result-hero-emoji {
+  font-size: 48px;
+  margin: 0 0 var(--space-sm);
+}
+
+.result-hero h1 {
+  margin: 0 0 var(--space-sm);
+}
+
+.result-hero p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.result-card {
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+.result-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.result-checklist li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.result-checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--color-bg-purple);
+}
+
+.result-nav {
+  text-align: center;
+}
+
+.result-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.result-nav-links .btn-pill {
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-accent-mint);
 }
 
 /* ===== 캘린더 공통 (myClass.html / myMonthlyClass.html / myHoliday.html) ===== */

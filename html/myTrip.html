@@ -34,6 +34,44 @@
                 <!-- 1열: 세로 3행 - 추억 카드 3선 -->
                 <div class="trip-mosaic__col trip-mosaic__col--a">
 
+                    <!-- 2열 0행: 대표 사진 -->
+                    <div class="mosaic-slot mosaic-slot--photo">
+                        <img src="https://picsum.photos/seed/hokkaido-snow/800/600" alt="눈 내리는 홋카이도의 겨울 풍경">
+                    </div>
+
+                    <!-- 2열 1행: 배경음악 플레이어 -->
+                    <div class="mosaic-slot--audio">
+                        <div class="audio-player" aria-label="배경음악 플레이어">
+                            <img class="audio-player__cover" src="../media/bgm-cover.jpg" alt="なごり雪 앨범 아트">
+                            <div class="audio-player__info">
+                                <p class="audio-player__title">なごり雪</p>
+                                <p class="audio-player__artist">イルカ</p>
+                            </div>
+                            <button id="bgm-toggle" type="button" class="audio-player__play" aria-pressed="false" aria-label="재생"></button>
+                            <div id="bgm-player" hidden aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2열 2행: 비디오 -->
+                    <div class="mosaic-slot--video">
+                        <h2 id="video-title"><span class="trip-card__number trip-card__number--inline" aria-hidden="true">04</span> 🎥 홋카이도 모먼트</h2>
+                        <!-- 필수 사용 3: <video>와 <source> -->
+                        <div class="video-container">
+                            <video controls poster="../media/winter_poster.jpg">
+                                <source src="../media/winter_vlog.mp4" type="video/mp4">
+                                브라우저가 비디오 태그를 지원하지 않습니다.
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr class="trip-book__divider">
+
+                <!-- 2열: 세로 2행 - 오디오(1행) + 비디오(2행) -->
+                <div class="trip-mosaic__col trip-mosaic__col--b">
+
+
                     <!-- 카드 1: 캠퍼스 라이프 -->
                     <article class="trip-card">
                         <span class="trip-card__number" aria-hidden="true">01</span>
@@ -70,38 +108,6 @@
                             <p class="trip-card__meta">📍 삿포로 · 2025.02</p>
                         </div>
                     </article>
-
-                </div>
-
-                <hr class="trip-book__divider">
-
-                <!-- 2열: 세로 2행 - 오디오(1행) + 비디오(2행) -->
-                <div class="trip-mosaic__col trip-mosaic__col--b">
-
-                    <!-- 2열 1행: 배경음악 플레이어 -->
-                    <div class="mosaic-slot mosaic-slot--audio">
-                        <div class="audio-player" aria-label="배경음악 플레이어">
-                            <img class="audio-player__cover" src="../media/bgm-cover.jpg" alt="なごり雪 앨범 아트">
-                            <div class="audio-player__info">
-                                <p class="audio-player__title">なごり雪</p>
-                                <p class="audio-player__artist">イルカ</p>
-                            </div>
-                            <button id="bgm-toggle" type="button" class="audio-player__play" aria-pressed="false" aria-label="재생"></button>
-                            <div id="bgm-player" hidden aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <!-- 2열 2행: 비디오 -->
-                    <div class="mosaic-slot mosaic-slot--video">
-                        <h2 id="video-title"><span class="trip-card__number trip-card__number--inline" aria-hidden="true">04</span> 🎥 홋카이도 모먼트</h2>
-                        <!-- 필수 사용 3: <video>와 <source> -->
-                        <div class="video-container">
-                            <video controls poster="../media/winter_poster.jpg">
-                                <source src="../media/winter_vlog.mp4" type="video/mp4">
-                                브라우저가 비디오 태그를 지원하지 않습니다.
-                            </video>
-                        </div>
-                    </div>
 
                 </div>
 
