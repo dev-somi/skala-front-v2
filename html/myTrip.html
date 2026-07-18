@@ -8,7 +8,10 @@
     <meta name="description" content="눈의 나라 홋카이도에서 보낸 1년간의 마법 같은 교환학생 기록이자 따뜻한 겨울 조각들을 담은 미디어 갤러리입니다.">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="trip-winter-bg">
+
+    <!-- 동적 눈 내리는 배경 (Canvas) -->
+    <canvas id="snowfall-canvas" aria-hidden="true"></canvas>
 
     <!-- 1. 헤더 영역: 글로벌 네비게이션 -->
     <header>
@@ -41,21 +44,21 @@
                 <!-- 카드 1: 캠퍼스 라이프 -->
                 <article class="trip-card">
                     <!-- 필수 사용 2: <img> -->
-                    <img src="media/campus.jpg" alt="새하얀 눈으로 가득 덮인 평화로운 대학교 교정과 가로수길">
+                    <img src="https://picsum.photos/seed/campus-snow/800/600" alt="새하얀 눈으로 가득 덮인 평화로운 대학교 교정과 가로수길">
                     <h3>🏫 낭만적인 설경의 캠퍼스</h3>
                     <p>수업을 들으러 가던 매일 아침, 발목까지 푹푹 빠지는 눈길마저 설레게 만들었던 아름다운 겨울 교정의 풍경입니다.</p>
                 </article>
 
                 <!-- 카드 2: 겨울 여행 (오타루 등) -->
                 <article class="trip-card">
-                    <img src="media/otaru.jpg" alt="가스등 불빛이 물 위로 은은하게 비치는 겨울 오타루 운하의 야경">
+                    <img src="https://picsum.photos/seed/otaru-canal/800/600" alt="가스등 불빛이 물 위로 은은하게 비치는 겨울 오타루 운하의 야경">
                     <h3>🕯️ 반짝이는 겨울의 운하</h3>
                     <p>차가운 공기 속에서 은은하게 빛나는 가스등과 물결을 보며 잊지 못할 겨울의 낭만을 가슴속 깊이 새겼던 날.</p>
                 </article>
 
                 <!-- 카드 3: 디저트와 일상 -->
                 <article class="trip-card">
-                    <img src="media/dessert.jpg" alt="김이 모락모락 나는 따뜻한 커피 한 잔과 달콤한 초콜릿 디저트">
+                    <img src="https://picsum.photos/seed/dessert-coffee/800/600" alt="김이 모락모락 나는 따뜻한 커피 한 잔과 달콤한 초콜릿 디저트">
                     <h3>🍰 추위를 녹여주던 달콤함</h3>
                     <p>뺨이 차가워질 때쯤 들어간 아늑한 카페에서, 따뜻한 온기와 함께 즐기던 달콤하고 부드러운 디저트의 행복.</p>
                 </article>
@@ -84,6 +87,7 @@
     <!-- 3. 푸터 영역 -->
     <div id="footer-placeholder"></div>
 
+    <script src="../script/snowfall.js"></script>
     <script src="../script/bgmPlayer.js"></script>
     <script src="../script/nav.js"></script>
     <script src="../script/footer.js"></script>

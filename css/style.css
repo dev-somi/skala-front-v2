@@ -645,6 +645,27 @@ main.profile-layout {
 }
 
 /* ===== 여행 저널 페이지 (myTrip.html) ===== */
+body.trip-winter-bg {
+  background: linear-gradient(180deg, #4a6fa5 0%, #8fb8de 45%, #dce9f5 100%);
+  min-height: 100vh;
+}
+
+#snowfall-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.trip-winter-bg > header,
+body.trip-winter-bg > main,
+body.trip-winter-bg > #footer-placeholder {
+  position: relative;
+  z-index: 1;
+}
+
 .audio-player, .video-container {
   background: white;
   border: var(--border-width) solid var(--color-border);
