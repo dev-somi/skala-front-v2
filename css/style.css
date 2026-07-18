@@ -680,31 +680,53 @@ body.trip-winter-bg > #footer-placeholder {
   border-radius: var(--radius-card);
 }
 
-.trip-grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+.trip-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
 .trip-card {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-md);
   background: white;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--shadow-hard-lg);
   padding: var(--space-md);
   margin: 0;
 }
 
+.trip-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
 .trip-card img {
-  width: 100%;
-  height: 180px;
+  flex: 0 0 40%;
+  width: 40%;
+  min-height: 220px;
   object-fit: cover;
   border-radius: calc(var(--radius-card) - 6px);
 }
 
+.trip-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
 @media (max-width: 700px) {
-  .trip-grid-container {
-    grid-template-columns: 1fr;
+  .trip-card,
+  .trip-card:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .trip-card img {
+    width: 100%;
+    min-height: 180px;
   }
 }
 
